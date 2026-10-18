@@ -1,13 +1,27 @@
+import {
+  ArticleTableOfContents,
+  DevReactions,
+  InteractiveCodeBlock,
+  ReadingProgressBar,
+} from "@/components/blog-dev-features";
+import { BlogArchitectureDiagram } from "@/components/blog-diagrams";
+import { ExperienceProvider } from "@/components/experience";
+import { ArticleJsonLd } from "@/components/json-ld";
+import { CursorFollower } from "@/components/motion-details";
+import { PageFooter, PageHeader } from "@/components/page-nav";
+import { blogPosts } from "@/data/blog-data";
+import { pageMetadata } from "@/lib/metadata";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  BookOpen,
+  Calendar,
+  Check,
+  Clock,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Check, Clock, Calendar, Share2, Tag, BookOpen } from "lucide-react";
-import { ExperienceProvider } from "@/components/experience";
-import { CursorFollower } from "@/components/motion-details";
-import { PageHeader, PageFooter } from "@/components/page-nav";
-import { ArticleJsonLd } from "@/components/json-ld";
-import { BlogArchitectureDiagram } from "@/components/blog-diagrams";
-import { blogPosts, type BlogPost } from "@/data/blog-data";
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -31,28 +45,22 @@ export async function generateMetadata({
     };
   }
 
+  const base = pageMetadata(`/blog/${post.slug}`, post.title, post.excerpt);
   return {
-    title: `${post.title} — VENIZOR Field Notes`,
-    description: post.excerpt,
-    alternates: {
-      canonical: `https://venizor.com/blog/${post.slug}`,
-    },
+    ...base,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      url: `https://venizor.com/blog/${post.slug}`,
+      ...base.openGraph,
       type: "article",
       publishedTime: new Date(post.publishDate).toISOString(),
+      modifiedTime: new Date(
+        post.modifiedDate || post.publishDate,
+      ).toISOString(),
       authors: [post.author.name],
-      tags: [post.category, ...post.keyTakeaways],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
     },
   };
 }
+
+export const instant = false;
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
@@ -69,6 +77,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <ExperienceProvider>
       <div className="inner-page-shell" id="top">
+        <a className="skip-link" href="#article-main">
+          Skip to content
+        </a>
+        <ReadingProgressBar />
         <CursorFollower />
         <PageHeader activePage="blog" />
         <ArticleJsonLd post={post} />
@@ -120,35 +132,47 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </div>
           </div>
 
-          {/* Article Content Body */}
-          <article className="page-container article-prose-wrap">
-            <BlogArchitectureDiagram slug={post.slug} />
+          {/* Article Layout with Sidebar TOC & Dev Reactions */}
+          <div className="page-container article-layout-grid">
+            <aside className="article-left-rail">
+              <DevReactions slug={post.slug} />
+              <ArticleTableOfContents
+                headings={post.content.map((c) => c.sectionHeading)}
+              />
+            </aside>
 
-            {post.content.map((section, idx) => (
-              <section key={section.sectionHeading} className="article-section">
-                <h2>{section.sectionHeading}</h2>
-                {section.paragraphs.map((p, pIdx) => (
-                  <p key={pIdx}>{p}</p>
-                ))}
+            {/* Article Content Body */}
+            <article className="article-prose-wrap">
+              <p className="article-evidence-note">
+                An educational field note with illustrative architecture and
+                code. Example metrics and outputs are not VENIZOR production
+                benchmarks.{" "}
+                {post.modifiedDate && <>Updated: {post.modifiedDate}.</>}
+              </p>
+              <BlogArchitectureDiagram slug={post.slug} />
 
-                {section.codeSnippet && (
-                  <div className="article-code-block">
-                    {section.codeSnippet.caption && (
-                      <div className="code-caption">
-                        <span>{section.codeSnippet.caption}</span>
-                        <span className="code-lang">
-                          {section.codeSnippet.language}
-                        </span>
-                      </div>
-                    )}
-                    <pre>
-                      <code>{section.codeSnippet.code}</code>
-                    </pre>
-                  </div>
-                )}
-              </section>
-            ))}
-          </article>
+              {post.content.map((section, idx) => (
+                <section
+                  key={section.sectionHeading}
+                  id={`section-${idx}`}
+                  className="article-section"
+                >
+                  <h2>{section.sectionHeading}</h2>
+                  {section.paragraphs.map((p, pIdx) => (
+                    <p key={pIdx}>{p}</p>
+                  ))}
+
+                  {section.codeSnippet && (
+                    <InteractiveCodeBlock
+                      code={section.codeSnippet.code}
+                      language={section.codeSnippet.language}
+                      caption={section.codeSnippet.caption}
+                    />
+                  )}
+                </section>
+              ))}
+            </article>
+          </div>
 
           {/* Author Card & Engagement */}
           <div className="page-container" style={{ marginBlock: 60 }}>
@@ -157,8 +181,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <span className="author-badge">ABOUT THE AUTHORS</span>
                 <h4>{post.author.name}</h4>
                 <p>
-                  Specializing in mission-critical digital products, high-throughput APIs,
-                  applied AI pipelines, and resilient cloud architectures at VENIZOR.
+                  Specializing in mission-critical digital products,
+                  high-throughput APIs, applied AI pipelines, and resilient
+                  cloud architectures at VENIZOR.
                 </p>
               </div>
               <Link href="/contact" className="pill-button dark">
@@ -169,15 +194,20 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
           {/* Related Articles */}
           <section className="page-container related-articles-section">
-            <div className="section-head" style={{ marginBottom: 24 }}>
-              <span className="section-kicker">CONTINUE EXPLORING</span>
-              <h3 style={{ fontSize: "24px" }}>Related architecture notes</h3>
+            <div className="blog-section-heading" style={{ marginBottom: 24 }}>
+              <span className="blog-kicker-tag">CONTINUE EXPLORING</span>
+              <h3 className="blog-section-title" style={{ fontSize: "24px" }}>
+                Related architecture notes
+              </h3>
             </div>
 
             <div className="articles-bento-grid">
               {relatedPosts.map((rel) => (
                 <article key={rel.slug} className="article-card">
-                  <Link href={`/blog/${rel.slug}`} className="article-card-inner">
+                  <Link
+                    href={`/blog/${rel.slug}`}
+                    className="article-card-inner"
+                  >
                     <div className="article-card-top">
                       <span className="article-cat-tag">{rel.category}</span>
                       <span className="article-date">{rel.readTime}</span>

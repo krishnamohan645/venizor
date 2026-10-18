@@ -1,306 +1,125 @@
 "use client";
-
-import { useEffect, useState, type FormEvent } from "react";
-import { ArrowUpRight, Check, CheckCheck, Clock, Copy, Mail, MapPin, Send, Sparkles } from "lucide-react";
-
-const availableServices = [
-  "SaaS Platform",
-  "AI & Automation",
-  "Web Application",
-  "Mobile App",
-  "Digital Growth",
-  "Product Design",
-  "Technical Consultation",
-];
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Pause, Play } from "lucide-react";
+import { useInView, useReducedMotion } from "motion/react";
+import { LeadForm } from "./lead-form";
 
 export function InteractiveContactForm() {
-  const [selectedServices, setSelectedServices] = useState<string[]>([
-    "SaaS Platform",
-  ]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [timeline, setTimeline] = useState("1 – 3 months");
-  const [budget, setBudget] = useState("$15,000 – $35,000");
-  const [message, setMessage] = useState("");
-  const [draftReady, setDraftReady] = useState(false);
-  const [draftLink, setDraftLink] = useState("");
-  const [copied, setCopied] = useState(false);
-
-  const toggleService = (srv: string) => {
-    setDraftReady(false);
-    setSelectedServices((prev) =>
-      prev.includes(srv)
-        ? prev.length > 1
-          ? prev.filter((s) => s !== srv)
-          : prev
-        : [...prev, srv],
+  const [completed, setCompleted] = useState(0);
+  function progress(event: FormEvent<HTMLDivElement>) {
+    const form = event.currentTarget.querySelector("form");
+    if (!form) return;
+    const fields = [
+      ...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+        "input[required], textarea[required]",
+      ),
+    ];
+    setCompleted(
+      fields.filter((field) => field.value.trim() && field.checkValidity())
+        .length,
     );
-  };
-
-  const handleFormSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const serviceList = selectedServices.join(", ");
-    const subject = `Project Enquiry: ${serviceList} — ${name}${company ? ` (${company})` : ""}`;
-    const body = `Hello VENIZOR Studio,
-
-${message}
-
----
-PROJECT PARAMETERS:
-• Interested in: ${serviceList}
-• Estimated Timeline: ${timeline}
-• Budget Range: ${budget}
-• Contact Name: ${name}
-• Work Email: ${email}
-${company ? `• Organization: ${company}\n` : ""}`;
-
-    const mailto = `mailto:info@venizor.com?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-
-    setDraftLink(mailto);
-    setDraftReady(true);
-  };
-
-  const copyToClipboard = () => {
-    const serviceList = selectedServices.join(", ");
-    const text = `Project Enquiry for VENIZOR
-From: ${name} (${email}${company ? `, ${company}` : ""})
-Services: ${serviceList}
-Timeline: ${timeline}
-Budget: ${budget}
-
-Message:
-${message}`;
-
-    navigator.clipboard?.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2400);
-  };
-
+  }
   return (
-    <div className="contact-form-panel">
-      <h3>Tell us about your project</h3>
+    <div className="contact-form-panel" onInput={progress}>
+      <div className="contact-form-intro">
+        <span className="section-kicker">YOUR PROJECT BRIEF</span>
+        <span className="contact-form-optional">No sign-up needed</span>
+      </div>
+      <h2>What are you thinking?</h2>
       <p className="contact-form-sub">
-        Fill out the parameters below to prepare your direct project enquiry.
+        A few details. A useful starting point.
       </p>
-
-      <form className="contact-form" onSubmit={handleFormSubmit}>
-        <div className="form-field-row">
-          <div className="contact-field-group">
-            <label htmlFor="contact-name">Your Name *</label>
-            <input
-              id="contact-name"
-              type="text"
-              required
-              maxLength={100}
-              placeholder="Alex Morgan"
-              className="contact-input"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-                setDraftReady(false);
-              }}
-            />
-          </div>
-
-          <div className="contact-field-group">
-            <label htmlFor="contact-email">Work Email *</label>
-            <input
-              id="contact-email"
-              type="email"
-              required
-              maxLength={180}
-              placeholder="alex@company.com"
-              className="contact-input"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setDraftReady(false);
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="form-field-row">
-          <div className="contact-field-group">
-            <label htmlFor="contact-company">Company / Organization</label>
-            <input
-              id="contact-company"
-              type="text"
-              maxLength={100}
-              placeholder="Acme Studio, Inc."
-              className="contact-input"
-              value={company}
-              onChange={(e) => {
-                setCompany(e.target.value);
-                setDraftReady(false);
-              }}
-            />
-          </div>
-
-          <div className="contact-field-group">
-            <label htmlFor="contact-timeline">Desired Timeline</label>
-            <select
-              id="contact-timeline"
-              className="contact-select"
-              value={timeline}
-              onChange={(e) => {
-                setTimeline(e.target.value);
-                setDraftReady(false);
-              }}
-            >
-              <option>Immediate (&lt; 1 month)</option>
-              <option>1 – 3 months</option>
-              <option>3 – 6 months</option>
-              <option>Flexible / Exploratory</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="contact-field-group">
-          <span className="pills-label">Services of Interest *</span>
-          <div className="services-pills-wrap">
-            {availableServices.map((srv) => {
-              const active = selectedServices.includes(srv);
-              return (
-                <button
-                  type="button"
-                  key={srv}
-                  className="service-toggle-pill"
-                  data-selected={active}
-                  onClick={() => toggleService(srv)}
-                >
-                  {srv} {active && "✓"}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="contact-field-group">
-          <label htmlFor="contact-budget">Estimated Budget Scope</label>
-          <select
-            id="contact-budget"
-            className="contact-select"
-            value={budget}
-            onChange={(e) => {
-              setBudget(e.target.value);
-              setDraftReady(false);
-            }}
-          >
-            <option>&lt; $5,000 (Focused release)</option>
-            <option>$5,000 – $15,000 (MVP / New Product)</option>
-            <option>$15,000 – $35,000 (Comprehensive platform)</option>
-            <option>$35,000+ (Enterprise scale / Retainer pod)</option>
-          </select>
-        </div>
-
-        <div className="contact-field-group">
-          <label htmlFor="contact-message">Project Brief &amp; Goals *</label>
-          <textarea
-            id="contact-message"
-            required
-            placeholder="Share details about what you are aiming to build, key challenges, or current status..."
-            className="contact-textarea"
-            value={message}
-            onChange={(e) => {
-              setMessage(e.target.value);
-              setDraftReady(false);
-            }}
-          />
-        </div>
-
-        <div className="form-actions-wrap">
-          <button type="submit" className="contact-submit-btn">
-            Prepare Your Project Enquiry <Send size={15} />
-          </button>
-
-          {draftReady && (
-            <div className="draft-confirmation-card">
-              <div className="draft-conf-title">
-                <Check size={18} />
-                <span>Enquiry prepared and ready to send!</span>
-              </div>
-              <p className="draft-conf-desc">
-                Your email client is ready with the structured brief. Click below to launch your email app, or copy the content directly.
-              </p>
-              <div className="draft-buttons-row">
-                <a
-                  href={draftLink}
-                  className="draft-launch-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Open in your email app <ArrowUpRight size={14} />
-                </a>
-                <button
-                  type="button"
-                  className="draft-copy-btn"
-                  onClick={copyToClipboard}
-                >
-                  {copied ? (
-                    <>
-                      <CheckCheck size={14} /> Copied to clipboard!
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={14} /> Copy brief details
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </form>
+      <div
+        className="contact-brief-progress"
+        role="progressbar"
+        aria-label="Brief details completed"
+        aria-valuemin={0}
+        aria-valuemax={3}
+        aria-valuenow={completed}
+      >
+        <span style={{ width: `${(completed / 3) * 100}%` }} />
+      </div>
+      <LeadForm />
     </div>
   );
 }
 
-/** Live Studio Timezone Clock for India (IST, UTC+5:30) */
 export function StudioLiveClock() {
-  const [timeStr, setTimeStr] = useState<string>("02:30 PM");
-
+  const [time, setTime] = useState("--:--");
   useEffect(() => {
-    const updateTime = () => {
-      try {
-        const now = new Date();
-        const formatted = new Intl.DateTimeFormat("en-US", {
+    const update = () =>
+      setTime(
+        new Intl.DateTimeFormat("en-US", {
           timeZone: "Asia/Kolkata",
           hour: "2-digit",
           minute: "2-digit",
-          second: "2-digit",
           hour12: true,
-        }).format(now);
-        setTimeStr(formatted);
-      } catch {
-        setTimeStr("12:00 PM");
-      }
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
+        }).format(new Date()),
+      );
+    update();
+    const timer = window.setInterval(update, 30000);
+    return () => window.clearInterval(timer);
   }, []);
-
   return (
-    <div className="sidebar-info-card">
-      <span className="sidebar-kicker">STUDIO TELEMETRY</span>
-      <h4>India Headquarters (IST)</h4>
-      <p>
-        Building from India with active communication overlap across US, European, and APAC client timezones.
-      </p>
-
-      <div className="clock-display-wrap">
-        <span className="clock-time-val">{timeStr}</span>
-        <span className="clock-tz-val">IST (UTC +5:30)</span>
+    <div className="studio-time">
+      <span className="section-kicker">
+        BASED IN INDIA. CONNECTED EVERYWHERE.
+      </span>
+      <div>
+        <span>Local studio time</span>
+        <time suppressHydrationWarning>
+          {time}
+          <span>IST</span>
+        </time>
       </div>
+    </div>
+  );
+}
 
-      <div className="clock-status-tag">
-        <i className="pulse-dot" style={{ width: 6, height: 6 }} /> Currently receiving project briefs
+export function ContactStudioMark() {
+  const root = useRef<HTMLDivElement>(null);
+  const visible = useInView(root);
+  const reduced = useReducedMotion();
+  const [paused, setPaused] = useState(false);
+  return (
+    <div
+      ref={root}
+      className="contact-studio-mark"
+      data-mark-playing={visible && !paused && !reduced}
+    >
+      <div className="contact-mark-art" aria-hidden="true">
+        <div className="contact-mark-orbit" />
+        <div className="contact-mark-orbit second" />
+        <div className="contact-mark-envelope">
+          <div className="contact-mark-sheet">
+            <i />
+            <i />
+            <i />
+            <span>
+              Let’s make
+              <br />
+              something matter.
+            </span>
+          </div>
+          <div className="contact-mark-fold" />
+        </div>
+        <span className="contact-mark-dot" />
+        <span className="contact-mark-caption">
+          IDEAS TRAVEL. GOOD WORK CONNECTS.
+        </span>
       </div>
+      <button
+        type="button"
+        className="motion-control"
+        onClick={() => setPaused(!paused)}
+        aria-pressed={paused}
+        aria-label={
+          paused ? "Play contact illustration" : "Pause contact illustration"
+        }
+      >
+        {paused ? <Play size={13} /> : <Pause size={13} />}
+        <span>{paused ? "Play motion" : "Pause motion"}</span>
+      </button>
     </div>
   );
 }

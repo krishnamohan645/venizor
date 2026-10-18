@@ -1,0 +1,357 @@
+[
+  {
+    "route": "/",
+    "dark": [
+      {
+        "selector": "i",
+        "color": "rgb(17, 31, 137)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(22, 77, 244)",
+        "w": 155,
+        "h": 155
+      },
+      {
+        "selector": "i",
+        "color": "rgb(12, 33, 141)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(39, 98, 255)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(16, 27, 126)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(17, 31, 137)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(22, 77, 244)",
+        "w": 155,
+        "h": 155
+      },
+      {
+        "selector": "i",
+        "color": "rgb(12, 33, 141)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(39, 98, 255)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(16, 27, 126)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(17, 31, 137)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(22, 77, 244)",
+        "w": 155,
+        "h": 155
+      },
+      {
+        "selector": "i",
+        "color": "rgb(12, 33, 141)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(39, 98, 255)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "i",
+        "color": "rgb(16, 27, 126)",
+        "w": 160,
+        "h": 160
+      },
+      {
+        "selector": "div.flow-node.node-ai",
+        "color": "rgb(22, 77, 244)",
+        "w": 244,
+        "h": 110
+      }
+    ],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 136,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 329,
+      "Georgia, serif": 2,
+      "Arial, sans-serif": 1
+    }
+  },
+  {
+    "route": "/about",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 42,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 70,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/blog",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 56,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 89,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/contact",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 17,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/case-studies",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 20,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 70,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 15,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 47,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services/web-development",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 16,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services/web-applications",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 16,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services/mobile-app-development",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 16,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services/ai-automation",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 16,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services/saas-product-development",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 16,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services/digital-marketing",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 16,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services/seo",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 16,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/services/answer-engine-optimization",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 16,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 66,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/scope",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 14,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 52,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/simulator",
+    "dark": [
+      {
+        "selector": "div.sim-output-card",
+        "color": "rgb(8, 12, 19)",
+        "w": 746,
+        "h": 472
+      },
+      {
+        "selector": "div.pipeline-visual-track",
+        "color": "rgb(17, 24, 39)",
+        "w": 688,
+        "h": 77
+      },
+      {
+        "selector": "div.sim-terminal-wrap",
+        "color": "rgb(2, 6, 23)",
+        "w": 688,
+        "h": 231
+      }
+    ],
+    "fonts": {
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 50,
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 17,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/playbook",
+    "dark": [
+      {
+        "selector": "div.spec-card-sticky",
+        "color": "rgb(8, 12, 19)",
+        "w": 574,
+        "h": 709
+      },
+      {
+        "selector": "div.spec-schematic-wrap",
+        "color": "rgb(17, 24, 39)",
+        "w": 512,
+        "h": 109
+      }
+    ],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 42,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 98,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/tools",
+    "dark": [
+      {
+        "selector": "div.result-field-box",
+        "color": "rgb(15, 23, 42)",
+        "w": 611,
+        "h": 91
+      },
+      {
+        "selector": "div.result-field-box",
+        "color": "rgb(15, 23, 42)",
+        "w": 611,
+        "h": 91
+      }
+    ],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 17,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 41,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/careers",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 8,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 39,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/privacy",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 7,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 45,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/terms",
+    "dark": [],
+    "fonts": {
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 7,
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 43,
+      "Georgia, serif": 1
+    }
+  },
+  {
+    "route": "/blog/connecting-third-party-https-apis",
+    "dark": [
+      {
+        "selector": "figure.blog-diagram-card",
+        "color": "rgb(8, 12, 19)",
+        "w": 860,
+        "h": 371
+      },
+      {
+        "selector": "div.interactive-code-container.article-code-block",
+        "color": "rgb(9, 13, 22)",
+        "w": 860,
+        "h": 983
+      }
+    ],
+    "fonts": {
+      "Geist, \"Geist Fallback\", Arial, sans-serif": 81,
+      "\"Geist Mono\", \"Geist Mono Fallback\", monospace": 26,
+      "\"Geist Mono\", \"Geist Mono Fallback\"": 1,
+      "Georgia, serif": 1
+    }
+  }
+]

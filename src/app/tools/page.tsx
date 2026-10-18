@@ -3,17 +3,12 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import {
-  Wrench,
   Shield,
   Zap,
   Calculator,
   Copy,
   Check,
   ArrowUpRight,
-  Code2,
-  Terminal,
-  Cpu,
-  RefreshCw,
 } from "lucide-react";
 import { ExperienceProvider } from "@/components/experience";
 import { CursorFollower } from "@/components/motion-details";
@@ -28,7 +23,16 @@ export default function DeveloperToolsPage() {
   // 1. Webhook Tool State
   const [webhookSecret, setWebhookSecret] = useState("whsec_test_secret_9942a");
   const [webhookPayload, setWebhookPayload] = useState(
-    JSON.stringify({ event: "charge.succeeded", id: "ch_3M4e81", amount: 24900, currency: "usd" }, null, 2)
+    JSON.stringify(
+      {
+        event: "charge.succeeded",
+        id: "ch_3M4e81",
+        amount: 24900,
+        currency: "usd",
+      },
+      null,
+      2,
+    ),
   );
 
   const webhookIdempotencyKey = useMemo(() => {
@@ -56,7 +60,9 @@ export default function DeveloperToolsPage() {
   const [enableSemanticCache, setEnableSemanticCache] = useState(true);
 
   const llmCostEstimates = useMemo(() => {
-    const effectiveQueries = enableSemanticCache ? monthlyQueries * 0.68 : monthlyQueries;
+    const effectiveQueries = enableSemanticCache
+      ? monthlyQueries * 0.68
+      : monthlyQueries;
     const totalInputM = (effectiveQueries * inputTokens) / 1000000;
     const totalOutputM = (effectiveQueries * outputTokens) / 1000000;
 
@@ -66,7 +72,9 @@ export default function DeveloperToolsPage() {
     const geminiFlash = totalInputM * 0.1 + totalOutputM * 0.4;
     const claudeHaiku = totalInputM * 0.8 + totalOutputM * 4.0;
 
-    const baseCostNoCache = ((monthlyQueries * inputTokens) / 1000000) * 3.0 + ((monthlyQueries * outputTokens) / 1000000) * 15.0;
+    const baseCostNoCache =
+      ((monthlyQueries * inputTokens) / 1000000) * 3.0 +
+      ((monthlyQueries * outputTokens) / 1000000) * 15.0;
     const savings = enableSemanticCache ? baseCostNoCache - claudeSonnet : 0;
 
     return {
@@ -86,17 +94,30 @@ export default function DeveloperToolsPage() {
 
   const securityHeaderSnippet = useMemo(() => {
     const headers: { key: string; value: string }[] = [];
-    if (includeHsts) headers.push({ key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" });
-    if (includeNoSniff) headers.push({ key: "X-Content-Type-Options", value: "nosniff" });
-    if (includeFrameOptions) headers.push({ key: "X-Frame-Options", value: "DENY" });
+    if (includeHsts)
+      headers.push({
+        key: "Strict-Transport-Security",
+        value: "max-age=63072000; includeSubDomains; preload",
+      });
+    if (includeNoSniff)
+      headers.push({ key: "X-Content-Type-Options", value: "nosniff" });
+    if (includeFrameOptions)
+      headers.push({ key: "X-Frame-Options", value: "DENY" });
     if (includeCsp) {
       headers.push({
         key: "Content-Security-Policy",
-        value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.venizor.com;",
+        value:
+          "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.venizor.com;",
       });
     }
-    headers.push({ key: "Referrer-Policy", value: "strict-origin-when-cross-origin" });
-    headers.push({ key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" });
+    headers.push({
+      key: "Referrer-Policy",
+      value: "strict-origin-when-cross-origin",
+    });
+    headers.push({
+      key: "Permissions-Policy",
+      value: "camera=(), microphone=(), geolocation=()",
+    });
 
     return `// next.config.ts production security headers
 export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
@@ -116,12 +137,17 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
 
         <main id="tools-main" className="inner-page-main">
           {/* Hero Section */}
-          <section className="page-hero page-container" aria-labelledby="tools-title">
+          <section
+            className="page-hero page-container"
+            aria-labelledby="tools-title"
+          >
             <div className="page-hero-kicker">
               <span className="kicker-tag">
                 <i className="live-dot" /> FREE DEVELOPER UTILITIES
               </span>
-              <span>PROGRAMMATIC SEO • CLIENT INTEGRATIONS • HARDENED UTILITIES</span>
+              <span>
+                PROGRAMMATIC SEO • CLIENT INTEGRATIONS • HARDENED UTILITIES
+              </span>
             </div>
 
             <h1 id="tools-title" className="page-hero-title">
@@ -130,8 +156,9 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
             </h1>
 
             <p className="page-hero-lead">
-              Free, browser-executable utilities built by VENIZOR engineers. Debug webhook signatures,
-              estimate LLM operational token costs, and generate production-ready security headers.
+              Free, browser-executable utilities built by VENIZOR engineers.
+              Debug webhook signatures, estimate LLM operational token costs,
+              and generate production-ready security headers.
             </p>
 
             {/* Tool Nav Pills */}
@@ -170,15 +197,19 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                 <span className="tool-kicker">TOOL 01 / INTEGRATIONS</span>
                 <h2>Webhook Signature &amp; Idempotency Key Debugger</h2>
                 <p>
-                  Verify HMAC-SHA256 signatures for Stripe and Twilio webhooks, and calculate deterministic idempotency hashes.
+                  Verify HMAC-SHA256 signatures for Stripe and Twilio webhooks,
+                  and calculate deterministic idempotency hashes.
                 </p>
               </div>
 
               <div className="tool-split-grid">
                 <div className="tool-inputs-col">
                   <div className="sim-control-group">
-                    <label>Webhook Signing Secret (whsec_...)</label>
+                    <label htmlFor="tool-signing-secret">
+                      Webhook Signing Secret (whsec_...)
+                    </label>
                     <input
+                      id="tool-signing-secret"
                       type="text"
                       className="sim-input"
                       value={webhookSecret}
@@ -187,8 +218,11 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                   </div>
 
                   <div className="sim-control-group">
-                    <label>Inbound JSON Payload</label>
+                    <label htmlFor="tool-webhook-payload">
+                      Inbound JSON Payload
+                    </label>
                     <textarea
+                      id="tool-webhook-payload"
                       className="sim-textarea"
                       rows={6}
                       value={webhookPayload}
@@ -204,9 +238,16 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                       <button
                         type="button"
                         className="copy-btn-mini"
-                        onClick={() => handleCopy(webhookIdempotencyKey, "idemp")}
+                        onClick={() =>
+                          handleCopy(webhookIdempotencyKey, "idemp")
+                        }
                       >
-                        {copied === "idemp" ? <Check size={14} /> : <Copy size={14} />} Copy
+                        {copied === "idemp" ? (
+                          <Check size={14} />
+                        ) : (
+                          <Copy size={14} />
+                        )}{" "}
+                        Copy
                       </button>
                     </div>
                     <code>{webhookIdempotencyKey}</code>
@@ -220,7 +261,12 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                         className="copy-btn-mini"
                         onClick={() => handleCopy(simulatedSignature, "sig")}
                       >
-                        {copied === "sig" ? <Check size={14} /> : <Copy size={14} />} Copy
+                        {copied === "sig" ? (
+                          <Check size={14} />
+                        ) : (
+                          <Copy size={14} />
+                        )}{" "}
+                        Copy
                       </button>
                     </div>
                     <code>{simulatedSignature}</code>
@@ -229,7 +275,9 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                   <div className="tool-guidance-note">
                     <Shield size={16} />
                     <span>
-                      Always use timingSafeEqual (crypto.timingSafeEqual) when validating webhook signatures in Node.js to defeat timing attacks.
+                      Always use timingSafeEqual (crypto.timingSafeEqual) when
+                      validating webhook signatures in Node.js to defeat timing
+                      attacks.
                     </span>
                   </div>
                 </div>
@@ -242,9 +290,13 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
             <div className="page-container tool-workspace-card">
               <div className="tool-card-head">
                 <span className="tool-kicker">TOOL 02 / AI ARCHITECTURE</span>
-                <h2>Enterprise LLM Token Cost &amp; Semantic Cache Estimator</h2>
+                <h2>
+                  Enterprise LLM Token Cost &amp; Semantic Cache Estimator
+                </h2>
                 <p>
-                  Compare monthly operational API costs across OpenAI, Anthropic, and Gemini, and see how much you save with VENIZOR’s hybrid semantic cache.
+                  Compare monthly operational API costs across OpenAI,
+                  Anthropic, and Gemini, and see how much you save with
+                  VENIZOR’s hybrid semantic cache.
                 </p>
               </div>
 
@@ -252,26 +304,34 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                 <div className="tool-inputs-col">
                   <div className="sim-control-group">
                     <div className="slider-label-row">
-                      <label>Monthly Inference Queries</label>
+                      <label htmlFor="tool-monthly-queries">
+                        Monthly Inference Queries
+                      </label>
                       <strong>{monthlyQueries.toLocaleString()} calls</strong>
                     </div>
                     <input
+                      id="tool-monthly-queries"
                       type="range"
                       min="10000"
                       max="2000000"
                       step="10000"
                       value={monthlyQueries}
-                      onChange={(e) => setMonthlyQueries(Number(e.target.value))}
+                      onChange={(e) =>
+                        setMonthlyQueries(Number(e.target.value))
+                      }
                       className="sim-slider"
                     />
                   </div>
 
                   <div className="sim-control-group">
                     <div className="slider-label-row">
-                      <label>Average Input Tokens / Query</label>
+                      <label htmlFor="tool-input-tokens">
+                        Average Input Tokens / Query
+                      </label>
                       <strong>{inputTokens} tokens</strong>
                     </div>
                     <input
+                      id="tool-input-tokens"
                       type="range"
                       min="200"
                       max="8000"
@@ -284,10 +344,13 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
 
                   <div className="sim-control-group">
                     <div className="slider-label-row">
-                      <label>Average Output Tokens / Query</label>
+                      <label htmlFor="tool-output-tokens">
+                        Average Output Tokens / Query
+                      </label>
                       <strong>{outputTokens} tokens</strong>
                     </div>
                     <input
+                      id="tool-output-tokens"
                       type="range"
                       min="50"
                       max="2000"
@@ -305,30 +368,42 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                       checked={enableSemanticCache}
                       onChange={(e) => setEnableSemanticCache(e.target.checked)}
                     />
-                    <label htmlFor="tool-cache">Enable Redis Semantic Cache (32% Hit Rate)</label>
+                    <label htmlFor="tool-cache">
+                      Enable Redis Semantic Cache (32% Hit Rate)
+                    </label>
                   </div>
                 </div>
 
                 <div className="tool-outputs-col">
                   <div className="cost-breakdown-card">
-                    <span className="cost-card-lbl">ESTIMATED MONTHLY INFERENCE COST</span>
+                    <span className="cost-card-lbl">
+                      ESTIMATED MONTHLY INFERENCE COST
+                    </span>
 
                     <div className="cost-rows-stack">
                       <div className="cost-row">
                         <span>Anthropic Claude 3.5 Sonnet</span>
-                        <strong>${llmCostEstimates.claudeSonnet.toLocaleString()}/mo</strong>
+                        <strong>
+                          ${llmCostEstimates.claudeSonnet.toLocaleString()}/mo
+                        </strong>
                       </div>
                       <div className="cost-row">
                         <span>OpenAI GPT-4o</span>
-                        <strong>${llmCostEstimates.gpt4o.toLocaleString()}/mo</strong>
+                        <strong>
+                          ${llmCostEstimates.gpt4o.toLocaleString()}/mo
+                        </strong>
                       </div>
                       <div className="cost-row">
                         <span>Claude 3.5 Haiku</span>
-                        <strong>${llmCostEstimates.claudeHaiku.toLocaleString()}/mo</strong>
+                        <strong>
+                          ${llmCostEstimates.claudeHaiku.toLocaleString()}/mo
+                        </strong>
                       </div>
                       <div className="cost-row highlight-green">
                         <span>Google Gemini 2.0 Flash</span>
-                        <strong>${llmCostEstimates.geminiFlash.toLocaleString()}/mo</strong>
+                        <strong>
+                          ${llmCostEstimates.geminiFlash.toLocaleString()}/mo
+                        </strong>
                       </div>
                     </div>
 
@@ -336,7 +411,12 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                       <div className="cache-savings-pill">
                         <Zap size={16} />
                         <span>
-                          Semantic Caching saves you approximately <strong>${llmCostEstimates.monthlySavings.toLocaleString()} / month</strong> in token fees.
+                          Semantic Caching saves you approximately{" "}
+                          <strong>
+                            ${llmCostEstimates.monthlySavings.toLocaleString()}{" "}
+                            / month
+                          </strong>{" "}
+                          in token fees.
                         </span>
                       </div>
                     )}
@@ -353,7 +433,9 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                 <span className="tool-kicker">TOOL 03 / CYBERSECURITY</span>
                 <h2>Production Security Headers &amp; CSP Policy Generator</h2>
                 <p>
-                  Generate battle-tested HTTP security headers for Next.js, Cloudflare Workers, and NGINX to achieve an A+ rating on securityheaders.com.
+                  Generate battle-tested HTTP security headers for Next.js,
+                  Cloudflare Workers, and NGINX to achieve an A+ rating on
+                  securityheaders.com.
                 </p>
               </div>
 
@@ -367,7 +449,9 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                         checked={includeHsts}
                         onChange={(e) => setIncludeHsts(e.target.checked)}
                       />
-                      <label htmlFor="hsts">Strict-Transport-Security (HSTS 2-Year Preload)</label>
+                      <label htmlFor="hsts">
+                        Strict-Transport-Security (HSTS 2-Year Preload)
+                      </label>
                     </div>
 
                     <div className="sim-checkbox-row">
@@ -377,7 +461,9 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                         checked={includeNoSniff}
                         onChange={(e) => setIncludeNoSniff(e.target.checked)}
                       />
-                      <label htmlFor="nosniff">X-Content-Type-Options: nosniff (MIME sniffing defense)</label>
+                      <label htmlFor="nosniff">
+                        X-Content-Type-Options: nosniff (MIME sniffing defense)
+                      </label>
                     </div>
 
                     <div className="sim-checkbox-row">
@@ -385,9 +471,13 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                         type="checkbox"
                         id="frameopt"
                         checked={includeFrameOptions}
-                        onChange={(e) => setIncludeFrameOptions(e.target.checked)}
+                        onChange={(e) =>
+                          setIncludeFrameOptions(e.target.checked)
+                        }
                       />
-                      <label htmlFor="frameopt">X-Frame-Options: DENY (Clickjacking defense)</label>
+                      <label htmlFor="frameopt">
+                        X-Frame-Options: DENY (Clickjacking defense)
+                      </label>
                     </div>
 
                     <div className="sim-checkbox-row">
@@ -397,7 +487,9 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                         checked={includeCsp}
                         onChange={(e) => setIncludeCsp(e.target.checked)}
                       />
-                      <label htmlFor="csp">Content-Security-Policy (XSS Defense)</label>
+                      <label htmlFor="csp">
+                        Content-Security-Policy (XSS Defense)
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -409,12 +501,23 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
                       <button
                         type="button"
                         className="copy-btn-mini"
-                        onClick={() => handleCopy(securityHeaderSnippet, "sec-headers")}
+                        onClick={() =>
+                          handleCopy(securityHeaderSnippet, "sec-headers")
+                        }
                       >
-                        {copied === "sec-headers" ? <Check size={14} /> : <Copy size={14} />} Copy Code
+                        {copied === "sec-headers" ? (
+                          <Check size={14} />
+                        ) : (
+                          <Copy size={14} />
+                        )}{" "}
+                        Copy Code
                       </button>
                     </div>
-                    <pre className="code-pre-box">
+                    <pre
+                      className="code-pre-box"
+                      tabIndex={0}
+                      aria-label="Generated security headers"
+                    >
                       <code>{securityHeaderSnippet}</code>
                     </pre>
                   </div>
@@ -424,10 +527,14 @@ export const securityHeaders = ${JSON.stringify(headers, null, 2)};`;
           )}
 
           {/* Bottom Action Strip */}
-          <section className="page-container about-action-strip" style={{ marginTop: 60 }}>
+          <section
+            className="page-container about-action-strip"
+            style={{ marginTop: 60 }}
+          >
             <h2>Need a tailored security review or custom API integration?</h2>
             <p>
-              Our engineers review architecture blueprints, perform penetration audits, and build scalable infrastructure.
+              Our engineers review architecture blueprints, perform penetration
+              audits, and build scalable infrastructure.
             </p>
             <Link href="/contact" className="pill-button dark">
               Talk with our engineering team <ArrowUpRight size={18} />

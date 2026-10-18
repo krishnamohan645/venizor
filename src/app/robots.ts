@@ -1,27 +1,24 @@
-import { MetadataRoute } from "next";
-
+import { isIndexable, site } from "@/lib/site";
+import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        // Explicitly welcome Generative AI & Answer Engine Bots (AIO / GEO)
-        userAgent: [
-          "GPTBot",
-          "ClaudeBot",
-          "PerplexityBot",
-          "Google-Extended",
-          "Applebot-Extended",
-          "cohere-ai",
-          "Bytespider",
-        ],
-        allow: "/",
-      },
-    ],
-    sitemap: "https://venizor.com/sitemap.xml",
+    rules: isIndexable
+      ? [
+          { userAgent: "*", allow: "/", disallow: ["/api/"] },
+          {
+            userAgent: [
+              "GPTBot",
+              "OAI-SearchBot",
+              "ChatGPT-User",
+              "ClaudeBot",
+              "PerplexityBot",
+              "Google-Extended",
+            ],
+            allow: "/",
+            disallow: ["/api/"],
+          },
+        ]
+      : [{ userAgent: "*", disallow: "/" }],
+    sitemap: `${site.url}/sitemap.xml`,
   };
 }

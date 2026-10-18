@@ -1,0 +1,7 @@
+Goal,Metric,Period,Baseline,Target,Observed,Notes
+More leads,Qualified contact and booking submissions,Monthly,,Baseline then improve by 25%,,Connect tracking and classify lead quality before recording
+More AI citations,Mentions across consistent buyer prompts,Monthly,,Review trend over three months,,Use citation-baseline.csv; do not infer citations from crawler access
+Reliability,Public site uptime,Monthly,,99.9%,,Requires uptime-provider monitoring
+Lead delivery,Accepted enquiries confirmed in inbox,Monthly,,100%,,Provider acceptance and inbox receipt are separate checks
+Search health,Indexed public pages,Monthly,,Steady growth,,Record from Search Console and Bing
+Search health,Non-brand search impressions,Monthly,,Steady growth,,Record from Search Console

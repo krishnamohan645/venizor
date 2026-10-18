@@ -1,11 +1,18 @@
-import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Asterisk, Plus } from "lucide-react";
+import { CircularCarousel } from "@/components/circular-carousel";
+import { CookieSettingsButton } from "@/components/cookie-preferences";
 import {
   ContactButton,
   DetailButton,
   ExperienceProvider,
   Reveal,
 } from "@/components/experience";
+import {
+  CursorFollower,
+  HeroWordsCycle,
+  ProductMotion,
+} from "@/components/motion-details";
+import { ScrollDirection, ScrollWords } from "@/components/scroll-direction";
+import { StickyStackingSection } from "@/components/sticky-stacking-section";
 import {
   ExpandingServices,
   HeroScene,
@@ -16,12 +23,11 @@ import {
   StudioHeader,
   StudioIntro,
 } from "@/components/studio-experience";
-import { ScrollDirection, ScrollWords } from "@/components/scroll-direction";
-import {
-  CursorFollower,
-  HeroWordsCycle,
-  ProductMotion,
-} from "@/components/motion-details";
+import { TerminalTyping } from "@/components/terminal-typing";
+import { services } from "@/data/services";
+import { site } from "@/lib/site";
+import { ArrowDown, ArrowUpRight, Asterisk, Plus } from "lucide-react";
+import Link from "next/link";
 
 const perspectives = [
   {
@@ -124,6 +130,7 @@ export default function Home() {
                   <ArrowDown size={25} />
                 </a>
               </div>
+              <TerminalTyping />
             </Reveal>
           </section>
 
@@ -175,8 +182,11 @@ export default function Home() {
                 <span className="section-count">(04)</span>
               </div>
               <ProjectSlider />
+              <CircularCarousel />
             </div>
           </section>
+
+          <StickyStackingSection />
 
           <section
             className="product-section section-padding"
@@ -358,7 +368,7 @@ export default function Home() {
           </section>
         </main>
 
-        <footer className="studio-footer" id="contact">
+        <footer className="studio-footer studio-footer-home" id="contact">
           <ShaderFooter />
           <div className="footer-content page-container">
             <div className="footer-top">
@@ -373,7 +383,10 @@ export default function Home() {
                 <br />
                 starts with <em>hello.</em>
               </h2>
-              <ContactButton className="footer-contact-circle">
+              <ContactButton
+                className="footer-contact-circle"
+                ariaLabel="Contact VENIZOR"
+              >
                 <ArrowUpRight size={48} strokeWidth={1.15} />
                 <span>LET’S MAKE IT HAPPEN</span>
               </ContactButton>
@@ -390,14 +403,14 @@ export default function Home() {
             <div className="footer-nav">
               <a href="#about">Studio</a>
               <Link href="/about">Who we are</Link>
-              <a href="#services">Services</a>
+              <Link href="/services">Services</Link>
               <a href="#work">Our work</a>
               <a href="#products">Products</a>
               <a href="#insights">Insights</a>
               <Link href="/blog">Blog &amp; Field Notes</Link>
               <Link href="/playbook">Stack Playbook</Link>
               <Link href="/simulator">Pipeline Simulator</Link>
-              <Link href="/case-studies">Case Studies</Link>
+              <Link href="/case-studies">Architecture scenarios</Link>
               <Link href="/tools">Developer Tools</Link>
               <Link href="/scope">Scope Wizard</Link>
               <Link href="/contact">Contact us</Link>
@@ -405,26 +418,31 @@ export default function Home() {
                 Back to top <ArrowUpRight size={17} />
               </a>
             </div>
+            <div className="footer-service-links" aria-label="Service pages">
+              {services.map((service) => (
+                <Link href={`/services/${service.slug}`} key={service.slug}>
+                  {service.name}
+                </Link>
+              ))}
+            </div>
+            {(site.legalName || site.city) && (
+              <p className="footer-business">
+                {[site.legalName, site.city].filter(Boolean).join(" ? ")}
+              </p>
+            )}
             <div className="footer-wordmark" aria-label="VENIZOR">
               VENIZOR<span>®</span>
             </div>
             <div className="footer-bottom">
               <span>© 2026 VENIZOR. INNOVATE WITH CONFIDENCE.</span>
               <div>
-                <DetailButton
-                  className="legal-link"
-                  title="Privacy"
-                  description="This website does not use advertising cookies or collect form submissions on a server. Project enquiries are prepared in your email application and are only sent when you choose to send them. Your email provider’s privacy terms apply."
-                >
+                <Link className="legal-link" href="/privacy">
                   Privacy
-                </DetailButton>
-                <DetailButton
-                  className="legal-link"
-                  title="Website terms"
-                  description="The work shown includes illustrative concept demonstrations. Product information describes development plans. Project scope, fees, timelines, and service terms are agreed separately in writing."
-                >
+                </Link>
+                <Link className="legal-link" href="/terms">
                   Terms
-                </DetailButton>
+                </Link>
+                <CookieSettingsButton />
               </div>
             </div>
           </div>

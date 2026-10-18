@@ -1,0 +1,30 @@
+name: Website monitoring
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 4 * * *"
+jobs:
+  public-routes:
+    if: ${{ vars.MONITOR_SITE_URL != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-site.mjs
+        env:
+          MONITOR_SITE_URL: ${{ vars.MONITOR_SITE_URL }}
+  contact-provider-acceptance:
+    if: ${{ vars.ENABLE_SYNTHETIC_CONTACT == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-contact-delivery.mjs
+        env:
+          MONITOR_SITE_URL: ${{ vars.MONITOR_SITE_URL }}
+          SYNTHETIC_CONTACT_SECRET: ${{ secrets.SYNTHETIC_CONTACT_SECRET }}
+          CONTACT_TEST_TO_EMAIL: ${{ secrets.CONTACT_TEST_TO_EMAIL }}

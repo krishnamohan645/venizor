@@ -1,0 +1,910 @@
+{
+  "checks": [
+    "Scanned all 33 public URLs on desktop and at 390/320px",
+    "Checked hidden calculator, header generator, retrieval and scope-result states",
+    "Contact progress reflects real field validity; deferred delivery remains explicit",
+    "Project showcase supports buttons and keyboard selection",
+    "Contact illustration visibly animates and pauses; reduced motion used for the full-route audit"
+  ],
+  "pages": [
+    {
+      "label": "/",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/ @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/ @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/about",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/about @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/about @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/case-studies",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/case-studies @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/case-studies @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/contact",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/contact @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/contact @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/playbook",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/playbook @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/playbook @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/simulator",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/simulator @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/simulator @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/scope",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/scope @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/scope @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/tools",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/tools @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/tools @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/careers",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/careers @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/careers @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/privacy",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/privacy @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/privacy @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/terms",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/terms @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/terms @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/web-development",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/web-development @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/web-development @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/web-applications",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/web-applications @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/web-applications @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/mobile-app-development",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/mobile-app-development @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/mobile-app-development @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/ai-automation",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/ai-automation @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/ai-automation @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/saas-product-development",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/saas-product-development @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/saas-product-development @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/digital-marketing",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/digital-marketing @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/digital-marketing @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/seo",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/seo @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/seo @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/answer-engine-optimization",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/answer-engine-optimization @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/services/answer-engine-optimization @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/connecting-third-party-https-apis",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/connecting-third-party-https-apis @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/connecting-third-party-https-apis @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/integrating-production-ai-workflows",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/integrating-production-ai-workflows @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/integrating-production-ai-workflows @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/postgresql-at-scale-connection-pooling",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/postgresql-at-scale-connection-pooling @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/postgresql-at-scale-connection-pooling @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/zero-downtime-deployments-devops-playbook",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/zero-downtime-deployments-devops-playbook @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/zero-downtime-deployments-devops-playbook @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/hardening-modern-web-applications-security",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/hardening-modern-web-applications-security @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/hardening-modern-web-applications-security @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/mastering-seo-aeo-geo-sxo-2026",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/mastering-seo-aeo-geo-sxo-2026 @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/mastering-seo-aeo-geo-sxo-2026 @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/the-race-to-superintelligence-asi-hardware-frontiers",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/the-race-to-superintelligence-asi-hardware-frontiers @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/the-race-to-superintelligence-asi-hardware-frontiers @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-ai-is-evolving-agentic-reasoning-loops",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-ai-is-evolving-agentic-reasoning-loops @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-ai-is-evolving-agentic-reasoning-loops @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-big-tech-engineers-hyper-scale-apps",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-big-tech-engineers-hyper-scale-apps @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-big-tech-engineers-hyper-scale-apps @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/securing-ai-production-systems",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/securing-ai-production-systems @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/securing-ai-production-systems @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/solving-the-distributed-dual-write-problem",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/solving-the-distributed-dual-write-problem @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/solving-the-distributed-dual-write-problem @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-applications-are-built-in-this-era",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-applications-are-built-in-this-era @390",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/blog/how-applications-are-built-in-this-era @320",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/tools / LLM Token & Cost Calculator",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/tools / Security Headers & CSP Generator",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/simulator / retrieval",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/simulator / result",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/scope / result",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/ / showcase selection",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    },
+    {
+      "label": "/ / showcase mobile",
+      "fonts": [
+        "Geist, \"Geist Fallback\", sans-serif"
+      ],
+      "dark": [],
+      "overflow": false
+    }
+  ],
+  "accessibility": [
+    {
+      "label": "/",
+      "violations": []
+    },
+    {
+      "label": "/blog",
+      "violations": []
+    },
+    {
+      "label": "/contact",
+      "violations": []
+    },
+    {
+      "label": "/playbook",
+      "violations": []
+    },
+    {
+      "label": "/simulator",
+      "violations": []
+    },
+    {
+      "label": "/tools",
+      "violations": []
+    },
+    {
+      "label": "/services/web-development",
+      "violations": []
+    },
+    {
+      "label": "/blog/connecting-third-party-https-apis",
+      "violations": []
+    },
+    {
+      "label": "/tools / LLM Token & Cost Calculator",
+      "violations": []
+    },
+    {
+      "label": "/tools / Security Headers & CSP Generator",
+      "violations": []
+    },
+    {
+      "label": "/simulator / retrieval",
+      "violations": []
+    },
+    {
+      "label": "/scope / result",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

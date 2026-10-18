@@ -143,7 +143,9 @@ function HealthcareArt() {
       <div className="art-clinic-card">
         <div className="art-card-top">
           <span className="art-pill-tag">PATIENT CARE PORTAL</span>
-          <span className="art-secure-badge">🔒 Encrypted HIPAA</span>
+          <span className="art-secure-badge">
+            🔒 Illustrative health workflow
+          </span>
         </div>
 
         <div className="art-ecg-container">
@@ -380,8 +382,21 @@ function BigIdeaArt() {
 
         <div className="art-idea-constellation">
           <svg viewBox="0 0 200 70" fill="none">
-            <circle cx="100" cy="35" r="28" stroke="#164df430" strokeWidth="1" strokeDasharray="3 3" />
-            <circle cx="100" cy="35" r="8" fill="#164df4" className="art-core-pulse" />
+            <circle
+              cx="100"
+              cy="35"
+              r="28"
+              stroke="#164df430"
+              strokeWidth="1"
+              strokeDasharray="3 3"
+            />
+            <circle
+              cx="100"
+              cy="35"
+              r="8"
+              fill="#164df4"
+              className="art-core-pulse"
+            />
             <path
               d="M100 35 L 50 15 M 100 35 L 150 15 M 100 35 L 70 55 M 100 35 L 130 55"
               stroke="#164df4"

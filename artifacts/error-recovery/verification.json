@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "A real client-rendering fault produces accessible recovery UI without leaking exception details; repeated failure remains recoverable",
+    "Navigation leaves the broken route and healthy pages/API remain available",
+    "Retry re-renders the route successfully; non-Error thrown values are also handled",
+    "Footer animation failure removes the effect while retaining page content and footer navigation",
+    "An asynchronous scroll-frame failure cleans up the interpolator and leaves native scrolling and page content working"
+  ],
+  "accessibility": [
+    {
+      "label": "page recovery",
+      "violations": []
+    }
+  ]
+}

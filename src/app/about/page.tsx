@@ -1,22 +1,28 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight, Check, Sparkles, Shield, Cpu, Code2, Users, Layers, Zap } from "lucide-react";
 import { ExperienceProvider } from "@/components/experience";
+import { BreadcrumbJsonLd } from "@/components/json-ld";
 import { CursorFollower } from "@/components/motion-details";
-import { ScrollDirection } from "@/components/scroll-direction";
-import { PageHeader, PageFooter } from "@/components/page-nav";
+import { PageFooter, PageHeader } from "@/components/page-nav";
+import { pageMetadata } from "@/lib/metadata";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Who We Are — About VENIZOR Technology & Digital Innovation Studio",
-  description:
-    "Learn about VENIZOR: our founding story, engineering ethos, multidisciplinary studio model, and commitment to building purposeful digital products.",
-};
+export const metadata = pageMetadata("/about");
 
 const stats = [
-  { num: "100%", label: "In-house engineering & design. No outsourced junior tiers." },
-  { num: "< 100ms", label: "Target interaction response across modern edge networks." },
-  { num: "Global", label: "Partnering with founders & teams across US, Europe, India & APAC." },
-  { num: "24 Hours", label: "Guaranteed turnaround on initial technical brief evaluations." },
+  {
+    num: "Discover",
+    label:
+      "Understand the people, workflow and problem before planning a solution.",
+  },
+  { num: "Design", label: "Make the next step clear, accessible and useful." },
+  {
+    num: "Build",
+    label: "Choose maintainable tools and test the important journeys.",
+  },
+  {
+    num: "Improve",
+    label: "Learn from evidence and agree the next useful release.",
+  },
 ];
 
 const principles = [
@@ -30,13 +36,13 @@ const principles = [
     index: "02",
     tag: "CRAFT & ERGONOMICS",
     title: "Obsessive Digital Craft",
-    desc: "Smooth spring physics, typographic rhythm, accessible WCAG 2.2 Level AA compliance, and responsive fluidity. When software feels this refined, users trust your brand from the very first tap.",
+    desc: "Smooth spring physics, typographic rhythm, accessibility reviews and keyboard testing, and responsive fluidity. When software feels this refined, users trust your brand from the very first tap.",
   },
   {
     index: "03",
     tag: "REAL IMPACT",
     title: "Pragmatic AI & Automation",
-    desc: "We bypass superficial AI gimmicks. We engineer dependable production pipelines with vector search, multimodal intelligence, and automated operations that save hundreds of real team hours.",
+    desc: "We bypass superficial AI gimmicks. We engineer dependable production pipelines with vector search, multimodal intelligence, and automated operations whose value can be evaluated against real team workflows.",
   },
   {
     index: "04",
@@ -50,20 +56,35 @@ const models = [
   {
     number: "MODEL 01",
     title: "Zero-to-One Product Incubator",
-    desc: "Turn an ambitious concept or napkin sketch into a battle-tested, revenue-ready production MVP in 6 to 10 weeks.",
-    tags: ["Product Strategy", "System Architecture", "MVP Launch", "Full-Stack Build"],
+    desc: "Turn an ambitious concept or napkin sketch into a battle-tested, revenue-ready production MVP with a timeline agreed after discovery.",
+    tags: [
+      "Product Strategy",
+      "System Architecture",
+      "MVP Launch",
+      "Full-Stack Build",
+    ],
   },
   {
     number: "MODEL 02",
     title: "Dedicated Engineering Pod",
     desc: "An embedded squad of senior engineers, product designers, and AI specialists accelerating your key roadmap initiatives.",
-    tags: ["Sprint-Based", "Direct Slack / GitHub Sync", "Zero Overhead", "Flexible Scale"],
+    tags: [
+      "Sprint-Based",
+      "Direct Slack / GitHub Sync",
+      "Zero Overhead",
+      "Flexible Scale",
+    ],
   },
   {
     number: "MODEL 03",
     title: "Modernization & AI Integration",
     desc: "Refactor legacy bottlenecks, migrate to modern serverless edge architecture, and deploy customized automation pipelines.",
-    tags: ["Cloud Migration", "Performance Tuning", "AI Workflows", "Design System"],
+    tags: [
+      "Cloud Migration",
+      "Performance Tuning",
+      "AI Workflows",
+      "Design System",
+    ],
   },
 ];
 
@@ -93,16 +114,22 @@ export default function AboutPage() {
           Skip to content
         </a>
         <CursorFollower />
+        <BreadcrumbJsonLd path="/about" />
         <PageHeader activePage="about" />
 
         <main id="about-main" className="inner-page-main">
           {/* Hero Section */}
-          <section className="page-hero page-container" aria-labelledby="about-hero-title">
+          <section
+            className="page-hero page-container"
+            aria-labelledby="about-hero-title"
+          >
             <div className="page-hero-kicker">
               <span className="kicker-tag">
                 <i className="live-dot" /> 01 / WHO WE ARE
               </span>
-              <span>INDEPENDENT TECHNOLOGY &amp; DIGITAL INNOVATION STUDIO</span>
+              <span>
+                INDEPENDENT TECHNOLOGY &amp; DIGITAL INNOVATION STUDIO
+              </span>
             </div>
 
             <h1 id="about-hero-title" className="page-hero-title">
@@ -111,9 +138,10 @@ export default function AboutPage() {
             </h1>
 
             <p className="page-hero-lead">
-              VENIZOR is an independent digital product and technology studio based in India,
-              building software, platforms, and intelligent systems for ambitious founders and
-              modern enterprises around the world.
+              VENIZOR is an independent digital product and technology studio
+              based in India, building software, platforms, and intelligent
+              systems for ambitious founders and modern enterprises around the
+              world.
             </p>
 
             <div className="page-hero-actions">
@@ -127,7 +155,10 @@ export default function AboutPage() {
           </section>
 
           {/* Stats Bar */}
-          <section className="about-stats-strip page-container" aria-label="Studio highlights">
+          <section
+            className="about-stats-strip page-container"
+            aria-label="Studio highlights"
+          >
             {stats.map((s) => (
               <div key={s.num} className="about-stat-item">
                 <div className="about-stat-num blue">{s.num}</div>
@@ -137,41 +168,44 @@ export default function AboutPage() {
           </section>
 
           {/* The Story Section */}
-          <section className="about-story-section page-container" aria-labelledby="story-title">
+          <section
+            className="about-story-section page-container"
+            aria-labelledby="story-title"
+          >
             <div className="section-side-label">
               <span className="section-kicker">02 / THE STORY</span>
             </div>
 
             <div>
               <h2 id="story-title" className="about-narrative-header">
-                We founded VENIZOR with a simple conviction: software should feel like craft,
-                not an assembly line.
+                We founded VENIZOR with a simple conviction: software should
+                feel like craft, not an assembly line.
               </h2>
 
               <div className="about-columns-grid">
                 <div className="about-column">
                   <p>
-                    <strong>The traditional tech services industry is broken.</strong> Large agencies
-                    sell clients with polished senior partners, only to secretly hand off delivery
-                    to offshore junior pools. Feature factory shops churn out unmaintainable spaghetti
-                    code without understanding the underlying business model.
+                    <strong>Begin with a useful question.</strong> What are
+                    people trying to accomplish, and what makes that difficult
+                    today? We use those answers to shape the scope, the
+                    interface and the system behind it.
                   </p>
                   <p>
-                    The result is always the same: missed deadlines, bloated costs, clunky user
-                    experiences, and software that quickly becomes technical debt.
+                    A focused first release makes decisions easier to test. We
+                    agree the important journeys and review the result against
+                    them.
                   </p>
                 </div>
-
                 <div className="about-column">
                   <p>
-                    <strong>VENIZOR was established as the antithesis.</strong> We operate as a high-caliber,
-                    agile product collective. When you partner with us, you work directly with
-                    principals who code, design, and architect alongside your leadership team.
+                    <strong>Keep the work understandable.</strong> Design
+                    choices, technical trade-offs and delivery responsibilities
+                    should be visible to everyone involved.
                   </p>
                   <p>
-                    From early-stage SaaS MVPs to mission-critical healthcare, logistics, and fintech
-                    systems, our goal is to build digital products that make complex workflows feel
-                    simple, fast, and indispensable.
+                    From a new product to an existing business workflow, our aim
+                    is to connect considered design with maintainable
+                    engineering.
                   </p>
                 </div>
               </div>
@@ -179,7 +213,10 @@ export default function AboutPage() {
           </section>
 
           {/* Core Principles Bento */}
-          <section className="about-values-section page-container" aria-labelledby="principles-title">
+          <section
+            className="about-values-section page-container"
+            aria-labelledby="principles-title"
+          >
             <div className="section-side-label">
               <span className="section-kicker">03 / PRINCIPLES</span>
             </div>
@@ -207,7 +244,10 @@ export default function AboutPage() {
           </section>
 
           {/* Partnership Models */}
-          <section className="about-models-section page-container" aria-labelledby="models-title">
+          <section
+            className="about-models-section page-container"
+            aria-labelledby="models-title"
+          >
             <div className="section-side-label">
               <span className="section-kicker">04 / PARTNERSHIP</span>
             </div>
@@ -235,7 +275,10 @@ export default function AboutPage() {
           </section>
 
           {/* Team Collective */}
-          <section className="about-team-section page-container" aria-labelledby="team-title">
+          <section
+            className="about-team-section page-container"
+            aria-labelledby="team-title"
+          >
             <div className="section-side-label">
               <span className="section-kicker">05 / THE COLLECTIVE</span>
             </div>
@@ -261,8 +304,8 @@ export default function AboutPage() {
           <section className="about-action-strip page-container">
             <h2>Ready to build something that creates real value?</h2>
             <p>
-              Tell us about your upcoming initiative. We will review your objectives and
-              map out an actionable roadmap.
+              Tell us about your upcoming initiative. We will review your
+              objectives and map out an actionable roadmap.
             </p>
             <Link href="/contact" className="pill-button dark">
               Get in touch with the studio <ArrowUpRight size={18} />

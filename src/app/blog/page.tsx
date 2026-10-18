@@ -1,246 +1,281 @@
 "use client";
-
-import { useState } from "react";
+import { ArticleArt } from "@/components/article-art";
+import { ExperienceProvider, Reveal } from "@/components/experience";
+import { PageFooter, PageHeader } from "@/components/page-nav";
+import { StudioVisual } from "@/components/studio-visual";
+import { blogPosts } from "@/data/blog-data";
+import { ArrowDown, ArrowUpRight, Pause, Play, Search, X } from "lucide-react";
 import Link from "next/link";
-import { ArrowUpRight, Search, Sparkles, BookOpen, Clock, Tag, Cpu, ShieldCheck } from "lucide-react";
-import { ExperienceProvider } from "@/components/experience";
-import { CursorFollower } from "@/components/motion-details";
-import { PageHeader, PageFooter } from "@/components/page-nav";
-import { FaqJsonLd } from "@/components/json-ld";
-import { blogPosts, type BlogPost } from "@/data/blog-data";
+import { useState, useSyncExternalStore } from "react";
 
-const categories = [
-  "All",
-  "APIs & Integrations",
-  "AI & Automation",
-  "Databases",
-  "Cloud & DevOps",
-  "Security",
-  "Digital Marketing & SXO",
-];
-
-const blogFaqs = [
-  {
-    q: "How does VENIZOR integrate third-party HTTPS APIs with our existing tech stack?",
-    a: "We engineer resilient API integration layers using TypeScript, cryptographic SHA-256 idempotency hashing, exponential jitter backoff, BullMQ/Redis background task queues, and circuit breaker patterns to prevent external API downtime from impacting your core platform.",
-  },
-  {
-    q: "What AI models and architectures does VENIZOR support for business applications?",
-    a: "We build production-ready AI workflows integrating OpenAI, Anthropic, Gemini, Groq, and open-source models via vLLM/Ollama. Our architectures feature hybrid vector search (pgvector + BM25 full-text), deterministic guardrails, structured JSON outputs, and streaming Server-Sent Events (SSE).",
-  },
-  {
-    q: "How do you handle database scalability and DevOps for high-traffic platforms?",
-    a: "We utilize PostgreSQL with PgBouncer transaction pooling, partial indexing, read-replicas, and query profiling via EXPLAIN ANALYZE. DevOps is managed through multi-stage Docker containers, automated GitHub Actions CI/CD pipelines, Cloudflare edge caching, and zero-downtime blue-green deployments.",
-  },
-];
-
+const categories = ["All", ...new Set(blogPosts.map((post) => post.category))];
+function subscribeSearch(callback: () => void) {
+  window.addEventListener("popstate", callback);
+  window.addEventListener("venizor-search", callback);
+  return () => {
+    window.removeEventListener("popstate", callback);
+    window.removeEventListener("venizor-search", callback);
+  };
+}
+const shortTitles: Record<string, string> = {
+  "connecting-third-party-https-apis": "When an API fails, what happens next?",
+  "integrating-production-ai-workflows":
+    "AI that fits the way your business works.",
+  "postgresql-at-scale-connection-pooling":
+    "Give your database room to breathe.",
+  "zero-downtime-deployments-devops-playbook":
+    "A more considered path to production.",
+  "hardening-modern-web-applications-security":
+    "Security starts with the boundaries.",
+  "mastering-seo-aeo-geo-sxo-2026": "Be useful. Be understood. Be found.",
+  "the-race-to-superintelligence-asi-hardware-frontiers":
+    "The hardware behind the next AI frontier.",
+  "how-ai-is-evolving-agentic-reasoning-loops":
+    "From answering questions to taking action.",
+  "how-big-tech-engineers-hyper-scale-apps":
+    "What changes when your system grows?",
+  "securing-ai-production-systems": "Give AI tools boundaries worth trusting.",
+  "solving-the-distributed-dual-write-problem":
+    "One change. Two systems. What could go wrong?",
+  "how-applications-are-built-in-this-era":
+    "The tools change. The craft still matters.",
+};
 export default function BlogIndexPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesCategory =
-      selectedCategory === "All" || post.category === selectedCategory;
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.category.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const featuredPost = blogPosts.find((p) => p.featured) || blogPosts[0];
-
+  const [category, setCategory] = useState("All");
+  const query = useSyncExternalStore(
+    subscribeSearch,
+    () => new URLSearchParams(location.search).get("q") || "",
+    () => "",
+  );
+  const [paused, setPaused] = useState(false);
+  const posts = blogPosts.filter(
+    (post) =>
+      (category === "All" || post.category === category) &&
+      `${post.title} ${post.excerpt} ${post.category} ${shortTitles[post.slug] || ""}`
+        .toLowerCase()
+        .includes(query.toLowerCase()),
+  );
+  const featured = blogPosts.find((post) => post.featured) || blogPosts[0];
+  const updateQuery = (value: string) => {
+    const url = new URL(location.href);
+    if (value) url.searchParams.set("q", value);
+    else url.searchParams.delete("q");
+    history.replaceState(history.state, "", url);
+    window.dispatchEvent(new Event("venizor-search"));
+  };
   return (
     <ExperienceProvider>
-      <div className="inner-page-shell" id="top">
-        <CursorFollower />
+      <div
+        className="inner-page-shell journal"
+        id="top"
+        data-motion-paused={paused}
+      >
+        <a className="skip-link" href="#blog-main">
+          Skip to content
+        </a>
         <PageHeader activePage="blog" />
-
         <main id="blog-main" className="inner-page-main">
-          {/* Hero Section */}
-          <section className="page-hero page-container" aria-labelledby="blog-hero-title">
-            <div className="page-hero-kicker">
-              <span className="kicker-tag">
-                <i className="live-dot" /> 01 / FIELD NOTES &amp; INTELLIGENCE
+          <section
+            className="journal-hero page-container"
+            aria-labelledby="blog-hero-title"
+          >
+            <div className="journal-masthead">
+              <span className="section-kicker">VENIZOR / FIELD NOTES</span>
+              <span className="section-kicker">
+                SOFTWARE. PEOPLE. POSSIBILITIES.
               </span>
-              <span>ENGINEERING BLUEPRINTS • APPLIED AI • CLOUD &amp; GROWTH</span>
             </div>
-
-            <h1 id="blog-hero-title" className="page-hero-title">
-              Thinking out loud. <br />
-              <span className="hero-title-blue">Perspectives on modern software.</span>
-            </h1>
-
-            <p className="page-hero-lead">
-              Technical deep-dives, architectural blueprints, and growth frameworks written
-              directly by the product architects, AI specialists, and systems engineers at VENIZOR.
-            </p>
-
-            {/* Search & Filter Toolbar */}
-            <div className="blog-toolbar">
+            <Reveal>
+              <h1 id="blog-hero-title">
+                Ideas for
+                <br />
+                <span>what’s next.</span>
+              </h1>
+            </Reveal>
+            <div className="journal-intro">
+              <p>
+                From the studio.
+                <br />
+                For the curious.
+              </p>
+              <p>
+                Notes on software, practical AI and the decisions behind useful
+                digital products. Read, explore and bring your own questions.
+              </p>
+              <a
+                href="#articles"
+                className="circle-link"
+                aria-label="Browse field notes"
+              >
+                <ArrowDown size={24} />
+              </a>
+            </div>
+          </section>
+          {category === "All" && !query && (
+            <section
+              className="journal-feature page-container"
+              aria-label="Editor's pick"
+            >
+              <Reveal>
+                <Link
+                  href={`/blog/${featured.slug}`}
+                  className="journal-feature-link"
+                >
+                  <div className="journal-feature-copy">
+                    <span className="section-kicker">
+                      EDITOR’S PICK / {featured.category.toUpperCase()}
+                    </span>
+                    <h2>{shortTitles[featured.slug] || featured.title}</h2>
+                    <p>
+                      Timeouts, retries and the space between systems. A
+                      practical look at designing an integration that knows how
+                      to recover.
+                    </p>
+                    <span className="journal-feature-meta">
+                      {featured.readTime}
+                      <span className="text-link">
+                        Read the field note <ArrowUpRight size={20} />
+                      </span>
+                    </span>
+                  </div>
+                  <StudioVisual kind="payments" paused={paused} />
+                </Link>
+              </Reveal>
+            </section>
+          )}
+          <section
+            className="journal-library page-container"
+            id="articles"
+            aria-labelledby="articles-heading"
+          >
+            <div className="journal-library-heading">
+              <div>
+                <span className="section-kicker">THE READING ROOM</span>
+                <h2 id="articles-heading">The latest thinking.</h2>
+              </div>
+              <button
+                type="button"
+                className="journal-motion-control"
+                aria-pressed={paused}
+                onClick={() => setPaused(!paused)}
+              >
+                {paused ? <Play size={14} /> : <Pause size={14} />}
+                {paused ? "Play illustrations" : "Pause illustrations"}
+              </button>
+            </div>
+            <div className="journal-filters">
               <div className="blog-search-wrap">
                 <Search size={18} />
                 <input
-                  type="text"
-                  placeholder="Search articles by topic, stack, or problem..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="blog-search-input"
+                  type="search"
                   aria-label="Search articles"
+                  placeholder="Find a topic, question or idea"
+                  value={query}
+                  onChange={(event) => updateQuery(event.target.value)}
                 />
-              </div>
-
-              <div className="blog-category-pills">
-                {categories.map((cat) => (
+                {query && (
                   <button
-                    key={cat}
+                    type="button"
+                    className="icon-button"
+                    aria-label="Clear search"
+                    onClick={() => updateQuery("")}
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+              </div>
+              <div
+                className="blog-category-pills"
+                aria-label="Filter articles by topic"
+              >
+                {categories.map((item) => (
+                  <button
+                    key={item}
                     type="button"
                     className="blog-cat-pill"
-                    data-active={selectedCategory === cat}
-                    onClick={() => setSelectedCategory(cat)}
+                    aria-pressed={category === item}
+                    data-active={category === item}
+                    onClick={() => setCategory(item)}
                   >
-                    {cat}
+                    {item}
                   </button>
                 ))}
               </div>
             </div>
-          </section>
-
-          {/* Featured Post Spotlight (When showing All and no search) */}
-          {selectedCategory === "All" && !searchQuery && (
-            <section className="featured-article-section page-container" aria-label="Featured article">
-              <Link href={`/blog/${featuredPost.slug}`} className="featured-article-card">
-                <div className="featured-card-content">
-                  <div className="featured-badge-row">
-                    <span className="featured-kicker">FEATURED ARCHITECTURE BLUEPRINT</span>
-                    <span className="featured-time">{featuredPost.readTime}</span>
-                  </div>
-                  <h2>{featuredPost.title}</h2>
-                  <p>{featuredPost.excerpt}</p>
-                  <div className="featured-footer">
-                    <span className="featured-author">{featuredPost.author.name}</span>
-                    <span className="featured-read-link">
-                      Read blueprint <ArrowUpRight size={18} />
-                    </span>
-                  </div>
-                </div>
-
-                <div className="featured-visual-pane" aria-hidden="true">
-                  <div className="featured-tech-grid">
-                    <div className="tech-tile">
-                      <span className="tech-tile-lbl">GATEWAY</span>
-                      <span className="tech-tile-val">HTTPS / REST</span>
-                    </div>
-                    <div className="tech-tile">
-                      <span className="tech-tile-lbl">IDEMPOTENCY</span>
-                      <span className="tech-tile-val">SHA-256</span>
-                    </div>
-                    <div className="tech-tile">
-                      <span className="tech-tile-lbl">ASYNC QUEUE</span>
-                      <span className="tech-tile-val">BullMQ / Redis</span>
-                    </div>
-                    <div className="tech-tile">
-                      <span className="tech-tile-lbl">CIRCUIT BREAKER</span>
-                      <span className="tech-tile-val">Active Guard</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </section>
-          )}
-
-          {/* Articles Grid */}
-          <section className="blog-grid-section page-container" aria-label="Articles list">
-            <div className="section-head" style={{ marginBottom: 28 }}>
-              <span className="section-kicker">CURATED PERSPECTIVES</span>
-              <h2 style={{ fontSize: "28px" }}>Latest field notes ({filteredPosts.length})</h2>
-            </div>
-
-            {filteredPosts.length === 0 ? (
+            <p className="journal-result-count" role="status">
+              {posts.length} {posts.length === 1 ? "field note" : "field notes"}
+              {category !== "All" ? ` / ${category}` : " / All topics"}
+            </p>
+            {posts.length ? (
+              <div className="journal-articles">
+                {posts.map((post, index) => (
+                  <Reveal
+                    key={post.slug}
+                    className="journal-row-reveal"
+                    delay={(index % 3) * 0.07}
+                  >
+                    <article className="journal-article article-card">
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="journal-article-link"
+                      >
+                        <span className="journal-article-index">
+                          {String(blogPosts.indexOf(post) + 1).padStart(2, "0")}
+                        </span>
+                        <div className="journal-article-copy">
+                          <span className="section-kicker">
+                            {post.category}
+                          </span>
+                          <h3>{shortTitles[post.slug] || post.title}</h3>
+                          <p>{post.excerpt}</p>
+                          <div className="journal-article-meta">
+                            <time
+                              dateTime={new Date(post.publishDate)
+                                .toISOString()
+                                .slice(0, 10)}
+                            >
+                              {post.publishDate}
+                            </time>
+                            <span>{post.readTime}</span>
+                            <ArrowUpRight size={21} />
+                          </div>
+                        </div>
+                        <ArticleArt category={post.category} />
+                      </Link>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
+            ) : (
               <div className="blog-empty-state">
-                <p>No articles found matching your criteria. Try adjusting your search query.</p>
+                <h3>No field notes here yet.</h3>
+                <p>Try another topic or a different search.</p>
                 <button
                   type="button"
                   className="pill-button dark"
                   onClick={() => {
-                    setSelectedCategory("All");
-                    setSearchQuery("");
+                    updateQuery("");
+                    setCategory("All");
                   }}
-                  style={{ marginTop: 16 }}
                 >
-                  Reset filters
+                  Clear filters <ArrowUpRight size={16} />
                 </button>
-              </div>
-            ) : (
-              <div className="articles-bento-grid">
-                {filteredPosts.map((post) => (
-                  <article key={post.slug} className="article-card">
-                    <Link href={`/blog/${post.slug}`} className="article-card-inner">
-                      <div className="article-card-top">
-                        <span className="article-cat-tag">{post.category}</span>
-                        <span className="article-date">{post.readTime}</span>
-                      </div>
-
-                      <h3 className="article-title">{post.title}</h3>
-                      <p className="article-excerpt">{post.excerpt}</p>
-
-                      {post.architectureBadges && post.architectureBadges.length > 0 && (
-                        <div className="article-pipeline-strip" aria-label="Architecture steps">
-                          {post.architectureBadges.map((badge, bIdx) => (
-                            <span key={badge} className="pipeline-step-badge">
-                              {bIdx > 0 && <span className="pipeline-arrow">➔</span>}
-                              <code>{badge}</code>
-                            </span>
-                          ))}
-                        </div>
-                      )}
-
-                      <div className="article-card-bottom">
-                        <span className="article-date-pub">{post.publishDate}</span>
-                        <span className="article-read-btn">
-                          Read article <ArrowUpRight size={16} />
-                        </span>
-                      </div>
-                    </Link>
-                  </article>
-                ))}
               </div>
             )}
           </section>
-
-          {/* AEO / GEO Technical FAQ Section */}
-          <section className="blog-faq-section page-container" aria-labelledby="blog-faq-title">
-            <div className="section-head" style={{ marginBottom: 24 }}>
-              <span className="section-kicker">ENGINEERING CAPABILITIES</span>
-              <h2 id="blog-faq-title" style={{ fontSize: "28px" }}>
-                Frequently explored technical questions
-              </h2>
-            </div>
-
-            <div className="faq-stack">
-              {blogFaqs.map((faq) => (
-                <details key={faq.q} className="faq-item">
-                  <summary>{faq.q}</summary>
-                  <p>{faq.a}</p>
-                </details>
-              ))}
-            </div>
-
-            <FaqJsonLd faqs={blogFaqs} />
-          </section>
-
-          {/* Bottom CTA Banner */}
-          <section className="about-action-strip page-container">
-            <h2>Have a technical challenge or ambitious product vision?</h2>
-            <p>
-              Our principal engineers and product architects are ready to review your architecture.
-            </p>
+          <section className="journal-invitation page-container">
+            <span className="section-kicker">KEEP THE CONVERSATION GOING</span>
+            <h2>
+              What are you
+              <br />
+              <span>thinking about?</span>
+            </h2>
             <Link href="/contact" className="pill-button dark">
-              Discuss your project with us <ArrowUpRight size={18} />
+              Bring us your question <ArrowUpRight size={18} />
             </Link>
           </section>
         </main>
-
         <PageFooter />
       </div>
     </ExperienceProvider>

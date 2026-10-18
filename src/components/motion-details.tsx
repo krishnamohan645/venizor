@@ -2,6 +2,7 @@
 
 import {
   type ReactNode,
+  useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -178,22 +179,26 @@ export function HeroWordsCycle({
   const cycleTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isPausedRef = useRef(false);
 
-  const advance = () => {
+  const reduced = useReducedMotion();
+  const advance = useCallback(() => {
     setState((prev) => ({
       current: (prev.current + 1) % words.length,
       prev: prev.current,
-      isAnimating: true,
+      isAnimating: !reduced,
     }));
 
     if (animTimerRef.current) clearTimeout(animTimerRef.current);
-    animTimerRef.current = setTimeout(() => {
-      setState((prev) => ({
-        ...prev,
-        prev: null,
-        isAnimating: false,
-      }));
-    }, 500);
-  };
+    animTimerRef.current = setTimeout(
+      () => {
+        setState((prev) => ({
+          ...prev,
+          prev: null,
+          isAnimating: false,
+        }));
+      },
+      reduced ? 0 : 500,
+    );
+  }, [words.length, reduced]);
 
   useEffect(() => {
     const heroSection = document.querySelector(".studio-hero");
@@ -215,6 +220,7 @@ export function HeroWordsCycle({
   }, []);
 
   useEffect(() => {
+    if (reduced) return;
     const startCycle = () => {
       if (!isPausedRef.current) advance();
       cycleTimerRef.current = setInterval(() => {
@@ -229,7 +235,7 @@ export function HeroWordsCycle({
       if (cycleTimerRef.current) clearInterval(cycleTimerRef.current);
       if (animTimerRef.current) clearTimeout(animTimerRef.current);
     };
-  }, [initialDelayMs, intervalMs]);
+  }, [initialDelayMs, intervalMs, advance, reduced]);
 
   const { current, prev, isAnimating } = state;
 

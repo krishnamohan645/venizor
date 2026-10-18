@@ -1,26 +1,11 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import Link from "next/link";
-import {
-  Compass,
-  ArrowRight,
-  ArrowLeft,
-  CheckCircle2,
-  Cpu,
-  Layers,
-  Database,
-  Shield,
-  Zap,
-  Clock,
-  Sparkles,
-  Send,
-  Check,
-  ArrowUpRight,
-} from "lucide-react";
 import { ExperienceProvider } from "@/components/experience";
 import { CursorFollower } from "@/components/motion-details";
-import { PageHeader, PageFooter } from "@/components/page-nav";
+import { PageFooter, PageHeader } from "@/components/page-nav";
+import { ResultFollowup } from "@/components/result-followup";
+import { ArrowLeft, ArrowRight, Check, Clock } from "lucide-react";
+import { useMemo, useState } from "react";
 
 interface ObjectiveOption {
   id: string;
@@ -82,21 +67,18 @@ export default function ProjectScopingWizardPage() {
     "Custom REST / GraphQL APIs",
     "PostgreSQL + pgvector Database Architecture",
   ]);
-  const [scaleTier, setScaleTier] = useState<"launch" | "growth" | "enterprise">("growth");
-  const [slaRequirement, setSlaRequirement] = useState<"standard" | "mission_critical">("mission_critical");
+  const [scaleTier, setScaleTier] = useState<
+    "launch" | "growth" | "enterprise"
+  >("growth");
+  const [slaRequirement, setSlaRequirement] = useState<
+    "standard" | "mission_critical"
+  >("mission_critical");
   const [timeline, setTimeline] = useState("1 - 2 Months");
-  const [engagementModel, setEngagementModel] = useState("Dedicated Sprint Squad");
-
-  // Contact Info
-  const [clientName, setClientName] = useState("");
-  const [clientEmail, setClientEmail] = useState("");
-  const [clientOrg, setClientOrg] = useState("");
-  const [clientNotes, setClientNotes] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const engagementModel = "Dedicated Sprint Squad";
 
   const toggleCapability = (cap: string) => {
     setSelectedCapabilities((prev) =>
-      prev.includes(cap) ? prev.filter((c) => c !== cap) : [...prev, cap]
+      prev.includes(cap) ? prev.filter((c) => c !== cap) : [...prev, cap],
     );
   };
 
@@ -118,39 +100,18 @@ export default function ProjectScopingWizardPage() {
     return { score, level, sprints };
   }, [selectedCapabilities, scaleTier, slaRequirement]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-
-    const emailSubject = encodeURIComponent(
-      `[VENIZOR Project Scoping Brief] ${clientOrg || clientName} — ${complexityProfile.level}`
-    );
-    const emailBody = encodeURIComponent(
-      `VENIZOR Architecture Scoping Brief:
-
-Client Name: ${clientName}
-Organization: ${clientOrg}
-Email: ${clientEmail}
-
+  const scopeReport = `VENIZOR indicative project scope
 Objective: ${selectedObjective}
-Architecture Level: ${complexityProfile.level}
-Estimated Sprints: ${complexityProfile.sprints}
-Scale Tier: ${scaleTier} (SLA: ${slaRequirement})
-Timeline: ${timeline}
+Architecture: ${complexityProfile.level}
+Indicative sprints: ${complexityProfile.sprints}
+Scale: ${scaleTier}
+Reliability needs: ${slaRequirement}
+Desired timeline: ${timeline}
 Engagement: ${engagementModel}
+Capabilities:
+${selectedCapabilities.join("\n")}
 
-Required Capabilities:
-${selectedCapabilities.map((c) => `• ${c}`).join("\n")}
-
-Additional Notes:
-${clientNotes || "None provided"}
-
-Generated via https://venizor.com/scope`
-    );
-
-    // Open mail client with prefilled brief
-    window.location.href = `mailto:info@venizor.com?subject=${emailSubject}&body=${emailBody}`;
-  };
+An indicative planning aid. Final scope, cost and timing require discovery.`;
 
   return (
     <ExperienceProvider>
@@ -160,7 +121,10 @@ Generated via https://venizor.com/scope`
 
         <main id="scope-main" className="inner-page-main">
           {/* Hero Section */}
-          <section className="page-hero page-container" aria-labelledby="scope-title">
+          <section
+            className="page-hero page-container"
+            aria-labelledby="scope-title"
+          >
             <div className="page-hero-kicker">
               <span className="kicker-tag">
                 <i className="live-dot" /> INTERACTIVE SCOPING WIZARD
@@ -174,8 +138,9 @@ Generated via https://venizor.com/scope`
             </h1>
 
             <p className="page-hero-lead">
-              Answer 4 quick technical questions to generate a tailored architectural scope,
-              complexity rating, and delivery sprint timeline.
+              Answer 4 quick technical questions to generate a tailored
+              architectural scope, complexity rating, and delivery sprint
+              timeline.
             </p>
 
             {/* Step Progress Tracker */}
@@ -191,7 +156,9 @@ Generated via https://venizor.com/scope`
                   className={`wizard-step-pill ${step === s.num ? "is-current" : step > s.num ? "is-complete" : ""}`}
                   onClick={() => step > s.num && setStep(s.num)}
                 >
-                  <span className="step-badge">{step > s.num ? "✓" : `0${s.num}`}</span>
+                  <span className="step-badge">
+                    {step > s.num ? "✓" : `0${s.num}`}
+                  </span>
                   <span className="step-name">{s.label}</span>
                 </div>
               ))}
@@ -206,7 +173,10 @@ Generated via https://venizor.com/scope`
                 <div className="step-pane-header">
                   <span className="step-kicker">STEP 01 OF 04</span>
                   <h2>What is the primary objective of your project?</h2>
-                  <p>Choose the core focus that best matches your immediate business and technical goals.</p>
+                  <p>
+                    Choose the core focus that best matches your immediate
+                    business and technical goals.
+                  </p>
                 </div>
 
                 <div className="objectives-selector-stack">
@@ -244,8 +214,13 @@ Generated via https://venizor.com/scope`
               <div className="wizard-step-pane">
                 <div className="step-pane-header">
                   <span className="step-kicker">STEP 02 OF 04</span>
-                  <h2>Which engineering disciplines will this system require?</h2>
-                  <p>Select all technical areas you would like VENIZOR to design, build, or harden.</p>
+                  <h2>
+                    Which engineering disciplines will this system require?
+                  </h2>
+                  <p>
+                    Select all technical areas you would like VENIZOR to design,
+                    build, or harden.
+                  </p>
                 </div>
 
                 <div className="capabilities-multi-grid">
@@ -292,8 +267,14 @@ Generated via https://venizor.com/scope`
               <div className="wizard-step-pane">
                 <div className="step-pane-header">
                   <span className="step-kicker">STEP 03 OF 04</span>
-                  <h2>What scale, availability, and delivery timeline do you anticipate?</h2>
-                  <p>This allows us to tailor the connection pooling, infrastructure tier, and team allocation.</p>
+                  <h2>
+                    What scale, availability, and delivery timeline do you
+                    anticipate?
+                  </h2>
+                  <p>
+                    This allows us to tailor the connection pooling,
+                    infrastructure tier, and team allocation.
+                  </p>
                 </div>
 
                 <div className="scale-selectors-stack">
@@ -319,7 +300,8 @@ Generated via https://venizor.com/scope`
                         className={`sim-toggle-pill ${scaleTier === "enterprise" ? "is-selected" : ""}`}
                         onClick={() => setScaleTier("enterprise")}
                       >
-                        High-Load Enterprise (100,000 to 1M+ active users / high RPS)
+                        High-Load Enterprise (100,000 to 1M+ active users / high
+                        RPS)
                       </button>
                     </div>
                   </div>
@@ -339,7 +321,8 @@ Generated via https://venizor.com/scope`
                         className={`sim-toggle-pill ${slaRequirement === "mission_critical" ? "is-selected" : ""}`}
                         onClick={() => setSlaRequirement("mission_critical")}
                       >
-                        Mission-Critical FinTech / Health (99.999% Zero-Downtime Blue/Green)
+                        Mission-Critical FinTech / Health (99.999% Zero-Downtime
+                        Blue/Green)
                       </button>
                     </div>
                   </div>
@@ -347,7 +330,11 @@ Generated via https://venizor.com/scope`
                   <div className="sim-control-group" style={{ marginTop: 24 }}>
                     <label>Target Delivery Window</label>
                     <div className="timeline-chips-row">
-                      {["Immediate (< 2 Weeks)", "1 - 2 Months", "Quarterly Roadmap"].map((t) => (
+                      {[
+                        "Immediate (< 2 Weeks)",
+                        "1 - 2 Months",
+                        "Quarterly Roadmap",
+                      ].map((t) => (
                         <button
                           key={t}
                           type="button"
@@ -385,8 +372,11 @@ Generated via https://venizor.com/scope`
               <div className="wizard-step-pane">
                 <div className="step-pane-header">
                   <span className="step-kicker">STEP 04 OF 04 / FINAL</span>
-                  <h2>Review Your Scoping Brief &amp; Submit</h2>
-                  <p>Here is your auto-generated architectural summary. Enter your contact details to connect with our team.</p>
+                  <h2>Your indicative project outline</h2>
+                  <p>
+                    Review your planning outline below. You can download it
+                    without sharing contact details.
+                  </p>
                 </div>
 
                 {/* Live Architecture Summary Card */}
@@ -394,7 +384,9 @@ Generated via https://venizor.com/scope`
                   <div className="scope-card-top">
                     <div>
                       <span className="scope-kicker">SYSTEM PROFILE</span>
-                      <h3 className="scope-level-title">{complexityProfile.level}</h3>
+                      <h3 className="scope-level-title">
+                        {complexityProfile.level}
+                      </h3>
                     </div>
                     <div className="scope-sprint-chip">
                       <Clock size={16} />
@@ -403,7 +395,9 @@ Generated via https://venizor.com/scope`
                   </div>
 
                   <div className="scope-capabilities-summary">
-                    <span className="summary-lbl">SELECTED CAPABILITIES ({selectedCapabilities.length}):</span>
+                    <span className="summary-lbl">
+                      SELECTED CAPABILITIES ({selectedCapabilities.length}):
+                    </span>
                     <div className="summary-tags-wrap">
                       {selectedCapabilities.map((cap) => (
                         <span key={cap} className="summary-tag">
@@ -414,87 +408,7 @@ Generated via https://venizor.com/scope`
                   </div>
                 </div>
 
-                {/* Form Intake */}
-                <form className="scope-intake-form" onSubmit={handleSubmit}>
-                  <div className="form-grid-2col">
-                    <div className="form-field">
-                      <label htmlFor="name">Your Name *</label>
-                      <input
-                        id="name"
-                        type="text"
-                        required
-                        className="sim-input"
-                        placeholder="e.g. Alex Morgan"
-                        value={clientName}
-                        onChange={(e) => setClientName(e.target.value)}
-                      />
-                    </div>
-                    <div className="form-field">
-                      <label htmlFor="email">Work Email *</label>
-                      <input
-                        id="email"
-                        type="email"
-                        required
-                        className="sim-input"
-                        placeholder="alex@company.com"
-                        value={clientEmail}
-                        onChange={(e) => setClientEmail(e.target.value)}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-field" style={{ marginTop: 16 }}>
-                    <label htmlFor="org">Company / Organization</label>
-                    <input
-                      id="org"
-                      type="text"
-                      className="sim-input"
-                      placeholder="e.g. Acme Corp"
-                      value={clientOrg}
-                      onChange={(e) => setClientOrg(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="form-field" style={{ marginTop: 16 }}>
-                    <label htmlFor="notes">Additional Architecture Context or Requirements (Optional)</label>
-                    <textarea
-                      id="notes"
-                      rows={3}
-                      className="sim-textarea"
-                      placeholder="Any specific third-party APIs, legacy migration hurdles, or security constraints..."
-                      value={clientNotes}
-                      onChange={(e) => setClientNotes(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="wizard-step-actions" style={{ marginTop: 32 }}>
-                    <button
-                      type="button"
-                      className="pill-button light"
-                      onClick={() => setStep(3)}
-                    >
-                      <ArrowLeft size={16} /> Back
-                    </button>
-                    <button type="submit" className="pill-button dark">
-                      <Send size={16} /> Submit Scoping Brief &amp; Discuss Architecture
-                    </button>
-                  </div>
-                </form>
-
-                {submitted && (
-                  <div className="submission-success-banner">
-                    <CheckCircle2 size={20} className="text-emerald" />
-                    <div>
-                      <strong>Scoping brief prepared!</strong>
-                      <p>
-                        Your default email client has been pre-filled with the architecture brief. You can also reach us directly at{" "}
-                        <a href="mailto:info@venizor.com" style={{ textDecoration: "underline" }}>
-                          info@venizor.com
-                        </a>.
-                      </p>
-                    </div>
-                  </div>
-                )}
+                <ResultFollowup report={scopeReport} source="scope" />
               </div>
             )}
           </div>

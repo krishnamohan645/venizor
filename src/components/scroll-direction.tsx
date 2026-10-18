@@ -1,8 +1,8 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLayoutEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,9 +49,9 @@ export function ScrollDirection() {
           gsap.from(
             heading.querySelectorAll("h2, .section-kicker, .section-count, p"),
             {
-              y: 60,
+              y: 28,
               opacity: 0,
-              duration: 0.9,
+              duration: 0.55,
               stagger: 0.07,
               ease: "power3.out",
               scrollTrigger: { trigger: heading, start: "top 88%", once: true },
@@ -61,7 +61,7 @@ export function ScrollDirection() {
 
       gsap.utils.toArray<HTMLElement>(".service-row").forEach((row, index) => {
         gsap.from(row.querySelector(".service-row-heading"), {
-          x: index % 2 ? 55 : -55,
+          x: index % 2 ? 24 : -24,
           opacity: 0.1,
           ease: "none",
           scrollTrigger: {
@@ -104,9 +104,9 @@ export function ScrollDirection() {
         gsap.from(
           card.querySelectorAll(".timeline-step-top, h3, p, .timeline-outcome"),
           {
-            y: 38,
+            y: 20,
             opacity: 0,
-            duration: 0.65,
+            duration: 0.5,
             stagger: 0.075,
             ease: "power3.out",
             scrollTrigger: { trigger: card, start: "top 85%", once: true },
@@ -115,11 +115,11 @@ export function ScrollDirection() {
       });
 
       gsap.from(".perspective-card", {
-        y: 65,
-        rotation: 2,
+        y: 28,
+        rotation: 0.75,
         opacity: 0,
-        stagger: 0.12,
-        duration: 0.85,
+        stagger: 0.07,
+        duration: 0.55,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".perspective-grid",
@@ -128,10 +128,10 @@ export function ScrollDirection() {
         },
       });
       gsap.from(".footer-invitation > *", {
-        y: 70,
+        y: 30,
         opacity: 0,
-        stagger: 0.12,
-        duration: 1,
+        stagger: 0.08,
+        duration: 0.6,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".studio-footer",
@@ -140,8 +140,8 @@ export function ScrollDirection() {
         },
       });
       gsap.from(".footer-wordmark", {
-        yPercent: 65,
-        opacity: 0.15,
+        yPercent: 28,
+        opacity: 0.65,
         ease: "none",
         scrollTrigger: {
           id: "footer-unfold",
@@ -176,10 +176,14 @@ export function ScrollDirection() {
       },
     );
 
-    const refresh = () => ScrollTrigger.refresh();
+    let disposed = false;
+    const refresh = () => {
+      if (!disposed) ScrollTrigger.refresh();
+    };
     document.fonts.ready.then(refresh);
     const frame = requestAnimationFrame(refresh);
     return () => {
+      disposed = true;
       cancelAnimationFrame(frame);
       media.revert();
     };
@@ -192,9 +196,9 @@ export function ScrollDirection() {
 
 export function ScrollWords({ lines, id }: { lines: string[]; id?: string }) {
   return (
-    <h2 id={id} className="scroll-words">
+    <h2 id={id} className="scroll-words" aria-label={lines.join(" ")}>
       {lines.map((line, index) => (
-        <span className="scroll-word-line" key={line}>
+        <span className="scroll-word-line" key={line} aria-hidden="true">
           {line.split(" ").map((word, wordIndex) => (
             <span className="scroll-word" key={`${word}-${wordIndex}`}>
               {word}

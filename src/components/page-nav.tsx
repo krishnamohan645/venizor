@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { services } from "@/data/services";
+import { site } from "@/lib/site";
+import { ArrowUpRight, Menu, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu, Search, X } from "lucide-react";
-import { useExperienceDialog, DetailButton } from "./experience";
+import { useEffect, useRef, useState } from "react";
+import { useExperienceDialog } from "./experience";
+import { CookieSettingsButton } from "./cookie-preferences";
 
 interface PageHeaderProps {
-  activePage?: "home" | "about" | "contact" | "blog";
+  activePage?: "home" | "about" | "contact" | "blog" | "playbook";
 }
 
 export function PageHeader({ activePage = "home" }: PageHeaderProps) {
@@ -33,6 +36,7 @@ export function PageHeader({ activePage = "home" }: PageHeaderProps) {
           src="/logo-banner.jpeg"
           width={1600}
           height={800}
+          sizes="(max-width: 640px) 155px, 190px"
           alt="VENIZOR — Innovate with confidence"
           preload
         />
@@ -59,7 +63,7 @@ export function PageHeader({ activePage = "home" }: PageHeaderProps) {
           Who we are
           <sup>02</sup>
         </Link>
-        <Link href="/#services" onClick={() => setMenuOpen(false)}>
+        <Link href="/services" onClick={() => setMenuOpen(false)}>
           Services
           <sup>03</sup>
         </Link>
@@ -140,7 +144,11 @@ export function PageFooter() {
             <br />
             starts with <em>hello.</em>
           </h2>
-          <Link href="/contact" className="footer-contact-circle">
+          <Link
+            href="/contact"
+            className="footer-contact-circle"
+            aria-label="Contact VENIZOR"
+          >
             <ArrowUpRight size={48} strokeWidth={1.15} />
             <span>LET’S MAKE IT HAPPEN</span>
           </Link>
@@ -150,47 +158,53 @@ export function PageFooter() {
             info@venizor.com <ArrowUpRight size={20} />
           </a>
           <Link href="/contact" className="text-link">
-            Schedule a free consultation <ArrowUpRight size={18} />
+            Discuss your project <ArrowUpRight size={18} />
           </Link>
           <span>BASED IN INDIA. BUILDING FOR THE WORLD.</span>
         </div>
         <div className="footer-nav">
           <Link href="/">Home</Link>
           <Link href="/about">Who we are</Link>
-          <Link href="/#services">Services</Link>
+          <Link href="/services">Services</Link>
           <Link href="/#work">Our work</Link>
           <Link href="/#products">Products</Link>
           <Link href="/blog">Blog &amp; Field Notes</Link>
           <Link href="/playbook">Stack Playbook</Link>
           <Link href="/simulator">Pipeline Simulator</Link>
-          <Link href="/case-studies">Case Studies</Link>
+          <Link href="/case-studies">Architecture scenarios</Link>
           <Link href="/tools">Developer Tools</Link>
           <Link href="/scope">Scope Wizard</Link>
+          <Link href="/careers">Careers</Link>
           <Link href="/contact">Contact us</Link>
           <a href="#top" className="footer-back-top">
             Back to top <ArrowUpRight size={17} />
           </a>
         </div>
+        <div className="footer-service-links" aria-label="Service pages">
+          {services.map((service) => (
+            <Link href={`/services/${service.slug}`} key={service.slug}>
+              {service.name}
+            </Link>
+          ))}
+        </div>
+        {(site.legalName || site.city) && (
+          <p className="footer-business">
+            {[site.legalName, site.city].filter(Boolean).join(" ? ")}
+          </p>
+        )}
         <div className="footer-wordmark" aria-label="VENIZOR">
           VENIZOR<span>®</span>
         </div>
         <div className="footer-bottom">
           <span>© 2026 VENIZOR. INNOVATE WITH CONFIDENCE.</span>
           <div>
-            <DetailButton
-              className="legal-link"
-              title="Privacy"
-              description="This website does not use advertising cookies or collect form submissions on a server. Project enquiries are prepared in your email application and are only sent when you choose to send them. Your email provider’s privacy terms apply."
-            >
+            <Link className="legal-link" href="/privacy">
               Privacy
-            </DetailButton>
-            <DetailButton
-              className="legal-link"
-              title="Website terms"
-              description="The work shown includes illustrative concept demonstrations. Product information describes development plans. Project scope, fees, timelines, and service terms are agreed separately in writing."
-            >
+            </Link>
+            <Link className="legal-link" href="/terms">
               Terms
-            </DetailButton>
+            </Link>
+            <CookieSettingsButton />
           </div>
         </div>
       </div>

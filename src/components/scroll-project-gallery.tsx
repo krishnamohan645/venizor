@@ -5,10 +5,10 @@ import { useInView, useReducedMotion } from "motion/react";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { scrollPageTo } from "@/lib/smooth-scroll";
 import { DetailButton, ProjectPreview } from "./experience";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 type Project = {
   name: string;
@@ -102,7 +102,6 @@ export function ScrollProjectGallery({ projects }: { projects: Project[] }) {
   }, [projects.length, activate]);
 
   const select = (index: number, keyboard = false) => {
-    gsap.killTweensOf(window);
     activate(index);
     const story = scroll.current;
     if (story) {
@@ -110,17 +109,12 @@ export function ScrollProjectGallery({ projects }: { projects: Project[] }) {
         story.start +
         (index / (projects.length - 1)) * (story.end - story.start);
       if (keyboard) {
-        window.scrollTo({ top: destination, behavior: "instant" });
+        scrollPageTo(destination, { immediate: true });
         story.update();
         story.getTween()?.progress(1);
         story.animation?.progress(index / (projects.length - 1));
       } else {
-        gsap.to(window, {
-          scrollTo: { y: destination, autoKill: true },
-          duration: 0.65,
-          ease: "power2.out",
-          overwrite: "auto",
-        });
+        scrollPageTo(destination, { duration: 0.65 });
       }
     } else {
       viewport.current?.scrollTo({
@@ -229,7 +223,10 @@ export function ScrollProjectGallery({ projects }: { projects: Project[] }) {
                     <span className="project-slide-tag">{project.tag}</span>
                     <h3>{project.title}</h3>
                     <div className="large-project-preview">
-                      <ProjectPreview type={project.type} />
+                      <ProjectPreview
+                        type={project.type}
+                        paused={previewPaused || !inView || Boolean(reduced)}
+                      />
                     </div>
                     <DetailButton
                       className="project-open"

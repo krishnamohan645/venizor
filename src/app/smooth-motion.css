@@ -1,0 +1,73 @@
+:root {
+  --motion-fast: 160ms;
+  --motion-ui: 220ms;
+  --motion-enter: 480ms;
+  --ease-responsive: cubic-bezier(0.23, 1, 0.32, 1);
+}
+/* Lenis owns desktop interpolation; avoid a second native smooth-scroll curve. */
+html.lenis {
+  scroll-behavior: auto !important;
+}
+.showcase-copy-layer {
+  display: grid;
+  width: 100%;
+}
+.showcase-copy-layer > div,
+.showcase-visual-stage > div {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+.pill-button,
+.round-button,
+.icon-button {
+  transition:
+    transform var(--motion-fast) var(--ease-responsive),
+    background-color var(--motion-ui) var(--ease-responsive),
+    color var(--motion-ui) var(--ease-responsive),
+    border-color var(--motion-ui) var(--ease-responsive);
+}
+.site-dialog[open] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--motion-ui) var(--ease-responsive),
+    transform var(--motion-ui) var(--ease-responsive);
+}
+@starting-style {
+  .site-dialog[open] {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :is(.pill-button, .round-button, .icon-button):active {
+    transform: scale(0.97);
+  }
+}
+@media (max-width: 960px) and (prefers-reduced-motion: no-preference) {
+  .studio-nav.is-open {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 180ms var(--ease-responsive),
+      transform 180ms var(--ease-responsive);
+  }
+  @starting-style {
+    .studio-nav.is-open {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-dialog[open],
+  .pill-button,
+  .round-button,
+  .icon-button {
+    transition: none;
+  }
+  .site-dialog[open] {
+    transform: none;
+    opacity: 1;
+  }
+}

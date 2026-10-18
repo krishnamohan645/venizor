@@ -1,161 +1,176 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin, ShieldCheck, Clock, CheckCircle2 } from "lucide-react";
-import { ExperienceProvider } from "@/components/experience";
-import { CursorFollower } from "@/components/motion-details";
-import { ScrollDirection } from "@/components/scroll-direction";
-import { PageHeader, PageFooter } from "@/components/page-nav";
-import { InteractiveContactForm, StudioLiveClock } from "@/components/contact-form";
+import { ContactChannels } from "@/components/contact-channels";
+import {
+ContactStudioMark,
+InteractiveContactForm,
+StudioLiveClock,
+} from "@/components/contact-form";
+import { ExperienceProvider,Reveal } from "@/components/experience";
+import { BreadcrumbJsonLd } from "@/components/json-ld";
+import { PageFooter,PageHeader } from "@/components/page-nav";
+import { pageMetadata } from "@/lib/metadata";
+import { ArrowDown,ArrowUpRight,Mail,ShieldCheck } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Contact Us — Start a Project with VENIZOR Studio",
-  description:
-    "Get in touch with VENIZOR. Share your project vision, request a free technical consultation, or discuss your upcoming web, mobile, SaaS, or AI initiative.",
-};
-
+export const metadata = pageMetadata("/contact");
 const faqs = [
   {
-    q: "How fast will we receive a response after submitting?",
-    a: "We guarantee a personal response from a principal product architect within 24 business hours. We do not use automated sales queues; our senior engineering leads review your brief directly.",
+    q: "What should I include in a project brief?",
+    a: "Tell us about the people who will use the product, the work you want to improve and any timing or technical constraints. A short starting point is enough.",
   },
   {
-    q: "Can we execute a Non-Disclosure Agreement (NDA) before sharing details?",
-    a: "Absolutely. We routinely sign mutual NDAs before reviewing sensitive technical specifications, proprietary algorithms, or novel product concepts. Just mention it in your message or email us directly.",
+    q: "Can we agree an NDA before sharing sensitive details?",
+    a: "Please ask before sending confidential material. Confidentiality arrangements can be discussed and agreed in writing.",
   },
   {
-    q: "How do your project engagement structures work?",
-    a: "We offer both fixed-scope milestone deliverables (ideal for zero-to-one MVPs, product launches, or discrete re-architectures) and dedicated sprint pods (ideal for high-velocity teams scaling an existing platform).",
+    q: "How are scope, budget and timing agreed?",
+    a: "We review the requirements and dependencies, then prepare a proposal with scope, deliverables and an estimated timeline. Commitments are agreed in the project contract.",
   },
   {
-    q: "Do you work with clients across different time zones?",
-    a: "Yes. Over 70% of our clients are based in the United States, Europe, the Middle East, and Asia-Pacific. Our team maintains synchronized overlap windows for daily standups, review demos, and real-time Slack/GitHub collaboration.",
-  },
-  {
-    q: "What typical budget ranges do you support?",
-    a: "Engagements typically range from focused tactical sprints ($5,000–$15,000 for specialized modules and MVPs) to comprehensive platform architectures ($15,000–$50,000+ for full-scale SaaS platforms and enterprise systems).",
+    q: "Do you work remotely?",
+    a: "Yes. Communication windows, review meetings and collaboration tools are agreed with each project team.",
   },
 ];
 
 export default function ContactPage() {
   return (
     <ExperienceProvider>
-      <div className="inner-page-shell" id="top">
+      <div className="inner-page-shell contact-page" id="top">
         <a className="skip-link" href="#contact-main">
           Skip to content
         </a>
-        <CursorFollower />
+        <BreadcrumbJsonLd path="/contact" />
         <PageHeader activePage="contact" />
-
         <main id="contact-main" className="inner-page-main">
-          {/* Hero Section */}
-          <section className="page-hero page-container" aria-labelledby="contact-hero-title">
-            <div className="page-hero-kicker">
-              <span className="kicker-tag">
-                <i className="live-dot" /> 01 / GET IN TOUCH
+          <section
+            className="contact-opening page-container"
+            aria-labelledby="contact-hero-title"
+          >
+            <div className="section-topline">
+              <span className="section-kicker">
+                CONTACT / A GOOD PLACE TO START
               </span>
-              <span>OPEN FOR NEW CLIENT PARTNERSHIPS &amp; DISCOVERY</span>
+              <span className="section-kicker">
+                INDEPENDENT THINKING. SHARED AMBITION.
+              </span>
             </div>
-
-            <h1 id="contact-hero-title" className="page-hero-title">
-              Something great <br />
-              <span className="hero-title-blue">starts with hello.</span>
-            </h1>
-
-            <p className="page-hero-lead">
-              Have an ambitious vision, a tricky technical bottleneck, or an idea on a napkin?
-              We’d love to hear it. Fill out the brief below or reach out directly.
-            </p>
+            <div className="contact-opening-grid">
+              <Reveal>
+                <h1 id="contact-hero-title" className="page-hero-title">
+                  Good things
+                  <br />
+                  <span>start with hello.</span>
+                </h1>
+                <p className="contact-opening-lead">
+                  A new idea. A better way of working.
+                  <br />
+                  Let’s see what we can build together.
+                </p>
+                <a href="#project-brief" className="text-link">
+                  Tell us about your project <ArrowDown size={17} />
+                </a>
+              </Reveal>
+              <ContactStudioMark />
+            </div>
           </section>
-
-          {/* Form & Sidebar Grid */}
-          <section className="contact-layout-grid page-container" aria-label="Project enquiry form and contact details">
-            {/* Form Column */}
-            <div>
-              <InteractiveContactForm />
-            </div>
-
-            {/* Sidebar Column */}
-            <aside className="contact-sidebar" aria-label="Studio contact info">
-              {/* Live Clock Card */}
-              <StudioLiveClock />
-
-              {/* Direct Channels */}
-              <div className="sidebar-info-card">
-                <span className="sidebar-kicker">DIRECT COMMUNICATION</span>
-                <h4>Studio Inquiries</h4>
+          <section
+            className="contact-workspace page-container"
+            id="project-brief"
+            aria-label="Project enquiry form and contact details"
+          >
+            <aside className="contact-editorial-sidebar">
+              <Reveal>
+                <span className="section-kicker">
+                  A CONVERSATION, NOT A COMMITMENT
+                </span>
+                <h2>
+                  Your next chapter
+                  <br />
+                  starts here.
+                </h2>
                 <p>
-                  Prefer writing directly from your email client or have an existing RFP/spec?
+                  Share what you have in mind. We’ll work through the questions,
+                  possibilities and practical next steps.
                 </p>
                 <a
+                  className="contact-email-link"
                   href="mailto:info@venizor.com"
-                  className="sidebar-link-btn"
                 >
-                  <Mail size={16} /> info@venizor.com <ArrowUpRight size={14} />
+                  <Mail size={18} />
+                  <span>info@venizor.com</span>
+                  <ArrowUpRight size={17} />
                 </a>
+              </Reveal>
+              <div className="contact-location">
+                <StudioLiveClock />
+                <ContactChannels />
               </div>
-
-              {/* Global Overlap */}
-              <div className="sidebar-info-card">
-                <span className="sidebar-kicker">GLOBAL COLLABORATION</span>
-                <h4>Worldwide Reach</h4>
+              <div className="contact-confidential">
+                <ShieldCheck size={19} />
                 <p>
-                  Headquartered in India with seamless remote delivery across US, UK, European,
-                  and Asian timezones.
+                  Have something sensitive to discuss? Ask about an NDA before
+                  sharing confidential details.
                 </p>
-                <div style={{ display: "flex", gap: "8px", alignItems: "center", fontSize: "12px", color: "var(--muted)" }}>
-                  <ShieldCheck size={16} style={{ color: "var(--blue)" }} />
-                  <span>Mutual NDA protected by default</span>
-                </div>
               </div>
             </aside>
+            <Reveal className="contact-form-reveal" delay={0.12}>
+              <InteractiveContactForm />
+            </Reveal>
           </section>
-
-          {/* What Happens Next Steps */}
-          <section className="contact-process-section page-container" aria-labelledby="next-steps-title">
-            <h3 id="next-steps-title">What happens after you reach out</h3>
-
-            <div className="process-steps-grid">
-              <div className="contact-step-box">
-                <span className="step-num-pill">STEP 01</span>
-                <h4>Initial Technical Review</h4>
-                <p>
-                  Within 24 hours, our engineering leads evaluate your requirements, assess technical feasibility, and prepare clarifying notes.
-                </p>
-              </div>
-
-              <div className="contact-step-box">
-                <span className="step-num-pill">STEP 02</span>
-                <h4>30-Min Discovery Session</h4>
-                <p>
-                  A focused conversation to align on domain challenges, architectural trade-offs, target timelines, and budget expectations.
-                </p>
-              </div>
-
-              <div className="contact-step-box">
-                <span className="step-num-pill">STEP 03</span>
-                <h4>Actionable Blueprint &amp; Proposal</h4>
-                <p>
-                  You receive an unambiguous proposal detailing development milestones, sprint deliverables, and fixed-price guarantees.
-                </p>
-              </div>
+          <section
+            className="contact-next page-container"
+            aria-labelledby="next-steps-title"
+          >
+            <div className="contact-next-heading">
+              <span className="section-kicker">WHAT HAPPENS NEXT</span>
+              <h2 id="next-steps-title">
+                A clear way
+                <br />
+                forward.
+              </h2>
+            </div>
+            <div className="contact-next-steps">
+              {[
+                {
+                  title: "We understand the idea.",
+                  text: "We review your goals, constraints and the work you want to make better.",
+                },
+                {
+                  title: "We have a conversation.",
+                  text: "Together, we explore the important questions, the possible approaches and what to focus on first.",
+                },
+                {
+                  title: "We agree the next step.",
+                  text: "If there is a fit, we outline the scope, deliverables and commercial terms before work starts.",
+                },
+              ].map((step, i) => (
+                <Reveal key={step.title} delay={i * 0.08}>
+                  <span className="contact-step-number">0{i + 1}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </Reveal>
+              ))}
             </div>
           </section>
-
-          {/* Frequently Asked Questions */}
-          <section className="contact-faq-section page-container" aria-labelledby="faq-title">
-            <h3 id="faq-title">Frequently asked questions</h3>
-
+          <section
+            className="contact-questions page-container"
+            aria-labelledby="faq-title"
+          >
+            <Reveal>
+              <span className="section-kicker">BEFORE WE SAY HELLO</span>
+              <h2 id="faq-title">A few useful answers.</h2>
+            </Reveal>
             <div className="faq-stack">
-              {faqs.map((faq) => (
+              {faqs.map((faq, i) => (
                 <details key={faq.q} className="faq-item">
-                  <summary>{faq.q}</summary>
+                  <summary>
+                    <span className="faq-number">0{i + 1}</span>
+                    {faq.q}
+                  </summary>
                   <p>{faq.a}</p>
                 </details>
               ))}
             </div>
           </section>
         </main>
-
         <PageFooter />
       </div>
     </ExperienceProvider>

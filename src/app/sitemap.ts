@@ -1,73 +1,23 @@
-import { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog-data";
-
+import { services } from "@/data/services";
+import { routeInfo, site } from "@/lib/site";
+import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://venizor.com";
-  const now = new Date();
-
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/playbook`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/simulator`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/tools`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/scope`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
+  const updated = new Date(
+    process.env.SITE_CONTENT_UPDATED_AT || "2026-10-18T00:00:00Z",
+  );
+  return [
+    ...Object.keys(routeInfo).map((path) => ({
+      url: site.url + (path === "/" ? "" : path),
+      lastModified: updated,
+    })),
+    ...services.map((service) => ({
+      url: `${site.url}/services/${service.slug}`,
+      lastModified: updated,
+    })),
+    ...blogPosts.map((post) => ({
+      url: `${site.url}/blog/${post.slug}`,
+      lastModified: new Date(post.modifiedDate || post.publishDate),
+    })),
   ];
-
-  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishDate),
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...blogEntries];
 }

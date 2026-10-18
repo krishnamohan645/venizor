@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "Starting presets update selections, blueprint and review questions",
+    "Arrow/Home/End tab navigation and native radio keyboard selection work",
+    "Every layer persists its selection; review reflects gRPC, cache, AI, pipeline and empty connections",
+    "Clipboard success waits for acknowledgement; denial exposes a selectable brief",
+    "Reset restores the starting stack and clears stale copy/review state",
+    "Five responsive widths fit; mobile tabs and choices remain operable",
+    "Animated transitions settle on the selected layer; reduced-motion workflow also passes"
+  ],
+  "accessibility": [
+    {
+      "label": "initial",
+      "violations": []
+    },
+    {
+      "label": "custom stack with empty integrations",
+      "violations": []
+    },
+    {
+      "label": "clipboard fallback",
+      "violations": []
+    },
+    {
+      "label": "mobile",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

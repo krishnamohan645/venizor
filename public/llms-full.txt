@@ -1,74 +1,59 @@
-# VENIZOR Comprehensive Knowledge Base & Technical Blueprint
-> Complete context repository for AI Agents, LLM crawlers, and Answer Engines.
-> Website: https://venizor.com
+# VENIZOR
 
----
+> Independent technology studio based in India. Websites, web applications, mobile apps, SaaS products and practical AI workflows.
 
-## 1. Company Identity & Mission
-VENIZOR is an independent technology and digital product studio headquartered in India and operating globally. We engineer web applications, SaaS platforms, custom APIs, intelligent AI workflows, and cloud infrastructure. We believe software should feel like craft, rejecting bloated agency models and feature factories in favor of senior-led multidisciplinary engineering.
+## Services
+- [Website development](https://venizor.com/services/web-development): for businesses with something to say
+- [Web application development](https://venizor.com/services/web-applications): for startups and growing teams
+- [Mobile app development](https://venizor.com/services/mobile-app-development): for useful everyday experiences
+- [AI & workflow automation](https://venizor.com/services/ai-automation): for teams with work to simplify
+- [SaaS product development](https://venizor.com/services/saas-product-development): for founders building the next useful product
+- [Digital marketing](https://venizor.com/services/digital-marketing): for businesses ready to learn what works
+- [Technical SEO](https://venizor.com/services/seo): for sites that deserve to be found
+- [Answer engine optimization](https://venizor.com/services/answer-engine-optimization): for clear, credible business information
 
----
+## Key pages
+- [About](https://venizor.com/about)
+- [Field notes](https://venizor.com/blog)
+- [Contact](https://venizor.com/contact)
+- [Illustrative architecture scenarios](https://venizor.com/case-studies)
+- [Scope wizard](https://venizor.com/scope)
+- [Pipeline simulator](https://venizor.com/simulator)
+- [Privacy](https://venizor.com/privacy)
 
-## 2. Technical Specializations & Stack
+## Content context
+Architecture scenarios, product concepts and simulator outputs are illustrative. They are not verified client engagements or production performance benchmarks. Timelines, costs and service commitments are agreed per project.
 
-### A. Web & Mobile Architecture
-- **Frameworks**: Next.js (App Router, Turbopack, React Server Components), React 19, TypeScript, Node.js, Python.
-- **Styling & Interaction**: Vanilla CSS, design tokens, Tailwind CSS, GSAP (GreenSock), Framer Motion (`motion/react`), HTML5 Canvas shaders.
-- **Standards**: WCAG 2.2 Level AA accessibility, 60fps micro-animations, Core Web Vitals optimization (LCP < 1.2s, CLS 0, INP < 100ms).
+## Service descriptions
 
-### B. APIs & Third-Party HTTPS Integrations
-- **Protocols**: RESTful APIs, GraphQL Federation, gRPC with Protocol Buffers, WebSockets, Server-Sent Events (SSE).
-- **HTTPS Third-Party Integrations**:
-  - Payment Gateways: Stripe, PayPal, Lemon Squeezy (subscription lifecycles, webhook idempotency, usage-based billing).
-  - AI Providers: OpenAI, Anthropic, Google Gemini, Groq, Mistral, local Ollama / vLLM deployments.
-  - Telephony & Voice: Twilio, Retell AI, Vapi, ElevenLabs.
-  - CRMs & Automation: HubSpot, Salesforce, Zapier webhooks.
-- **Resilience Engineering**: SHA-256 idempotency hashing, exponential jitter backoff, BullMQ/Redis distributed background task workers, circuit breaker failovers.
+### Website development
+Website development brings your brand, content and customer journeys together in a responsive site. We work with founders and business teams who need a clear way to explain their offer, publish useful information and turn interest into enquiries, with a maintainable foundation for future updates.
+Source: https://venizor.com/services/web-development
 
-### C. Applied AI, RAG & Machine Learning
-- **Vector Search**: PostgreSQL `pgvector`, Pinecone, Qdrant, Milvus.
-- **Retrieval Architecture**: Hybrid search combining dense embeddings with sparse BM25 keyword rankings via Reciprocal Rank Fusion (RRF).
-- **Agent Pipelines**: Deterministic tool calling, memory management, multi-agent orchestration, guardrails, and streaming optimistic UI.
+### Web application development
+A custom web application turns a business workflow into software people can use in their browser. We help startups and established teams plan and build dashboards, portals and operational tools around their users, data and integrations, starting with the smallest useful release and a clear path to improve it.
+Source: https://venizor.com/services/web-applications
 
-### D. Databases & High-Performance Data
-- **Engines**: PostgreSQL, Redis, ClickHouse, DuckDB, Supabase.
-- **Optimization**: PgBouncer transaction pooling, partial index design, query plan profiling via `EXPLAIN (ANALYZE, BUFFERS)`, replica read-splitting.
+### Mobile app development
+Mobile app development creates an experience designed for the way people use their phones. We help businesses plan iOS and Android products, connect them to existing services and prepare for release. The choice between native and shared code follows your device requirements, team needs and long-term maintenance plans.
+Source: https://venizor.com/services/mobile-app-development
 
-### E. Cloud DevOps, Deployments & Reliability
-- **Containers**: Multi-stage lightweight Docker images (< 95MB), Docker Compose dev parity.
-- **CI/CD**: GitHub Actions automated linting, type validation, Playwright end-to-end testing, and security scanning.
-- **Cloud & Edge**: Cloudflare Workers, AWS (Lambda, ECS, S3, RDS), Vercel.
-- **Zero-Downtime Releases**: Blue-green routing, canary validation, expand-contract database migrations, 24/7 uptime telemetry.
+### AI & workflow automation
+AI integration and automation connect useful model capabilities to a defined business workflow. We help teams evaluate document retrieval, assistants and repetitive tasks, with human review where judgment matters. A suitable project starts with real examples, a measurable quality baseline and clear limits on what the system can do.
+Source: https://venizor.com/services/ai-automation
 
-### F. Application Security & Hardening
-- **OWASP Defense**: Strict Content Security Policy (CSP), parameterized SQL binding, input schema sanitization, HTTP-only Secure SameSite=Strict cookies.
-- **Auth Systems**: OAuth2, OIDC, WebAuthn/Passkeys, multi-tenant RBAC.
+### SaaS product development
+SaaS product development combines product discovery, interface design and software engineering to create a hosted application. We work with founders and product teams to define a useful first release, plan tenant and account boundaries, and connect the billing, administration and operational tools needed to support a subscription business.
+Source: https://venizor.com/services/saas-product-development
 
-### G. Growth Engineering, SEO, AEO, GEO & SXO
-- **SEO**: Semantic HTML, canonical routing, automated XML sitemaps, OpenGraph Edge rendering.
-- **AEO (Answer Engine Optimization)**: Schema.org JSON-LD microdata (`Organization`, `TechArticle`, `FAQPage`, `BreadcrumbList`).
-- **GEO (Generative Engine Optimization)**: Fact-dense semantic citations, entity graphs, and standardized AI indexing (`llms.txt`).
-- **SXO (Search Experience Optimization)**: Frictionless post-click conversion funnels, interactive brief builders, sub-100ms interactions.
+### Digital marketing
+Digital marketing connects your audience, message and distribution channels to a measurable business goal. We help teams plan content and campaigns, improve landing journeys and understand which activities lead to useful conversations. The work starts with your positioning and measurement baseline rather than promises of traffic or revenue.
+Source: https://venizor.com/services/digital-marketing
 
----
+### Technical SEO
+Technical SEO helps search engines discover and understand your website while improving the experience for visitors. We review crawling, indexing, page structure, metadata and performance, then connect technical fixes to a helpful content plan. The service suits businesses that need a maintainable search foundation and clear measurement of progress.
+Source: https://venizor.com/services/seo
 
-## 3. Engagement Models
-1. **Zero-to-One Product Incubator**: From concept validation to production MVP in 6 to 10 weeks.
-2. **Dedicated Engineering Pod**: Embedded senior squad (Architect + Full-Stack Engineer + Design Systems Lead) accelerating product roadmaps.
-3. **Modernization & AI Integration**: Legacy refactoring, edge cloud migration, and intelligent automation pipelines.
-
----
-
-## 4. Interactive Tools & Architectural Playbooks
-- **Stack Compatibility Playbook (https://venizor.com/playbook)**: Evaluates frontend, backend, database, AI, and DevOps technology combinations with live synergy scoring and security hardening checklists.
-- **Architecture Pipeline Simulator (https://venizor.com/simulator)**: Real-time interactive simulation of webhook idempotency locks, circuit breakers, and pgvector RAG vector retrieval.
-- **Quantified Case Studies & Telemetry (https://venizor.com/case-studies)**: Production benchmarks across FinTech (OmniFlow), Healthcare AI (PulseAI), Logistics (Nexus), and E-Commerce.
-- **Developer Micro-Tools (https://venizor.com/tools)**: Browser-based utilities for HMAC-SHA256 webhook debugging, LLM token pricing estimation, and CSP security header generation.
-- **Project Scoping Intake Wizard (https://venizor.com/scope)**: 4-step interactive architecture scoping tool generating complexity profiles and sprint delivery estimates.
-
----
-
-## 5. Primary Inquiries
-- Studio Email: info@venizor.com
-- Project Form: https://venizor.com/contact
-- Headquarters: India (Serving clients worldwide across US, UK, Europe, Australia, and Asia-Pacific)
+### Answer engine optimization
+Answer engine optimization makes your business information easier for people and automated systems to understand. We help teams structure accurate service descriptions, useful answers and consistent entity details, supported by appropriate schema. This complements search fundamentals and original expertise; it cannot guarantee a citation, recommendation or placement in an AI answer.
+Source: https://venizor.com/services/answer-engine-optimization

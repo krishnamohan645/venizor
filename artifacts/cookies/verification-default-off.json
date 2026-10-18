@@ -1,0 +1,21 @@
+{
+  "mode": "default-off",
+  "checks": [
+    "No analytics requests or referral storage occur before permission; the banner matches configured services",
+    "The settings dialog has focus trapping, Escape, focus restoration and no automatic permission change",
+    "The banner/settings fit tablet and small phones; expired consent requests a fresh choice when providers are enabled",
+    "Blocked browser storage preserves an in-memory choice and explains the persistence limit"
+  ],
+  "requestsInterceptedLocally": [],
+  "accessibility": [
+    {
+      "label": "preferences dialog",
+      "violations": []
+    },
+    {
+      "label": "mobile preferences",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

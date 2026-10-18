@@ -1,35 +1,39 @@
 "use client";
-import { ScrollProjectGallery } from "./scroll-project-gallery";
 import { IndustryArt } from "./industry-art";
+import { ScrollProjectGallery } from "./scroll-project-gallery";
+import { OptionalFeatureBoundary } from "./optional-feature-boundary";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Image from "next/image";
-import {
-  motion,
-  useInView,
-  useReducedMotion,
-  useScroll,
-  useMotionValue,
-  useMotionValueEvent,
-} from "motion/react";
+import { services } from "@/data/services";
+import { scrollPageTo } from "@/lib/smooth-scroll";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowDown,
   ArrowUpRight,
+  ChartNoAxesCombined,
   Check,
   CodeXml,
-  Smartphone,
-  ChartNoAxesCombined,
   Layers3,
   Menu,
   Minus,
   Plus,
   RotateCcw,
   Search,
+  Smartphone,
   Sparkles,
   X,
 } from "lucide-react";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ContactButton, DetailButton, useExperienceDialog } from "./experience";
 
 const navItems = [
@@ -61,6 +65,7 @@ export function StudioHeader() {
           src="/logo-banner.jpeg"
           width={1600}
           height={800}
+          sizes="(max-width: 640px) 155px, 190px"
           alt="VENIZOR — Innovate with confidence"
           preload
         />
@@ -71,19 +76,23 @@ export function StudioHeader() {
         aria-label="Main navigation"
       >
         {navItems.map(([label, id], index) => (
-          <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
+          <a
+            key={id}
+            href={id === "services" ? "/services" : `#${id}`}
+            onClick={() => setMenuOpen(false)}
+          >
             {label}
             <sup>0{index + 1}</sup>
           </a>
         ))}
-        <a href="/about" onClick={() => setMenuOpen(false)}>
+        <Link href="/about" onClick={() => setMenuOpen(false)}>
           Who we are
           <sup>05</sup>
-        </a>
-        <a href="/blog" onClick={() => setMenuOpen(false)}>
+        </Link>
+        <Link href="/blog" onClick={() => setMenuOpen(false)}>
           Blog
           <sup>06</sup>
-        </a>
+        </Link>
         <a
           className="mobile-contact"
           href="/contact"
@@ -137,12 +146,12 @@ export function StudioIntro() {
           .fromTo(
             ".intro-word",
             { yPercent: 110 },
-            { yPercent: 0, stagger: 0.08, duration: 0.5, ease: "power3.out" },
+            { yPercent: 0, stagger: 0.055, duration: 0.4, ease: "power3.out" },
           )
           .to(
             overlay.current,
-            { yPercent: -100, duration: 0.8, ease: "power3.inOut" },
-            "+=.25",
+            { yPercent: -100, duration: 0.6, ease: "power3.inOut" },
+            "+=.1",
           )
           .set(overlay.current, { visibility: "hidden" })
           .call(() => {
@@ -157,11 +166,11 @@ export function StudioIntro() {
         .from(
           ".hero-title-inner",
           {
-            yPercent: 115,
-            rotation: 4,
+            yPercent: 100,
+            rotation: 1.5,
             opacity: 0,
-            stagger: 0.12,
-            duration: 1,
+            stagger: 0.075,
+            duration: 0.7,
             ease: "power3.out",
           },
           played ? 0 : "-=.3",
@@ -169,25 +178,25 @@ export function StudioIntro() {
         .from(
           ".hero-editorial-aside, .hero-topline",
           {
-            y: 30,
+            y: 18,
             opacity: 0,
             stagger: 0.1,
-            duration: 0.8,
+            duration: 0.5,
             ease: "power3.out",
           },
-          "-=.65",
+          "-=.45",
         )
         .from(
           ".mosaic-tile",
           {
-            y: 90,
+            y: 40,
             opacity: 0,
-            scale: 0.85,
-            stagger: { amount: 0.65, from: "center" },
-            duration: 1,
+            scale: 0.95,
+            stagger: { amount: 0.35, from: "center" },
+            duration: 0.65,
             ease: "power3.out",
           },
-          "-=.6",
+          "-=.35",
         );
     });
     return () => media.revert();
@@ -213,6 +222,12 @@ export function StudioIntro() {
 
 export function HeroScene() {
   const scene = useRef<HTMLDivElement>(null);
+  const pointerLight = useRef<HTMLDivElement>(null);
+  const pointer = useRef<{
+    x: (value: number) => void;
+    y: (value: number) => void;
+    opacity: (value: number) => void;
+  } | null>(null);
   const reduced = useReducedMotion();
   const [paused, setPaused] = useState(false);
   const inView = useInView(scene);
@@ -228,6 +243,28 @@ export function HeroScene() {
   useEffect(() => {
     if (reduced || paused) y.set("0%");
   }, [reduced, paused, y]);
+  useLayoutEffect(() => {
+    const media = gsap.matchMedia();
+    media.add(
+      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+      () => {
+        const light = pointerLight.current;
+        if (!light || paused) return;
+        pointer.current = {
+          x: gsap.quickTo(light, "x", { duration: 0.28, ease: "power3.out" }),
+          y: gsap.quickTo(light, "y", { duration: 0.28, ease: "power3.out" }),
+          opacity: gsap.quickTo(light, "opacity", {
+            duration: 0.2,
+            ease: "power2.out",
+          }),
+        };
+        return () => {
+          pointer.current = null;
+        };
+      },
+    );
+    return () => media.revert();
+  }, [paused]);
   useLayoutEffect(() => {
     const media = gsap.matchMedia();
     media.add(
@@ -259,7 +296,6 @@ export function HeroScene() {
           ".mosaic-tile:nth-child(4n) i",
           {
             scale: 0.68,
-            borderRadius: "50%",
             duration: 0.75,
             stagger: 0.09,
             repeat: 1,
@@ -284,25 +320,19 @@ export function HeroScene() {
       className="hero-sculpture"
       ref={scene}
       onPointerMove={(event) => {
-        if (reduced || paused || event.pointerType !== "mouse") return;
+        if (!pointer.current || event.pointerType !== "mouse") return;
         const box = event.currentTarget.getBoundingClientRect();
-        gsap.to(event.currentTarget.querySelector(".hero-pointer-light"), {
-          x: event.clientX - box.left,
-          y: event.clientY - box.top,
-          opacity: 1,
-          duration: 0.7,
-          overwrite: true,
-        });
+        pointer.current.x(event.clientX - box.left);
+        pointer.current.y(event.clientY - box.top);
+        pointer.current.opacity(1);
       }}
-      onPointerLeave={(event) =>
-        gsap.to(event.currentTarget.querySelector(".hero-pointer-light"), {
-          opacity: 0,
-          duration: 0.5,
-          overwrite: true,
-        })
-      }
+      onPointerLeave={() => pointer.current?.opacity(0)}
     >
-      <div className="hero-pointer-light" aria-hidden="true" />
+      <div
+        ref={pointerLight}
+        className="hero-pointer-light"
+        aria-hidden="true"
+      />
       <motion.div className="hero-mosaic" style={{ y }} aria-hidden="true">
         {Array.from({ length: 36 }, (_, index) => (
           <div className={`mosaic-tile mosaic-${index % 12}`} key={index}>
@@ -555,14 +585,12 @@ export function ExpandingServices() {
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
-                <DetailButton
+                <Link
                   className="text-link"
-                  title={service.title}
-                  description={service.description}
-                  features={service.features}
+                  href={`/services/${services[index].slug}`}
                 >
                   Explore this service <ArrowUpRight size={17} />
-                </DetailButton>
+                </Link>
               </div>
             </div>
           </div>
@@ -1192,10 +1220,11 @@ export function IndustryPlayground() {
                 return;
               }
               setSelected(index);
-              document.getElementById("industry-solution")?.scrollIntoView({
-                behavior: reduced ? "instant" : "smooth",
-                block: "center",
-              });
+              const solution = document.getElementById("industry-solution");
+              if (solution)
+                scrollPageTo(solution, {
+                  immediate: Boolean(reduced) || event.detail === 0,
+                });
             }}
             onKeyDown={(event) => {
               const body = bodies.current[index];
@@ -1245,6 +1274,14 @@ export function IndustryPlayground() {
 }
 
 export function ShaderFooter() {
+  return (
+    <OptionalFeatureBoundary feature="footer-animation">
+      <FooterArtwork />
+    </OptionalFeatureBoundary>
+  );
+}
+
+function FooterArtwork() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const reduced = useReducedMotion();
   const inView = useInView(canvas, { margin: "150px" });

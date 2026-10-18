@@ -1,0 +1,115 @@
+.search-dialog {
+  width: min(760px, calc(100vw - 32px));
+}
+.search-dialog .search-field {
+  position: relative;
+}
+.search-dialog .search-field input {
+  min-width: 0;
+  padding-right: 38px;
+}
+.search-dialog input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+.search-dialog .site-search-clear {
+  position: absolute;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+}
+.site-search-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 16px 0;
+}
+.site-search-topics button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink);
+  padding: 7px 12px;
+  font-size: 12px;
+  min-height: 34px;
+  transition:
+    background 160ms,
+    border-color 160ms,
+    color 160ms;
+}
+.site-search-topics button:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.site-search-topics button[aria-pressed="true"] {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+.site-search-status {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.search-dialog .search-results {
+  margin-top: 8px;
+}
+.search-dialog .search-results > a {
+  gap: 20px;
+  padding: 18px 10px;
+  border-radius: 4px;
+  transition:
+    background 160ms,
+    color 160ms;
+}
+.site-search-copy {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.site-search-kind {
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.site-search-title {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+.site-search-description {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.search-results > a > svg {
+  flex-shrink: 0;
+  color: var(--blue);
+}
+.site-search-empty {
+  padding: 20px 4px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.site-search-empty .text-link {
+  margin: 12px 18px 0 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-search-topics button,
+  .search-dialog .search-results > a {
+    transition: none;
+  }
+}

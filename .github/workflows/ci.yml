@@ -1,0 +1,67 @@
+name: Next.js Production CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build-and-validate:
+    name: Build & Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: TypeScript Type Check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Lead delivery tests (mock providers)
+        run: npm test
+
+      - name: Next.js Production Build
+        run: npm run build
+
+      - name: Install browser for verification
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify built site and accessibility
+        run: npm run verify:design
+
+      - name: Build cookie scenario with fake providers
+        run: npm run build
+        env:
+          NEXT_PUBLIC_GA_ID: G-CONSENTTEST
+          NEXT_PUBLIC_VERCEL_ANALYTICS: "true"
+
+      - name: Verify optional consent (all provider requests intercepted)
+        run: npm run verify:cookies
+        env:
+          COOKIE_TEST_MODE: optional
+
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-verification
+          path: |
+            artifacts/production/
+            artifacts/refinement/
+            artifacts/playbook/
+            artifacts/smooth-motion/
+            artifacts/error-recovery/
+            artifacts/cookies/

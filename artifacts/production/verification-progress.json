@@ -1,0 +1,56 @@
+{
+  "checks": [
+    "Page, metadata and desktop layout: /",
+    "Page, metadata and desktop layout: /about",
+    "Page, metadata and desktop layout: /blog",
+    "Page, metadata and desktop layout: /contact",
+    "Page, metadata and desktop layout: /case-studies",
+    "Page, metadata and desktop layout: /services",
+    "Page, metadata and desktop layout: /services/web-development",
+    "Page, metadata and desktop layout: /services/web-applications",
+    "Page, metadata and desktop layout: /services/mobile-app-development",
+    "Page, metadata and desktop layout: /services/ai-automation",
+    "Page, metadata and desktop layout: /services/saas-product-development",
+    "Page, metadata and desktop layout: /services/digital-marketing",
+    "Page, metadata and desktop layout: /services/seo",
+    "Page, metadata and desktop layout: /services/answer-engine-optimization",
+    "Page, metadata and desktop layout: /scope",
+    "Page, metadata and desktop layout: /simulator",
+    "Page, metadata and desktop layout: /playbook",
+    "Page, metadata and desktop layout: /tools",
+    "Page, metadata and desktop layout: /careers",
+    "Page, metadata and desktop layout: /privacy",
+    "Page, metadata and desktop layout: /terms",
+    "Landing sections occupy at least one viewport; light chapters; mobile navigation works",
+    "No page overflow at 320, 390 and 768px on the primary journeys",
+    "Blog search, URL query, filters, empty state and all 12 article diagrams work",
+    "Scope result and downloadable report are ungated; simulator offers its report after a run",
+    "Dialog closes with Escape and restores focus; service accordion works from the keyboard",
+    "Contact validation works; disabled delivery returns 503; cron rejects unauthorized calls; health is live and uncached",
+    "Sitemap covers all pages; share images are 1200×630; security headers are present",
+    "Blog illustrations animate and pause; reduced-motion rendering also checked"
+  ],
+  "accessibility": [
+    {
+      "route": "/",
+      "violations": []
+    },
+    {
+      "route": "/blog",
+      "violations": []
+    },
+    {
+      "route": "/contact",
+      "violations": []
+    },
+    {
+      "route": "/case-studies",
+      "violations": []
+    },
+    {
+      "route": "/services/web-development",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

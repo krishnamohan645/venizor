@@ -1,0 +1,39 @@
+{
+  "mode": "mock-providers",
+  "checks": [
+    "No analytics requests or referral storage occur before permission; the banner matches configured services",
+    "Necessary only persists across reloads and leaves all optional scripts blocked",
+    "The settings dialog has focus trapping, Escape, focus restoration and no automatic permission change",
+    "Explicit permission loads only intercepted provider scripts; consent defaults precede Google configuration and Vercel guards allow authorized events",
+    "Withdrawal disables loaded Google tracking, removes accessible analytics cookies/referral data, blocks Vercel events and synchronizes across tabs",
+    "The banner/settings fit tablet and small phones; expired consent requests a fresh choice when providers are enabled",
+    "Blocked browser storage preserves an in-memory choice and explains the persistence limit",
+    "Accept all on a fresh visit enables only the configured, locally intercepted providers"
+  ],
+  "requestsInterceptedLocally": [
+    "https://www.googletagmanager.com/gtag/js?id=G-CONSENTTEST",
+    "http://127.0.0.1:3100/_vercel/insights/script.js",
+    "http://127.0.0.1:3100/_vercel/speed-insights/script.js",
+    "https://www.googletagmanager.com/gtag/js?id=G-CONSENTTEST",
+    "http://127.0.0.1:3100/_vercel/insights/script.js",
+    "http://127.0.0.1:3100/_vercel/speed-insights/script.js",
+    "https://www.googletagmanager.com/gtag/js?id=G-CONSENTTEST",
+    "http://127.0.0.1:3100/_vercel/insights/script.js",
+    "http://127.0.0.1:3100/_vercel/speed-insights/script.js"
+  ],
+  "accessibility": [
+    {
+      "label": "first-visit banner",
+      "violations": []
+    },
+    {
+      "label": "preferences dialog",
+      "violations": []
+    },
+    {
+      "label": "mobile preferences",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

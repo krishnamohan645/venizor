@@ -66,13 +66,13 @@ try {
   const apiPill = pageBlog.locator(".blog-cat-pill", { hasText: "APIs & Integrations" });
   await apiPill.click();
   await pageBlog.waitForTimeout(300);
-  assert.equal(await pageBlog.locator(".article-card").count(), 1);
+  assert.equal(await pageBlog.locator(".article-card").count(), 2);
 
   // Reset to All
   const allPill = pageBlog.locator(".blog-cat-pill", { hasText: "All" });
   await allPill.click();
   await pageBlog.waitForTimeout(300);
-  assert.equal(await pageBlog.locator(".article-card").count(), 6);
+  assert.equal(await pageBlog.locator(".article-card").count(), 12);
 
   // Test live search filter
   const searchInput = pageBlog.locator(".blog-search-input");
