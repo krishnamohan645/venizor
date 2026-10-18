@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Small round cursor follows mouse position and hides for keyboard navigation",
+    "Hero artwork responds to pointer movement",
+    "All eight services have complete keyboard-accessible animated panels",
+    "Project selection updates editorial content; live chart animation pauses correctly",
+    "Product sculptures animate over time and stop with the pause control",
+    "Process progress follows scrolling and phase deliverables expand",
+    "All eight industry selections show distinct solutions and useful examples",
+    "Industry call to action opens the project enquiry form",
+    "Industry selector and completed content work at tablet and mobile widths",
+    "Reduced motion removes the pointer follower and new decorative loops without hydration errors"
+  ],
+  "errors": []
+}

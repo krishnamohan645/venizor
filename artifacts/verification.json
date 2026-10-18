@@ -1,0 +1,23 @@
+{
+  "checks": [
+    "Layout and hero text fit at 1440px",
+    "Layout and hero text fit at 1024px",
+    "Layout and hero text fit at 768px",
+    "Layout and hero text fit at 390px",
+    "Layout and hero text fit at 320px",
+    "No generated image assets are used",
+    "Mobile navigation opens, navigates, and closes",
+    "Services expand and collapse from the keyboard",
+    "Project slider supports tabs, arrow keys, and direction controls",
+    "Project detail dialog restores keyboard focus",
+    "Service-to-enquiry transition retains its original focus target",
+    "Enquiry creates a reviewable email draft and invalidates stale drafts",
+    "Site search filters navigation",
+    "Process timeline tracks the active step",
+    "Industry wall supports keyboard movement and inline solution selection",
+    "Hero and shader motion can be paused",
+    "Reduced motion disables the intro and motion controls",
+    "No browser runtime or hydration errors"
+  ],
+  "errors": []
+}

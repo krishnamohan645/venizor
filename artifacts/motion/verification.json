@@ -1,0 +1,39 @@
+{
+  "checks": [
+    "Intro visibly animates on a fresh session",
+    "Hero geometry visibly rotates over time",
+    "Hero motion pauses immediately",
+    "Studio statement fills in as the page scrolls",
+    "Projects stay pinned while vertical scrolling moves the cards horizontally",
+    "Process cards stack and hold their position as the next step arrives",
+    "Process navigation tracks the current card when scrolling back",
+    "Mobile uses a swipeable gallery without a long pinned scene",
+    "Selected project remains visible when switching to mobile",
+    "Reduced motion restores static, readable content and removes pinning",
+    "No runtime or hydration errors"
+  ],
+  "observations": {
+    "intro": {
+      "before": "matrix(1, 0, 0, 1, 0, 41.7795)",
+      "after": "matrix(1, 0, 0, 1, 0, 0.396733)"
+    },
+    "heroTile": {
+      "movingTiles": 19
+    },
+    "manifesto": {
+      "before": 0,
+      "after": 1
+    },
+    "projects": {
+      "pinnedBefore": 24,
+      "pinnedAfter": 24,
+      "trackBefore": "matrix(1, 0, 0, 1, -144.428, 0)",
+      "trackAfter": "matrix(1, 0, 0, 1, -2143.91, 0)"
+    },
+    "process": {
+      "before": 88,
+      "after": 88
+    }
+  },
+  "errors": []
+}
