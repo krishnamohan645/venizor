@@ -1,5 +1,6 @@
-﻿"use client";
+"use client";
 import { ScrollProjectGallery } from "./scroll-project-gallery";
+import { IndustryArt } from "./industry-art";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -1051,7 +1052,7 @@ export function IndustryPlayground() {
         aria-label={`${industryLabels[selected].replace(" ↗", "")} solutions`}
       >
         <div className="industry-solution-art" aria-hidden="true">
-          <svg viewBox="0 0 320 230" fill="none">
+          <svg className="industry-bg-orbit" viewBox="0 0 320 230" fill="none">
             <path
               className="industry-orbit"
               d="M160 35C295 35 295 195 160 195S25 35 160 35Z"
@@ -1060,21 +1061,8 @@ export function IndustryPlayground() {
               className="industry-orbit second"
               d="M45 115C45-5 275-5 275 115S45 235 45 115Z"
             />
-            <path
-              d="M45 115H275M160 35V195"
-              stroke="currentColor"
-              opacity=".15"
-            />
-            {[0, 1, 2, 3, 4, 5, 6, 7].map((n) => (
-              <circle
-                key={n}
-                cx={160 + Math.cos((n * Math.PI) / 4) * 106}
-                cy={115 + Math.sin((n * Math.PI) / 4) * 78}
-                r={selected === n ? 9 : 4}
-                className={selected === n ? "selected" : ""}
-              />
-            ))}
           </svg>
+          <IndustryArt selected={selected} />
           <span className="industry-coordinate">
             0{selected + 1} / CONNECTED POSSIBILITIES
           </span>

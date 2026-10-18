@@ -145,3 +145,129 @@ export function ProductMotion({ children }: { children: ReactNode }) {
     </div>
   );
 }
+
+const DEFAULT_HERO_WORDS = [
+  "execution.",
+  "innovation.",
+  "momentum.",
+  "precision.",
+  "scale.",
+  "velocity.",
+];
+
+export function HeroWordsCycle({
+  words = DEFAULT_HERO_WORDS,
+  initialDelayMs = 2000,
+  intervalMs = 2600,
+}: {
+  words?: string[];
+  initialDelayMs?: number;
+  intervalMs?: number;
+}) {
+  const [state, setState] = useState<{
+    current: number;
+    prev: number | null;
+    isAnimating: boolean;
+  }>({
+    current: 0,
+    prev: null,
+    isAnimating: false,
+  });
+
+  const animTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const cycleTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const isPausedRef = useRef(false);
+
+  const advance = () => {
+    setState((prev) => ({
+      current: (prev.current + 1) % words.length,
+      prev: prev.current,
+      isAnimating: true,
+    }));
+
+    if (animTimerRef.current) clearTimeout(animTimerRef.current);
+    animTimerRef.current = setTimeout(() => {
+      setState((prev) => ({
+        ...prev,
+        prev: null,
+        isAnimating: false,
+      }));
+    }, 500);
+  };
+
+  useEffect(() => {
+    const heroSection = document.querySelector(".studio-hero");
+    if (!heroSection) return;
+
+    const updatePaused = () => {
+      isPausedRef.current =
+        heroSection.getAttribute("data-motion-paused") === "true";
+    };
+    updatePaused();
+
+    const observer = new MutationObserver(updatePaused);
+    observer.observe(heroSection, {
+      attributes: true,
+      attributeFilter: ["data-motion-paused"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const startCycle = () => {
+      if (!isPausedRef.current) advance();
+      cycleTimerRef.current = setInterval(() => {
+        if (!isPausedRef.current) advance();
+      }, intervalMs);
+    };
+
+    const initialTimer = setTimeout(startCycle, initialDelayMs);
+
+    return () => {
+      clearTimeout(initialTimer);
+      if (cycleTimerRef.current) clearInterval(cycleTimerRef.current);
+      if (animTimerRef.current) clearTimeout(animTimerRef.current);
+    };
+  }, [initialDelayMs, intervalMs]);
+
+  const { current, prev, isAnimating } = state;
+
+  return (
+    <span
+      className="hero-word-rotator"
+      role="button"
+      tabIndex={0}
+      title="Click to cycle next word"
+      aria-label={`Vision meets ${words[current].replace(".", "")}. Click to cycle.`}
+      onClick={advance}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          advance();
+        }
+      }}
+    >
+      <span className="hero-word-track">
+        {isAnimating && prev !== null && (
+          <span className="hero-word-slide hero-word-exit" aria-hidden="true">
+            <span className="hero-word-text">{words[prev]}</span>
+            <span className="hero-asterisk" aria-hidden="true">
+              ✳
+            </span>
+          </span>
+        )}
+        <span
+          className={`hero-word-slide ${
+            isAnimating ? "hero-word-enter" : "hero-word-current"
+          }`}
+        >
+          <span className="hero-word-text">{words[current]}</span>
+          <span className="hero-asterisk" aria-hidden="true">
+            ✳
+          </span>
+        </span>
+      </span>
+    </span>
+  );
+}

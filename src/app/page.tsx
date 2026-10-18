@@ -1,4 +1,4 @@
-﻿import { ArrowDown, ArrowUpRight, Asterisk, Plus } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Asterisk, Plus } from "lucide-react";
 import {
   ContactButton,
   DetailButton,
@@ -16,7 +16,11 @@ import {
   StudioIntro,
 } from "@/components/studio-experience";
 import { ScrollDirection, ScrollWords } from "@/components/scroll-direction";
-import { CursorFollower, ProductMotion } from "@/components/motion-details";
+import {
+  CursorFollower,
+  HeroWordsCycle,
+  ProductMotion,
+} from "@/components/motion-details";
 
 const perspectives = [
   {
@@ -58,10 +62,7 @@ export default function Home() {
                 </span>
                 <span className="hero-title-line">
                   <span className="hero-title-inner hero-title-blue">
-                    execution.
-                    <span className="hero-asterisk" aria-hidden="true">
-                      ✳
-                    </span>
+                    <HeroWordsCycle />
                   </span>
                 </span>
               </h1>

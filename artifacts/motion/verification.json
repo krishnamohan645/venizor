@@ -14,8 +14,8 @@
   ],
   "observations": {
     "intro": {
-      "before": "matrix(1, 0, 0, 1, 0, 41.7795)",
-      "after": "matrix(1, 0, 0, 1, 0, 0.396733)"
+      "before": "matrix(1, 0, 0, 1, 0, 40.4116)",
+      "after": "matrix(1, 0, 0, 1, 0, 0.440553)"
     },
     "heroTile": {
       "movingTiles": 19
@@ -27,8 +27,8 @@
     "projects": {
       "pinnedBefore": 24,
       "pinnedAfter": 24,
-      "trackBefore": "matrix(1, 0, 0, 1, -144.428, 0)",
-      "trackAfter": "matrix(1, 0, 0, 1, -2143.91, 0)"
+      "trackBefore": "matrix(1, 0, 0, 1, -145.61, 0)",
+      "trackAfter": "matrix(1, 0, 0, 1, -2145.09, 0)"
     },
     "process": {
       "before": 88,
