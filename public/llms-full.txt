@@ -1,0 +1,74 @@
+# VENIZOR Comprehensive Knowledge Base & Technical Blueprint
+> Complete context repository for AI Agents, LLM crawlers, and Answer Engines.
+> Website: https://venizor.com
+
+---
+
+## 1. Company Identity & Mission
+VENIZOR is an independent technology and digital product studio headquartered in India and operating globally. We engineer web applications, SaaS platforms, custom APIs, intelligent AI workflows, and cloud infrastructure. We believe software should feel like craft, rejecting bloated agency models and feature factories in favor of senior-led multidisciplinary engineering.
+
+---
+
+## 2. Technical Specializations & Stack
+
+### A. Web & Mobile Architecture
+- **Frameworks**: Next.js (App Router, Turbopack, React Server Components), React 19, TypeScript, Node.js, Python.
+- **Styling & Interaction**: Vanilla CSS, design tokens, Tailwind CSS, GSAP (GreenSock), Framer Motion (`motion/react`), HTML5 Canvas shaders.
+- **Standards**: WCAG 2.2 Level AA accessibility, 60fps micro-animations, Core Web Vitals optimization (LCP < 1.2s, CLS 0, INP < 100ms).
+
+### B. APIs & Third-Party HTTPS Integrations
+- **Protocols**: RESTful APIs, GraphQL Federation, gRPC with Protocol Buffers, WebSockets, Server-Sent Events (SSE).
+- **HTTPS Third-Party Integrations**:
+  - Payment Gateways: Stripe, PayPal, Lemon Squeezy (subscription lifecycles, webhook idempotency, usage-based billing).
+  - AI Providers: OpenAI, Anthropic, Google Gemini, Groq, Mistral, local Ollama / vLLM deployments.
+  - Telephony & Voice: Twilio, Retell AI, Vapi, ElevenLabs.
+  - CRMs & Automation: HubSpot, Salesforce, Zapier webhooks.
+- **Resilience Engineering**: SHA-256 idempotency hashing, exponential jitter backoff, BullMQ/Redis distributed background task workers, circuit breaker failovers.
+
+### C. Applied AI, RAG & Machine Learning
+- **Vector Search**: PostgreSQL `pgvector`, Pinecone, Qdrant, Milvus.
+- **Retrieval Architecture**: Hybrid search combining dense embeddings with sparse BM25 keyword rankings via Reciprocal Rank Fusion (RRF).
+- **Agent Pipelines**: Deterministic tool calling, memory management, multi-agent orchestration, guardrails, and streaming optimistic UI.
+
+### D. Databases & High-Performance Data
+- **Engines**: PostgreSQL, Redis, ClickHouse, DuckDB, Supabase.
+- **Optimization**: PgBouncer transaction pooling, partial index design, query plan profiling via `EXPLAIN (ANALYZE, BUFFERS)`, replica read-splitting.
+
+### E. Cloud DevOps, Deployments & Reliability
+- **Containers**: Multi-stage lightweight Docker images (< 95MB), Docker Compose dev parity.
+- **CI/CD**: GitHub Actions automated linting, type validation, Playwright end-to-end testing, and security scanning.
+- **Cloud & Edge**: Cloudflare Workers, AWS (Lambda, ECS, S3, RDS), Vercel.
+- **Zero-Downtime Releases**: Blue-green routing, canary validation, expand-contract database migrations, 24/7 uptime telemetry.
+
+### F. Application Security & Hardening
+- **OWASP Defense**: Strict Content Security Policy (CSP), parameterized SQL binding, input schema sanitization, HTTP-only Secure SameSite=Strict cookies.
+- **Auth Systems**: OAuth2, OIDC, WebAuthn/Passkeys, multi-tenant RBAC.
+
+### G. Growth Engineering, SEO, AEO, GEO & SXO
+- **SEO**: Semantic HTML, canonical routing, automated XML sitemaps, OpenGraph Edge rendering.
+- **AEO (Answer Engine Optimization)**: Schema.org JSON-LD microdata (`Organization`, `TechArticle`, `FAQPage`, `BreadcrumbList`).
+- **GEO (Generative Engine Optimization)**: Fact-dense semantic citations, entity graphs, and standardized AI indexing (`llms.txt`).
+- **SXO (Search Experience Optimization)**: Frictionless post-click conversion funnels, interactive brief builders, sub-100ms interactions.
+
+---
+
+## 3. Engagement Models
+1. **Zero-to-One Product Incubator**: From concept validation to production MVP in 6 to 10 weeks.
+2. **Dedicated Engineering Pod**: Embedded senior squad (Architect + Full-Stack Engineer + Design Systems Lead) accelerating product roadmaps.
+3. **Modernization & AI Integration**: Legacy refactoring, edge cloud migration, and intelligent automation pipelines.
+
+---
+
+## 4. Interactive Tools & Architectural Playbooks
+- **Stack Compatibility Playbook (https://venizor.com/playbook)**: Evaluates frontend, backend, database, AI, and DevOps technology combinations with live synergy scoring and security hardening checklists.
+- **Architecture Pipeline Simulator (https://venizor.com/simulator)**: Real-time interactive simulation of webhook idempotency locks, circuit breakers, and pgvector RAG vector retrieval.
+- **Quantified Case Studies & Telemetry (https://venizor.com/case-studies)**: Production benchmarks across FinTech (OmniFlow), Healthcare AI (PulseAI), Logistics (Nexus), and E-Commerce.
+- **Developer Micro-Tools (https://venizor.com/tools)**: Browser-based utilities for HMAC-SHA256 webhook debugging, LLM token pricing estimation, and CSP security header generation.
+- **Project Scoping Intake Wizard (https://venizor.com/scope)**: 4-step interactive architecture scoping tool generating complexity profiles and sprint delivery estimates.
+
+---
+
+## 5. Primary Inquiries
+- Studio Email: info@venizor.com
+- Project Form: https://venizor.com/contact
+- Headquarters: India (Serving clients worldwide across US, UK, Europe, Australia, and Asia-Pacific)

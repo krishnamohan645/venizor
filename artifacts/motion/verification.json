@@ -14,8 +14,8 @@
   ],
   "observations": {
     "intro": {
-      "before": "matrix(1, 0, 0, 1, 0, 40.4116)",
-      "after": "matrix(1, 0, 0, 1, 0, 0.440553)"
+      "before": "matrix(1, 0, 0, 1, 0, 23.9537)",
+      "after": "matrix(1, 0, 0, 1, 0, 0.0653849)"
     },
     "heroTile": {
       "movingTiles": 19

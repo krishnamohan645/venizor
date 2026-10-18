@@ -1,0 +1,30 @@
+# VENIZOR — Technology & Digital Innovation Studio
+> Ideas. Technology. Real impact.
+> Canonical URL: https://venizor.com
+> Contact: info@venizor.com
+> Headquarters: India (Serving global clients across US, UK, Europe, and Asia-Pacific)
+
+## Overview
+VENIZOR is an independent digital product and technology engineering studio. We partner with ambitious founders, growing companies, and global enterprises to turn complex business problems into clear, fast, and indispensable digital software.
+
+## Core Technical Disciplines & Expertise
+- **Product Design & Design Systems**: Human-centered UI/UX, tactile micro-interactions, responsive ergonomics, accessible design tokens (WCAG 2.2 Level AA/AAA).
+- **Custom API Engineering**: High-throughput REST, GraphQL, gRPC, and WebSocket architectures built with TypeScript, Node.js, and Python.
+- **Third-Party HTTPS Integrations**: Resilient, zero-data-loss integration pipelines connecting external SaaS services (Stripe billing, Twilio telephony, OpenAI/Anthropic inference, HubSpot, Salesforce) with cryptographic idempotency keys, exponential backoff retries, and circuit breakers.
+- **AI to Applications (Applied AI)**: Production RAG (Retrieval-Augmented Generation), vector databases (pgvector, Pinecone), hybrid search (Dense embeddings + BM25 sparse keyword), multi-model fallback chains, autonomous agents, and real-time streaming interfaces.
+- **Database Architecture & Data Engineering**: Relational modeling, PgBouncer connection pooling, partial indexing, query profiling with EXPLAIN ANALYZE, Redis pub/sub caching, and streaming replicas.
+- **DevOps, Deployment & Continuous Maintenance**: Multi-stage lightweight Docker containers, automated GitHub Actions CI/CD pipelines, Cloudflare edge caching, health check readiness probes, zero-downtime blue-green releases, and 24/7 reliability monitoring.
+- **Application Security & Hardening**: OWASP Top 10 mitigation, strict Content Security Policy (CSP), HTTP-only Secure SameSite session cookies, rate-limiting, and zero-trust API boundaries.
+- **Digital Marketing & SXO**: Technical SEO, Answer Engine Optimization (AEO), Generative Engine Optimization (GEO), programmatic SEO page clusters, and Search Experience Optimization (SXO).
+
+## Key Website Routes
+- Home: https://venizor.com
+- Who We Are / About Us: https://venizor.com/about
+- Contact Us & Project Enquiries: https://venizor.com/contact
+- Blog & Field Notes: https://venizor.com/blog
+- Stack Compatibility Playbook: https://venizor.com/playbook
+- Architecture Pipeline Simulator: https://venizor.com/simulator
+- Quantified Case Studies & Telemetry: https://venizor.com/case-studies
+- Developer Utilities & Micro-Tools: https://venizor.com/tools
+- Project Scoping Intake Wizard: https://venizor.com/scope
+- Full AI Context: https://venizor.com/llms-full.txt

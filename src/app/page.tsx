@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Asterisk, Plus } from "lucide-react";
 import {
   ContactButton,
@@ -381,17 +382,25 @@ export default function Home() {
               <a href="mailto:info@venizor.com">
                 info@venizor.com <ArrowUpRight size={20} />
               </a>
-              <ContactButton className="text-link" consultation>
-                Book a free consultation <ArrowUpRight size={18} />
-              </ContactButton>
+              <Link href="/contact" className="text-link">
+                Direct contact &amp; enquiries <ArrowUpRight size={18} />
+              </Link>
               <span>BASED IN INDIA. BUILDING FOR THE WORLD.</span>
             </div>
             <div className="footer-nav">
               <a href="#about">Studio</a>
+              <Link href="/about">Who we are</Link>
               <a href="#services">Services</a>
               <a href="#work">Our work</a>
               <a href="#products">Products</a>
               <a href="#insights">Insights</a>
+              <Link href="/blog">Blog &amp; Field Notes</Link>
+              <Link href="/playbook">Stack Playbook</Link>
+              <Link href="/simulator">Pipeline Simulator</Link>
+              <Link href="/case-studies">Case Studies</Link>
+              <Link href="/tools">Developer Tools</Link>
+              <Link href="/scope">Scope Wizard</Link>
+              <Link href="/contact">Contact us</Link>
               <a href="#top" className="footer-back-top">
                 Back to top <ArrowUpRight size={17} />
               </a>

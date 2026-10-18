@@ -76,12 +76,20 @@ export function StudioHeader() {
             <sup>0{index + 1}</sup>
           </a>
         ))}
+        <a href="/about" onClick={() => setMenuOpen(false)}>
+          Who we are
+          <sup>05</sup>
+        </a>
+        <a href="/blog" onClick={() => setMenuOpen(false)}>
+          Blog
+          <sup>06</sup>
+        </a>
         <a
           className="mobile-contact"
-          href="#contact"
+          href="/contact"
           onClick={() => setMenuOpen(false)}
         >
-          Contact
+          Contact Us
           <ArrowUpRight size={16} />
         </a>
       </nav>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   createContext,
@@ -40,7 +40,15 @@ const navigation = [
   ["Services", "services"],
   ["Industries", "industries"],
   ["Our work", "work"],
-  ["About", "about"],
+  ["About studio", "about"],
+  ["Who we are (page)", "/about"],
+  ["Blog & field notes", "/blog"],
+  ["Stack Playbook", "/playbook"],
+  ["Pipeline Simulator", "/simulator"],
+  ["Case Studies & Telemetry", "/case-studies"],
+  ["Developer Tools", "/tools"],
+  ["Project Scoping Wizard", "/scope"],
+  ["Contact us (page)", "/contact"],
   ["Insights", "insights"],
 ];
 
@@ -255,7 +263,11 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
                       name.toLowerCase().includes(query.toLowerCase()),
                     )
                     .map(([name, id]) => (
-                      <a key={id} href={`#${id}`} onClick={close}>
+                      <a
+                        key={id}
+                        href={id.startsWith("/") ? id : `#${id}`}
+                        onClick={close}
+                      >
                         {name}
                         <ArrowUpRight size={18} />
                       </a>
