@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "All 40 search destinations resolve to existing pages or homepage anchors",
+    "Inner-page search navigates to the homepage section, unlocks scrolling and passes accessibility checks",
+    "Same-page sections scroll correctly, including repeated searches for the current hash",
+    "Service and article matches open the actual detail pages through client navigation",
+    "Metadata search, all topic buttons, clear, empty state and Escape focus restoration work",
+    "Keyboard Enter and new-tab modified clicks preserve standard link behavior",
+    "Failed search requests keep the page usable and recover through retry",
+    "Closing during loading cancels the request and reopening loads cleanly",
+    "Mobile search supports long article titles, reduced motion and working navigation without overflow"
+  ],
+  "entries": 40,
+  "errors": []
+}

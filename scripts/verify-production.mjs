@@ -356,13 +356,13 @@ try {
   });
   const motionPage = await motionContext.newPage();
   await motionPage.goto(base + "/blog", { waitUntil: "networkidle" });
-  const route = motionPage.locator(".art-route").first();
+  const route = motionPage.locator(".illustration-float").first();
   const first = await route.evaluate(
-    (el) => getComputedStyle(el).strokeDashoffset,
+    (el) => getComputedStyle(el).transform,
   );
   await motionPage.waitForTimeout(400);
   assert.notEqual(
-    await route.evaluate((el) => getComputedStyle(el).strokeDashoffset),
+    await route.evaluate((el) => getComputedStyle(el).transform),
     first,
   );
   await motionPage.getByRole("button", { name: "Pause illustrations" }).click();

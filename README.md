@@ -14,14 +14,14 @@ Open [localhost:3000](http://localhost:3000).
 ## Checks
 
 ```sh
-npx tsc --noEmit
+npm run typecheck
+npm run lint
+npm test
 npm run build
-node scripts/verify-page.mjs
-node scripts/verify-motion.mjs
-node scripts/verify-enhancements.mjs
+npm run verify:design
 ```
 
-The browser check needs the development server on port 3000 and Google Chrome installed. It checks five viewport widths, mobile navigation, dialogs and keyboard focus, enquiry drafts, search, process details, animation controls, reduced motion, and runtime errors. Screenshots and results are saved in `artifacts/`.
+The verification runner starts and stops a production preview on port 3100. It uses Google Chrome on Windows and Playwright Chromium in CI. Checks cover public routes, responsive layouts, navigation, tools, dialogs, contact flows, search, motion, recovery and accessibility. Screenshots and results are saved in `artifacts/`.
 
 ## Edit
 
@@ -30,7 +30,7 @@ The browser check needs the development server on port 3000 and Google Chrome in
 - `src/components/studio-experience.tsx`: navigation, intro, expanding services, project slider, scroll timeline, industry interactions, and shader footer.
 - `src/components/scroll-direction.tsx`: page scroll progress, text reveals, product assembly, and footer choreography.
 - `src/components/scroll-project-gallery.tsx`: desktop horizontal scroll story and mobile swipe gallery.
-- `src/components/motion-details.tsx`: mouse cursor follower and product animation controller.
+- `src/components/motion-details.tsx`: product motion controls and rotating hero words.
 - `src/app/motion.css`: pinned scene, stacked process cards, and responsive motion styles.
 - `src/app/concepts.css`: interface preview and dialog styles.
 - `src/app/globals.css`: visual system, artwork, and responsive styles.
@@ -46,6 +46,8 @@ The project cards are clearly identified as concept demonstrations. The shared e
 
 
 ## Production implementation
+
+The shared logo is [public/logo.svg](./public/logo.svg). Section artwork lives in `src/components/section-illustration.tsx`, with distinct compositions for each subject; `src/app/section-art.css` controls framing and motion. Inner-page footers are light, and the homepage keeps its animated gradient. Developer Tools uses browser cryptography and manually entered pricing rates. Run `npm run typecheck` for clean-checkout Next.js type generation and TypeScript validation, and `npm run verify:polish` after building for the new tools, artwork, logo, footer and responsive checks.
 
 Site search loads a compact index from `/api/search`, derived from the same page, service and article records used by the sitemap. Add content to those records to include it automatically. Homepage sections use absolute `/#section` links from every page. After a build, `npm run verify:search` checks all destinations, section scrolling, keyboard and mobile navigation, accessibility, loading and retry states; it is also part of `npm run verify:design`.
 

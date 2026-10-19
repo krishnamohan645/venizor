@@ -1,0 +1,154 @@
+/* Crisp identity, accessible inner-page footers and a native pointer. */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  mix-blend-mode: normal;
+  overflow: visible;
+}
+.brand-logo img {
+  position: static;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.page-inner-footer {
+  --ink: #182332;
+  --muted: #586679;
+  --text-soft: #586679;
+  --rule: #dae2ee;
+  background: var(--surface-soft);
+  color: var(--ink);
+  border-top: 1px solid var(--rule);
+}
+.page-inner-footer .footer-top > span:last-child,
+.page-inner-footer .footer-connect > span,
+.page-inner-footer .footer-bottom,
+.page-inner-footer .footer-service-links,
+.page-inner-footer .footer-wordmark {
+  color: var(--muted);
+}
+.page-inner-footer .footer-wordmark {
+  color: #7c8aa0;
+  opacity: 1;
+}
+.page-inner-footer .footer-invitation em,
+.page-inner-footer .footer-nav a:hover,
+.page-inner-footer .legal-link:hover,
+.page-inner-footer .footer-service-links a:hover {
+  color: var(--blue);
+}
+.page-inner-footer .footer-contact-circle {
+  color: var(--blue);
+  border-color: var(--rule);
+  background: var(--white);
+}
+.page-inner-footer .footer-contact-circle:hover {
+  color: var(--white);
+  background: var(--blue);
+}
+.page-inner-footer .footer-top .live-dot {
+  background: var(--blue);
+}
+.page-inner-footer .footer-nav,
+.page-inner-footer .footer-bottom,
+.page-inner-footer .footer-service-links {
+  border-color: var(--rule);
+}
+@media (max-width: 960px) {
+  .studio-header-actions .header-contact {
+    display: none;
+  }
+  .studio-header-actions {
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+}
+@media (max-width: 720px) {
+  :root {
+    --type-body: 17px;
+    --type-label: 11px;
+  }
+  .studio-nav a {
+    font-size: 14px;
+  }
+  .hero-editorial-aside > p {
+    font-size: 18px;
+  }
+  .about-statement-bottom p,
+  .service-description > p:not(.service-summary),
+  .project-description p,
+  .project-live-description,
+  .project-selector-description,
+  .product-section-heading p,
+  .industry-detail p,
+  .industry-story p,
+  .bento-main p,
+  .bento-small p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .service-summary {
+    font-size: 18px;
+  }
+  .service-tags span {
+    font-size: 11px;
+  }
+  .section-head > div > p,
+  .contact-opening-lead,
+  .page-hero-lead {
+    font-size: 17px;
+  }
+  .project-slide-tag,
+  .perspective-meta,
+  .bento-index,
+  .hero-footline,
+  .hero-topline,
+  .industry-wall-note,
+  .industry-wall-top,
+  .concept-label {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+  .project-description,
+  .perspective-bottom,
+  .footer-connect .text-link {
+    font-size: 13px;
+  }
+  .footer-nav a,
+  .footer-service-links a,
+  .footer-bottom,
+  .legal-link {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .footer-top > span:last-child,
+  .footer-connect > span {
+    font-size: 10px;
+  }
+  .footer-contact-circle > span {
+    font-size: 9px;
+  }
+  .lead-form label,
+  .contact-form-panel label {
+    font-size: 13px;
+  }
+  .lead-form input,
+  .lead-form textarea,
+  .lead-form select {
+    font-size: 16px;
+  }
+  .journal-article-copy h3 {
+    font-size: 28px;
+  }
+  .journal-article-copy > p {
+    font-size: 15px;
+  }
+  .journal-article-meta {
+    font-size: 12px;
+  }
+  .article-main-lead,
+  .article-section > p {
+    font-size: 17px;
+  }
+}

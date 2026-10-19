@@ -1,7 +1,6 @@
 "use client";
 
 import { ExperienceProvider, Reveal } from "@/components/experience";
-import { CursorFollower } from "@/components/motion-details";
 import { PageFooter, PageHeader } from "@/components/page-nav";
 import {
   architectureBrief,
@@ -110,7 +109,7 @@ export function PlaybookWorkspace() {
         <a className="skip-link" href="#playbook-main">
           Skip to content
         </a>
-        <CursorFollower />
+
         <PageHeader activePage="playbook" />
         <main id="playbook-main" className="inner-page-main">
           <section

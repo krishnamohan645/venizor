@@ -25,7 +25,7 @@ jobs:
         run: npm ci
 
       - name: TypeScript Type Check
-        run: npx tsc --noEmit
+        run: npm run typecheck
 
       - name: Lint
         run: npm run lint
@@ -61,6 +61,8 @@ jobs:
           path: |
             artifacts/production/
             artifacts/refinement/
+            artifacts/search/
+            artifacts/polish/
             artifacts/playbook/
             artifacts/smooth-motion/
             artifacts/error-recovery/

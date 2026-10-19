@@ -4,6 +4,7 @@ import { OptionalFeatureBoundary } from "@/components/optional-feature-boundary"
 import { pageMetadata } from "@/lib/metadata";
 import { isIndexable, site } from "@/lib/site";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import "./motion.css";
@@ -15,6 +16,10 @@ import "./smooth-motion.css";
 import "./recovery.css";
 import "./cookie-preferences.css";
 import "./site-search.css";
+import "./section-art.css";
+import "./scenario-visual.css";
+import "./tools/tools.css";
+import "./refinements.css";
 
 import { GlobalJsonLd } from "@/components/json-ld";
 
@@ -48,7 +53,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"

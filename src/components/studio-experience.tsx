@@ -1,5 +1,6 @@
 "use client";
 import { IndustryArt } from "./industry-art";
+import { SectionIllustration } from "./section-illustration";
 import { ScrollProjectGallery } from "./scroll-project-gallery";
 import { OptionalFeatureBoundary } from "./optional-feature-boundary";
 
@@ -62,9 +63,9 @@ export function StudioHeader() {
     <header className="studio-header">
       <a className="brand-logo" href="#top" aria-label="VENIZOR home">
         <Image
-          src="/logo-banner.jpeg"
-          width={1600}
-          height={800}
+          src="/logo.svg"
+          width={1020}
+          height={250}
           sizes="(max-width: 640px) 155px, 190px"
           alt="VENIZOR — Innovate with confidence"
           preload
@@ -572,9 +573,22 @@ export function ExpandingServices() {
                 className={`service-art service-art-${service.art}`}
                 aria-hidden="true"
               >
-                <service.icon size={76} strokeWidth={0.9} />
-                <div className="service-art-ring" />
-                <div className="service-art-ring second" />
+                <SectionIllustration
+                  kind={
+                    (
+                      [
+                        "architecture",
+                        "operations",
+                        "payments",
+                        "retrieval",
+                        "vision",
+                        "discovery",
+                        "data",
+                        "intelligence",
+                      ] as const
+                    )[index]
+                  }
+                />
                 <span>{service.number} / VENIZOR</span>
               </div>
               <div className="service-description">

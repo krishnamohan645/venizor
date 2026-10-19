@@ -1,5 +1,17 @@
 # Website changes
 
+## 19 October 2026
+
+- Restored the contact page's original animated envelope illustration and orbit rings.
+- Restored the eight industry interface illustrations with larger light cards, a unified blue palette and qualitative concept labels; verified all tabs and mobile layouts.
+- Replaced the architecture scenario carousel's decorative objects with topic-specific interface compositions for payments, knowledge retrieval, logistics and commerce; retained pause controls and reduced-motion support.
+- Preserved the homepage hero's original animated geometric mosaic and restored the product cards' ribbons, connected icons, orb and GSAP motion.
+- Replaced repeated workspace graphics with original SVG compositions across services, projects and article covers.
+- Rebuilt Developer Tools as a responsive workspace with actual browser SHA-256/HMAC signing, editable token-cost inputs and configurable header exports.
+- Recreated the header logo as a crisp vector asset and removed the custom cursor component and its pointer listeners throughout the site.
+- Restored light inner-page footers, retained the homepage gradient and increased small-screen text sizes.
+- Fixed clean-checkout TypeScript validation by generating Next.js route types before checking and making the root layout props explicit.
+
 ## 18 October 2026
 
 - Rebuilt shared search from page, service and article records; fixed homepage section links from inner pages, added ranked topic matching, loading/retry states and verified all 40 destinations.

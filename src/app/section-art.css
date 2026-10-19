@@ -1,0 +1,312 @@
+.section-illustration {
+  width: 100%;
+  position: relative;
+}
+.section-illustration > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.illustration-float {
+  animation: illustration-drift 7s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+@keyframes illustration-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-9px);
+  }
+}
+.original-scene {
+  background: var(--surface-blue);
+  min-height: 430px;
+}
+.original-scene .scene-artwork {
+  width: 100%;
+  max-width: 670px;
+  padding: 35px 10px;
+  transform-style: preserve-3d;
+}
+.original-scene .scene-coordinate {
+  font-size: 9px;
+  color: var(--muted);
+}
+.original-scene .scene-disclaimer {
+  font-size: 9px;
+}
+.large-project-preview {
+  top: 25%;
+  height: 75%;
+}
+.large-project-preview .scene-artwork {
+  max-width: 740px;
+  width: 85%;
+  padding: 0;
+}
+.large-project-preview .original-scene {
+  min-height: 100%;
+}
+.project-slide {
+  isolation: isolate;
+}
+.project-slide > h3 {
+  position: relative;
+  z-index: 3;
+  max-width: 80%;
+  pointer-events: none;
+}
+.project-slide .project-open,
+.project-slide .concept-label {
+  z-index: 4;
+}
+.studio-site .service-art {
+  background: var(--surface-soft);
+  padding: 0;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+.studio-site .service-art > .section-illustration {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.studio-site .service-art > span {
+  z-index: 2;
+  font-size: 9px;
+}
+.industry-section .industry-solution-art {
+  height: auto;
+}
+.industry-interface-art {
+  height: auto;
+  padding-block: 48px;
+  min-width: 0;
+}
+.industry-interface-art .art-mesh-bg {
+  opacity: 0.18;
+}
+.industry-interface-art .art-card {
+  max-width: 410px;
+  padding: 26px;
+  border-radius: 12px;
+  border-color: var(--rule);
+  background: var(--white);
+  backdrop-filter: none;
+  box-shadow: var(--shadow-panel);
+}
+.industry-interface-art .art-card-top {
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.industry-interface-art .art-pill-tag {
+  font-size: 10px;
+  padding: 5px 9px;
+  letter-spacing: 0.04em;
+}
+.industry-interface-art
+  :is(
+    .art-badge-live,
+    .art-streak-badge,
+    .art-secure-badge,
+    .art-stock-tag,
+    .art-prime-tag,
+    .art-signed-badge,
+    .art-ontime-badge,
+    .art-prototype-tag
+  ) {
+  color: var(--muted);
+  font-size: 11px;
+}
+.industry-interface-art .art-val-row {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.industry-interface-art .art-big-num {
+  font-size: 27px;
+  color: var(--ink);
+}
+.industry-interface-art
+  :is(.art-growth-pill, .art-step-tag.done, .art-stage-dot) {
+  color: var(--blue);
+  background: var(--surface-blue);
+}
+.industry-interface-art .art-growth-pill {
+  font-size: 10px;
+}
+.industry-interface-art .pulse-dot,
+.industry-interface-art .art-stage-line.done {
+  background: var(--blue);
+}
+.industry-interface-art
+  :is(
+    .art-mini-chip,
+    .art-order-pill,
+    .art-prop-specs,
+    .art-client-pill,
+    .art-warehouse-sync,
+    .art-spark-tag
+  ) {
+  font-size: 11px;
+  line-height: 1.7;
+}
+.industry-interface-art
+  :is(.art-product-title, .art-prop-title, .art-mod-name) {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 550;
+}
+.industry-interface-art
+  :is(
+    .art-product-price,
+    .art-mod-sub,
+    .art-schedule-pill,
+    .art-viewing-action
+  ) {
+  font-size: 12px;
+  line-height: 1.7;
+}
+.industry-interface-art .art-cart-action {
+  font-size: 13px;
+}
+.industry-interface-art :is(.art-vital-lbl, .art-meta-lbl) {
+  font-size: 10px;
+  line-height: 1.7;
+}
+.industry-interface-art :is(.art-vital-val, .art-meta-val) {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.industry-interface-art .art-vital-box {
+  padding: 9px 11px;
+}
+.industry-interface-art .art-progress-module {
+  gap: 18px;
+  margin-block: 17px;
+}
+.industry-interface-art .art-ring-wrap svg {
+  width: 65px;
+  height: 65px;
+}
+.industry-interface-art .art-edu-steps {
+  gap: 6px;
+}
+.industry-interface-art .art-step-tag {
+  font-size: 10px;
+  padding: 5px 7px;
+}
+.industry-interface-art .art-iso-blueprint svg {
+  max-width: 240px;
+  margin-block: 15px;
+}
+.industry-interface-art .art-stage-item {
+  font-size: 10px;
+}
+.industry-interface-art .art-workflow-stages {
+  flex-wrap: wrap;
+  row-gap: 12px;
+  margin-block: 22px;
+}
+.industry-interface-art .art-route-visual svg {
+  max-width: 280px;
+  margin-block: 20px;
+}
+.industry-interface-art .art-idea-constellation svg {
+  max-width: 260px;
+  margin-block: 18px;
+}
+.industry-interface-art .art-idea-label {
+  font-size: 17px;
+  margin-block: 12px;
+}
+@media (max-width: 640px) {
+  .industry-interface-art {
+    padding: 42px 18px;
+  }
+  .industry-interface-art .art-card {
+    padding: 20px;
+  }
+  .industry-interface-art .art-big-num {
+    font-size: 24px;
+  }
+  .industry-interface-art .art-stage-item {
+    font-size: 9px;
+  }
+  .industry-interface-art .art-workflow-stages {
+    gap: 4px;
+  }
+  .industry-interface-art .art-stage-line {
+    min-width: 8px;
+  }
+}
+.article-art.editorial-cover {
+  background: var(--surface-blue);
+}
+.article-art .section-illustration {
+  width: 100%;
+  padding: 0 8%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.article-art .editorial-cover-frame {
+  overflow: hidden;
+}
+.article-art .editorial-cover-frame > .section-illustration {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  display: block;
+}
+.article-art .section-illustration svg {
+  max-height: 100%;
+  height: 100%;
+}
+.editorial-cover-meta {
+  position: relative;
+  z-index: 1;
+  padding: 16px 24px;
+}
+.article-art .editorial-cover-frame {
+  display: grid;
+  place-items: center;
+  animation: none;
+}
+.original-scene[data-scene-playing="false"] *,
+.journal[data-motion-paused="true"] .illustration-float,
+.project-scroll-section[data-preview-motion="paused"] .illustration-float,
+.product-motion[data-motion-paused="true"] .illustration-float {
+  animation-play-state: paused !important;
+}
+@media (max-width: 720px) {
+  .original-scene {
+    min-height: 320px;
+  }
+  .original-scene .scene-artwork {
+    width: 100%;
+    padding: 35px 0;
+  }
+  .large-project-preview {
+    top: 31%;
+    height: 69%;
+  }
+  .large-project-preview .scene-artwork {
+    width: 100%;
+  }
+  .project-slide > h3 {
+    max-width: 95%;
+  }
+  .editorial-cover-meta {
+    font-size: 10px;
+    padding: 14px 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .illustration-float {
+    animation: none !important;
+  }
+}

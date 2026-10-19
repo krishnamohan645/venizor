@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 250" fill="none" role="img" aria-labelledby="title">
+  <title id="title">VENIZOR — Innovate with confidence</title>
+  <defs>
+    <linearGradient id="navy" x1="15" y1="65" x2="155" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#06264f"/><stop offset="1" stop-color="#0062b9"/></linearGradient>
+    <linearGradient id="blue" x1="110" y1="235" x2="255" y2="10" gradientUnits="userSpaceOnUse"><stop stop-color="#0064d7"/><stop offset=".55" stop-color="#009eea"/><stop offset="1" stop-color="#20d4e9"/></linearGradient>
+    <linearGradient id="fold" x1="140" y1="115" x2="225" y2="90" gradientUnits="userSpaceOnUse"><stop stop-color="#031c42"/><stop offset="1" stop-color="#004e98"/></linearGradient>
+  </defs>
+  <path d="M8 52h61c11 0 18 5 24 16l56 99-30 46c-10 15-28 16-38-2Z" fill="url(#navy)"/>
+  <path d="m254 12-58 88-67 105c-16 25-34 35-53 12 22 32 49 39 71 9l101-143-105 30 37-50c7-10 17-17 30-22Z" fill="url(#blue)"/>
+  <path d="m143 113 105-30-47 67-36-3-29 43-17-26Z" fill="url(#fold)"/>
+  <path d="m143 113 22 34 36 3-54 76c-13 19-26 22-41 14 13-2 24-10 34-25l37-55-41 30-17-26Z" fill="url(#blue)"/>
+  <g fill="#052447">
+    <path d="M239 109h23l42 66 43-66h24l-56 85h-22Z"/>
+    <path d="M380 109h91v17h-91Zm0 68h91v17h-91Z"/>
+    <path d="M487 109h19l66 59v-59h19v85h-18l-67-59v59h-19Z"/>
+    <path d="M607 109h20v85h-20Z"/>
+    <path d="M645 109h105v17l-77 51h77v17H643v-17l78-51h-76Z"/>
+    <path fill-rule="evenodd" d="M786 109h62q30 0 30 28v29q0 28-30 28h-62q-30 0-30-28v-29q0-28 30-28Zm1 18q-11 0-11 11v27q0 11 11 11h60q11 0 11-11v-27q0-11-11-11Z"/>
+    <path d="M894 109h83q29 0 29 26 0 23-25 26l31 33h-28l-42-47h33q11 0 11-10t-11-10h-81Zm0 36h20v49h-20Z"/>
+  </g>
+  <path d="M380 143h79v17h-79Z" fill="#009eea"/>
+  <text x="382" y="230" fill="#5b6671" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" textLength="515" lengthAdjust="spacing">INNOVATE WITH CONFIDENCE</text>
+</svg>

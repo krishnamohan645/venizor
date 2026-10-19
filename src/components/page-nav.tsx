@@ -33,9 +33,9 @@ export function PageHeader({ activePage = "home" }: PageHeaderProps) {
     <header className="studio-header page-header">
       <Link className="brand-logo" href="/" aria-label="VENIZOR home">
         <Image
-          src="/logo-banner.jpeg"
-          width={1600}
-          height={800}
+          src="/logo.svg"
+          width={1020}
+          height={250}
           sizes="(max-width: 640px) 155px, 190px"
           alt="VENIZOR — Innovate with confidence"
           preload

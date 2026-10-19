@@ -6,7 +6,11 @@ interface IndustryArtProps {
 
 export function IndustryArt({ selected }: IndustryArtProps) {
   return (
-    <div className="industry-art-container" key={selected}>
+    <div
+      className="industry-art-container industry-interface-art"
+      key={selected}
+      data-industry-art={selected}
+    >
       {selected === 0 && <SaaSArt />}
       {selected === 1 && <EcommerceArt />}
       {selected === 2 && <HealthcareArt />}
@@ -19,7 +23,7 @@ export function IndustryArt({ selected }: IndustryArtProps) {
   );
 }
 
-/** 01: Technology & SaaS - Live Analytics Dashboard & Node Mesh */
+/** 01: Technology & SaaS - Illustrative Product Workspace & Node Mesh */
 function SaaSArt() {
   return (
     <div className="art-card art-saas">
@@ -47,14 +51,14 @@ function SaaSArt() {
 
       <div className="art-metric-card">
         <div className="art-card-top">
-          <span className="art-pill-tag">MRR TELEMETRY</span>
+          <span className="art-pill-tag">PRODUCT WORKSPACE</span>
           <span className="art-badge-live">
-            <i className="pulse-dot" /> Live
+            <i className="pulse-dot" /> Concept
           </span>
         </div>
         <div className="art-val-row">
-          <span className="art-big-num">$48,650</span>
-          <span className="art-growth-pill">+32.4%</span>
+          <span className="art-big-num">Connected work.</span>
+          <span className="art-growth-pill">Overview</span>
         </div>
         <div className="art-chart-wrap">
           <svg viewBox="0 0 200 45" fill="none">
@@ -78,8 +82,8 @@ function SaaSArt() {
           </svg>
         </div>
         <div className="art-footer-chips">
-          <span className="art-mini-chip">Active Users: 1,842</span>
-          <span className="art-mini-chip">99.98% Uptime</span>
+          <span className="art-mini-chip">Onboarding</span>
+          <span className="art-mini-chip">Billing & workflows</span>
         </div>
       </div>
     </div>
@@ -93,7 +97,7 @@ function EcommerceArt() {
       <div className="art-shop-card">
         <div className="art-shop-badge">
           <span>STOREFRONT</span>
-          <span className="art-stock-tag">In Stock • 8 left</span>
+          <span className="art-stock-tag">Product detail</span>
         </div>
         <div className="art-product-preview">
           <div className="art-item-graphic">
@@ -119,33 +123,31 @@ function EcommerceArt() {
             </svg>
           </div>
           <div className="art-product-info">
-            <span className="art-product-title">Studio Minimalist Watch</span>
-            <span className="art-product-price">$280.00 USD</span>
+            <span className="art-product-title">Everyday collection</span>
+            <span className="art-product-price">Product · Cart · Checkout</span>
           </div>
         </div>
 
         <div className="art-checkout-strip">
           <div className="art-cart-action">
-            <span>Instant Checkout</span>
+            <span>Checkout preview</span>
             <span className="art-arrow">→</span>
           </div>
-          <span className="art-order-pill">Order #8491 • Dispatched</span>
+          <span className="art-order-pill">Order confirmation preview</span>
         </div>
       </div>
     </div>
   );
 }
 
-/** 03: Healthcare - ECG Telemetry & Patient Scheduling */
+/** 03: Healthcare - Care Workflow & Appointment Preview */
 function HealthcareArt() {
   return (
     <div className="art-card art-healthcare">
       <div className="art-clinic-card">
         <div className="art-card-top">
-          <span className="art-pill-tag">PATIENT CARE PORTAL</span>
-          <span className="art-secure-badge">
-            🔒 Illustrative health workflow
-          </span>
+          <span className="art-pill-tag">CARE WORKSPACE</span>
+          <span className="art-secure-badge">Care workflow</span>
         </div>
 
         <div className="art-ecg-container">
@@ -162,17 +164,17 @@ function HealthcareArt() {
 
         <div className="art-vitals-row">
           <div className="art-vital-box">
-            <span className="art-vital-lbl">HEART RATE</span>
-            <span className="art-vital-val">72 bpm</span>
+            <span className="art-vital-lbl">BOOKING</span>
+            <span className="art-vital-val">Scheduled</span>
           </div>
           <div className="art-vital-box">
-            <span className="art-vital-lbl">OXYGEN</span>
-            <span className="art-vital-val">99%</span>
+            <span className="art-vital-lbl">FOLLOW-UP</span>
+            <span className="art-vital-val">In review</span>
           </div>
         </div>
 
         <div className="art-schedule-pill">
-          <span>Dr. Sarah Vance • 10:30 AM Confirmed</span>
+          <span>Appointment · Example schedule</span>
         </div>
       </div>
     </div>
@@ -185,8 +187,8 @@ function EducationArt() {
     <div className="art-card art-education">
       <div className="art-edu-card">
         <div className="art-card-top">
-          <span className="art-pill-tag">CURRICULUM MASTERY</span>
-          <span className="art-streak-badge">🔥 14-day streak</span>
+          <span className="art-pill-tag">LEARNING WORKSPACE</span>
+          <span className="art-streak-badge">Learning path</span>
         </div>
 
         <div className="art-progress-module">
@@ -220,13 +222,13 @@ function EducationArt() {
                 fontWeight="600"
                 fill="#164df4"
               >
-                84%
+                ✓
               </text>
             </svg>
           </div>
           <div className="art-module-text">
-            <span className="art-mod-name">Module 04: AI & Systems</span>
-            <span className="art-mod-sub">6 of 8 lessons completed</span>
+            <span className="art-mod-name">Explore your next lesson</span>
+            <span className="art-mod-sub">A guided learning journey</span>
           </div>
         </div>
 
@@ -247,7 +249,7 @@ function RealEstateArt() {
       <div className="art-property-card">
         <div className="art-card-top">
           <span className="art-pill-tag">PROPERTY SHOWCASE</span>
-          <span className="art-prime-tag">Featured</span>
+          <span className="art-prime-tag">Listing preview</span>
         </div>
 
         <div className="art-iso-blueprint">
@@ -273,12 +275,14 @@ function RealEstateArt() {
         </div>
 
         <div className="art-property-details">
-          <div className="art-prop-title">The Horizon Residence</div>
-          <div className="art-prop-specs">$1,650,000 • 3 Bed • 2,400 sq.ft</div>
+          <div className="art-prop-title">A place to call home.</div>
+          <div className="art-prop-specs">
+            Property details · Floor plans · Enquiries
+          </div>
         </div>
 
         <div className="art-viewing-action">
-          <span>Private Viewing • Booked 2:00 PM</span>
+          <span>Viewing enquiry preview</span>
         </div>
       </div>
     </div>
@@ -292,7 +296,7 @@ function ServicesArt() {
       <div className="art-pro-card">
         <div className="art-card-top">
           <span className="art-pill-tag">CLIENT ENGAGEMENT</span>
-          <span className="art-signed-badge">✓ Agreement Signed</span>
+          <span className="art-signed-badge">Project overview</span>
         </div>
 
         <div className="art-workflow-stages">
@@ -313,7 +317,7 @@ function ServicesArt() {
         </div>
 
         <div className="art-client-pill">
-          <span>Shared Client Workspace • 12 Active Deliverables</span>
+          <span>Shared workspace · Clear next steps</span>
         </div>
       </div>
     </div>
@@ -326,8 +330,8 @@ function LogisticsArt() {
     <div className="art-card art-logistics">
       <div className="art-logistics-card">
         <div className="art-card-top">
-          <span className="art-pill-tag">DISPATCH & FLEET RADAR</span>
-          <span className="art-ontime-badge">● On Schedule</span>
+          <span className="art-pill-tag">ROUTE WORKSPACE</span>
+          <span className="art-ontime-badge">Route preview</span>
         </div>
 
         <div className="art-route-visual">
@@ -353,17 +357,17 @@ function LogisticsArt() {
 
         <div className="art-shipment-meta">
           <div className="art-meta-col">
-            <span className="art-meta-lbl">ROUTE ID</span>
-            <span className="art-meta-val">VNZ-8402</span>
+            <span className="art-meta-lbl">JOURNEY</span>
+            <span className="art-meta-val">Pickup → Delivery</span>
           </div>
           <div className="art-meta-col">
-            <span className="art-meta-lbl">EST. ARRIVAL</span>
-            <span className="art-meta-val">15:45 Today</span>
+            <span className="art-meta-lbl">NEXT STEP</span>
+            <span className="art-meta-val">Status update</span>
           </div>
         </div>
 
         <div className="art-warehouse-sync">
-          <span>Zero Inventory Delay • Hub Rebalanced</span>
+          <span>Connected orders, inventory and dispatch</span>
         </div>
       </div>
     </div>
@@ -376,8 +380,8 @@ function BigIdeaArt() {
     <div className="art-card art-bigidea">
       <div className="art-lab-card">
         <div className="art-card-top">
-          <span className="art-pill-tag">INNOVATION LAB</span>
-          <span className="art-prototype-tag">✨ Prototype Ready</span>
+          <span className="art-pill-tag">IDEA TO PROTOTYPE</span>
+          <span className="art-prototype-tag">Concept sketch</span>
         </div>
 
         <div className="art-idea-constellation">
@@ -411,11 +415,11 @@ function BigIdeaArt() {
         </div>
 
         <div className="art-idea-label">
-          <span>Concept Validation ➔ High-Impact MVP</span>
+          <span>Explore. Sketch. Test.</span>
         </div>
 
         <div className="art-idea-footer">
-          <span className="art-spark-tag">Strategy + Design + AI Core</span>
+          <span className="art-spark-tag">Strategy + Design + Engineering</span>
         </div>
       </div>
     </div>

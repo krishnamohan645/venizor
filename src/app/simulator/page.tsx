@@ -1,7 +1,6 @@
 "use client";
 
 import { ExperienceProvider } from "@/components/experience";
-import { CursorFollower } from "@/components/motion-details";
 import { PageFooter, PageHeader } from "@/components/page-nav";
 import { ResultFollowup } from "@/components/result-followup";
 import { Activity, ArrowUpRight, Cpu, Play, Zap } from "lucide-react";
@@ -214,7 +213,7 @@ export default function SimulatorPage() {
   return (
     <ExperienceProvider>
       <div className="inner-page-shell" id="top">
-        <CursorFollower />
+
         <PageHeader activePage="blog" />
 
         <main id="simulator-main" className="inner-page-main">

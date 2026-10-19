@@ -154,6 +154,43 @@ try {
     "Article progress updates its transform while keeping a constant width",
   );
 
+  const codeTop = await page
+    .locator(".code-pre-block")
+    .evaluate((el) => el.getBoundingClientRect().top + scrollY);
+  await jump(codeTop + 100);
+  await page.evaluate(() => {
+    window.__articleScrollSamples = [];
+    window.addEventListener(
+      "scroll",
+      () => {
+        window.__articleScrollSamples.push(scrollY);
+      },
+      { passive: true },
+    );
+  });
+  for (const selector of [".code-pre-block", ".article-toc"]) {
+    const target = page.locator(selector);
+    const bounds = await target.boundingBox();
+    await page.mouse.move(
+      bounds.x + bounds.width / 2,
+      Math.max(120, Math.min(500, bounds.y + 100)),
+    );
+    const start = await page.evaluate(() => {
+      window.__articleScrollSamples = [];
+      return scrollY;
+    });
+    await page.mouse.wheel(0, 240);
+    await settled(start + 240);
+    const samples = await page.evaluate(() => window.__articleScrollSamples);
+    assert.ok(
+      samples.filter((y) => y > start && y < start + 235).length > 4,
+      `${selector} should retain smooth vertical scrolling: ${JSON.stringify(samples)}`,
+    );
+  }
+  checks.push(
+    "Code examples and the article contents retain smooth page scrolling",
+  );
+
   await page.goto(base, { waitUntil: "networkidle" });
   await page.waitForTimeout(1800);
   const gallery = page.locator(".project-scroll-section");
@@ -209,6 +246,58 @@ try {
     false,
   );
   await phone.screenshot({ path: `${folder}/mobile-native-scroll.png` });
+
+  await phone.goto(base + "/blog/securing-ai-production-systems", {
+    waitUntil: "networkidle",
+  });
+  for (const width of [320, 390, 768]) {
+    await phone.setViewportSize({ width, height: 844 });
+    const clipped = await phone
+      .locator(
+        ".article-left-rail, .article-prose-wrap, .code-header-bar, .code-pre-block",
+      )
+      .evaluateAll((elements) =>
+        elements
+          .filter((el) => {
+            const box = el.getBoundingClientRect();
+            return box.left < 0 || box.right > innerWidth + 1;
+          })
+          .map((el) => el.className),
+      );
+    assert.deepEqual(clipped, [], `Article content clipped at ${width}px`);
+  }
+  await phone.setViewportSize({ width: 390, height: 844 });
+  const snippet = phone.locator(".code-pre-block").first();
+  await snippet.scrollIntoViewIfNeeded();
+  await expect(phone.locator("html")).not.toHaveClass(/\blenis\b/);
+  await phone.mouse.move(180, 400);
+  await phone.mouse.wheel(180, 0);
+  await expect
+    .poll(() => snippet.evaluate((el) => el.scrollLeft))
+    .toBeGreaterThan(20);
+  const beforeSwipe = await phone.evaluate(() => scrollY);
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchStart",
+    touchPoints: [{ x: 180, y: 650 }],
+  });
+  for (let y = 620; y >= 250; y -= 30) {
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchMove",
+      touchPoints: [{ x: 180, y }],
+    });
+    await phone.waitForTimeout(20);
+  }
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchEnd",
+    touchPoints: [],
+  });
+  await expect
+    .poll(() => phone.evaluate(() => scrollY))
+    .toBeGreaterThan(beforeSwipe + 100);
+  await phone.screenshot({ path: `${folder}/article-mobile-scroll.png` });
+  checks.push(
+    "Mobile articles fit the viewport; code scrolls horizontally and vertical touch gestures scroll the page",
+  );
   await mobile.close();
   checks.push("Touch viewport retains native scrolling and fits the screen");
   assert.deepEqual(errors, []);

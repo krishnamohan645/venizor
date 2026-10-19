@@ -1,7 +1,6 @@
 "use client";
 
 import { ExperienceProvider } from "@/components/experience";
-import { CursorFollower } from "@/components/motion-details";
 import { PageFooter, PageHeader } from "@/components/page-nav";
 import { ResultFollowup } from "@/components/result-followup";
 import { ArrowLeft, ArrowRight, Check, Clock } from "lucide-react";
@@ -116,7 +115,7 @@ An indicative planning aid. Final scope, cost and timing require discovery.`;
   return (
     <ExperienceProvider>
       <div className="inner-page-shell" id="top">
-        <CursorFollower />
+
         <PageHeader activePage="contact" />
 
         <main id="scope-main" className="inner-page-main">

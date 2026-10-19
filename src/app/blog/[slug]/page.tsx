@@ -7,7 +7,6 @@ import {
 import { BlogArchitectureDiagram } from "@/components/blog-diagrams";
 import { ExperienceProvider } from "@/components/experience";
 import { ArticleJsonLd } from "@/components/json-ld";
-import { CursorFollower } from "@/components/motion-details";
 import { PageFooter, PageHeader } from "@/components/page-nav";
 import { blogPosts } from "@/data/blog-data";
 import { pageMetadata } from "@/lib/metadata";
@@ -81,7 +80,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           Skip to content
         </a>
         <ReadingProgressBar />
-        <CursorFollower />
+
         <PageHeader activePage="blog" />
         <ArticleJsonLd post={post} />
 

@@ -1,0 +1,165 @@
+{
+  "checks": "All eight restored interfaces fit their panels horizontally and vertically at 320, 390, 768 and 1440px",
+  "sizes": [
+    {
+      "width": 320,
+      "i": 0,
+      "height": 319.484375
+    },
+    {
+      "width": 320,
+      "i": 1,
+      "height": 342
+    },
+    {
+      "width": 320,
+      "i": 2,
+      "height": 321.515625
+    },
+    {
+      "width": 320,
+      "i": 3,
+      "height": 367.5
+    },
+    {
+      "width": 320,
+      "i": 4,
+      "height": 364.375
+    },
+    {
+      "width": 320,
+      "i": 5,
+      "height": 282.1875
+    },
+    {
+      "width": 320,
+      "i": 6,
+      "height": 360.234375
+    },
+    {
+      "width": 320,
+      "i": 7,
+      "height": 349.296875
+    },
+    {
+      "width": 390,
+      "i": 0,
+      "height": 304.4375
+    },
+    {
+      "width": 390,
+      "i": 1,
+      "height": 292.5
+    },
+    {
+      "width": 390,
+      "i": 2,
+      "height": 334.4375
+    },
+    {
+      "width": 390,
+      "i": 3,
+      "height": 307
+    },
+    {
+      "width": 390,
+      "i": 4,
+      "height": 349.078125
+    },
+    {
+      "width": 390,
+      "i": 5,
+      "height": 280
+    },
+    {
+      "width": 390,
+      "i": 6,
+      "height": 329.84375
+    },
+    {
+      "width": 390,
+      "i": 7,
+      "height": 341
+    },
+    {
+      "width": 768,
+      "i": 0,
+      "height": 454.640625
+    },
+    {
+      "width": 768,
+      "i": 1,
+      "height": 454.640625
+    },
+    {
+      "width": 768,
+      "i": 2,
+      "height": 454.640625
+    },
+    {
+      "width": 768,
+      "i": 3,
+      "height": 431.25
+    },
+    {
+      "width": 768,
+      "i": 4,
+      "height": 431.25
+    },
+    {
+      "width": 768,
+      "i": 5,
+      "height": 431.25
+    },
+    {
+      "width": 768,
+      "i": 6,
+      "height": 467.75
+    },
+    {
+      "width": 768,
+      "i": 7,
+      "height": 454.640625
+    },
+    {
+      "width": 1440,
+      "i": 0,
+      "height": 458.671875
+    },
+    {
+      "width": 1440,
+      "i": 1,
+      "height": 458.671875
+    },
+    {
+      "width": 1440,
+      "i": 2,
+      "height": 458.671875
+    },
+    {
+      "width": 1440,
+      "i": 3,
+      "height": 458.671875
+    },
+    {
+      "width": 1440,
+      "i": 4,
+      "height": 458.671875
+    },
+    {
+      "width": 1440,
+      "i": 5,
+      "height": 458.671875
+    },
+    {
+      "width": 1440,
+      "i": 6,
+      "height": 482.0625
+    },
+    {
+      "width": 1440,
+      "i": 7,
+      "height": 458.671875
+    }
+  ]
+}

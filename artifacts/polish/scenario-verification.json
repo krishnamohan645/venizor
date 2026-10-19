@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "All four scenario interfaces render and pass accessibility checks",
+    "All four visuals fit desktop, tablet and 390/320px mobile layouts",
+    "Live motion, pause and keyboard scenario changes work",
+    "Original hero mosaic and product visuals are preserved"
+  ],
+  "errors": []
+}

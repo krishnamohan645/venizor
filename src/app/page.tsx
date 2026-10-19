@@ -6,11 +6,7 @@ import {
   ExperienceProvider,
   Reveal,
 } from "@/components/experience";
-import {
-  CursorFollower,
-  HeroWordsCycle,
-  ProductMotion,
-} from "@/components/motion-details";
+import { HeroWordsCycle, ProductMotion } from "@/components/motion-details";
 import { ScrollDirection, ScrollWords } from "@/components/scroll-direction";
 import { StickyStackingSection } from "@/components/sticky-stacking-section";
 import {
@@ -51,7 +47,7 @@ export default function Home() {
         </a>
         <StudioIntro />
         <ScrollDirection />
-        <CursorFollower />
+
         <StudioHeader />
         <main id="main">
           <section className="studio-hero" aria-labelledby="hero-title">

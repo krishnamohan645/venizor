@@ -23,9 +23,10 @@ export function SmoothMotion() {
           autoRaf: false,
           anchors: { duration: 0.75, lerp: 0 },
           stopInertiaOnNavigate: true,
+          // Horizontal article snippets keep vertical wheel input on the page.
           prevent: (node) =>
             node.matches(
-              "dialog, textarea, select, [data-native-scroll], .code-pre-block, .code-pre-box, .article-toc, .studio-nav",
+              "dialog, textarea, select, [data-native-scroll], .code-pre-box, .studio-nav",
             ),
         });
         const disconnect = connectSmoothScroll(lenis);

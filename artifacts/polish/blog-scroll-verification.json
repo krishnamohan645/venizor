@@ -1,0 +1,250 @@
+{
+  "layoutChecksCompleted": [
+    {
+      "slug": "connecting-third-party-https-apis",
+      "width": 320
+    },
+    {
+      "slug": "connecting-third-party-https-apis",
+      "width": 390
+    },
+    {
+      "slug": "connecting-third-party-https-apis",
+      "width": 768
+    },
+    {
+      "slug": "connecting-third-party-https-apis",
+      "width": 1024
+    },
+    {
+      "slug": "connecting-third-party-https-apis",
+      "width": 1440
+    },
+    {
+      "slug": "integrating-production-ai-workflows",
+      "width": 320
+    },
+    {
+      "slug": "integrating-production-ai-workflows",
+      "width": 390
+    },
+    {
+      "slug": "integrating-production-ai-workflows",
+      "width": 768
+    },
+    {
+      "slug": "integrating-production-ai-workflows",
+      "width": 1024
+    },
+    {
+      "slug": "integrating-production-ai-workflows",
+      "width": 1440
+    },
+    {
+      "slug": "postgresql-at-scale-connection-pooling",
+      "width": 320
+    },
+    {
+      "slug": "postgresql-at-scale-connection-pooling",
+      "width": 390
+    },
+    {
+      "slug": "postgresql-at-scale-connection-pooling",
+      "width": 768
+    },
+    {
+      "slug": "postgresql-at-scale-connection-pooling",
+      "width": 1024
+    },
+    {
+      "slug": "postgresql-at-scale-connection-pooling",
+      "width": 1440
+    },
+    {
+      "slug": "zero-downtime-deployments-devops-playbook",
+      "width": 320
+    },
+    {
+      "slug": "zero-downtime-deployments-devops-playbook",
+      "width": 390
+    },
+    {
+      "slug": "zero-downtime-deployments-devops-playbook",
+      "width": 768
+    },
+    {
+      "slug": "zero-downtime-deployments-devops-playbook",
+      "width": 1024
+    },
+    {
+      "slug": "zero-downtime-deployments-devops-playbook",
+      "width": 1440
+    },
+    {
+      "slug": "hardening-modern-web-applications-security",
+      "width": 320
+    },
+    {
+      "slug": "hardening-modern-web-applications-security",
+      "width": 390
+    },
+    {
+      "slug": "hardening-modern-web-applications-security",
+      "width": 768
+    },
+    {
+      "slug": "hardening-modern-web-applications-security",
+      "width": 1024
+    },
+    {
+      "slug": "hardening-modern-web-applications-security",
+      "width": 1440
+    },
+    {
+      "slug": "mastering-seo-aeo-geo-sxo-2026",
+      "width": 320
+    },
+    {
+      "slug": "mastering-seo-aeo-geo-sxo-2026",
+      "width": 390
+    },
+    {
+      "slug": "mastering-seo-aeo-geo-sxo-2026",
+      "width": 768
+    },
+    {
+      "slug": "mastering-seo-aeo-geo-sxo-2026",
+      "width": 1024
+    },
+    {
+      "slug": "mastering-seo-aeo-geo-sxo-2026",
+      "width": 1440
+    },
+    {
+      "slug": "the-race-to-superintelligence-asi-hardware-frontiers",
+      "width": 320
+    },
+    {
+      "slug": "the-race-to-superintelligence-asi-hardware-frontiers",
+      "width": 390
+    },
+    {
+      "slug": "the-race-to-superintelligence-asi-hardware-frontiers",
+      "width": 768
+    },
+    {
+      "slug": "the-race-to-superintelligence-asi-hardware-frontiers",
+      "width": 1024
+    },
+    {
+      "slug": "the-race-to-superintelligence-asi-hardware-frontiers",
+      "width": 1440
+    },
+    {
+      "slug": "how-ai-is-evolving-agentic-reasoning-loops",
+      "width": 320
+    },
+    {
+      "slug": "how-ai-is-evolving-agentic-reasoning-loops",
+      "width": 390
+    },
+    {
+      "slug": "how-ai-is-evolving-agentic-reasoning-loops",
+      "width": 768
+    },
+    {
+      "slug": "how-ai-is-evolving-agentic-reasoning-loops",
+      "width": 1024
+    },
+    {
+      "slug": "how-ai-is-evolving-agentic-reasoning-loops",
+      "width": 1440
+    },
+    {
+      "slug": "how-big-tech-engineers-hyper-scale-apps",
+      "width": 320
+    },
+    {
+      "slug": "how-big-tech-engineers-hyper-scale-apps",
+      "width": 390
+    },
+    {
+      "slug": "how-big-tech-engineers-hyper-scale-apps",
+      "width": 768
+    },
+    {
+      "slug": "how-big-tech-engineers-hyper-scale-apps",
+      "width": 1024
+    },
+    {
+      "slug": "how-big-tech-engineers-hyper-scale-apps",
+      "width": 1440
+    },
+    {
+      "slug": "securing-ai-production-systems",
+      "width": 320
+    },
+    {
+      "slug": "securing-ai-production-systems",
+      "width": 390
+    },
+    {
+      "slug": "securing-ai-production-systems",
+      "width": 768
+    },
+    {
+      "slug": "securing-ai-production-systems",
+      "width": 1024
+    },
+    {
+      "slug": "securing-ai-production-systems",
+      "width": 1440
+    },
+    {
+      "slug": "solving-the-distributed-dual-write-problem",
+      "width": 320
+    },
+    {
+      "slug": "solving-the-distributed-dual-write-problem",
+      "width": 390
+    },
+    {
+      "slug": "solving-the-distributed-dual-write-problem",
+      "width": 768
+    },
+    {
+      "slug": "solving-the-distributed-dual-write-problem",
+      "width": 1024
+    },
+    {
+      "slug": "solving-the-distributed-dual-write-problem",
+      "width": 1440
+    },
+    {
+      "slug": "how-applications-are-built-in-this-era",
+      "width": 320
+    },
+    {
+      "slug": "how-applications-are-built-in-this-era",
+      "width": 390
+    },
+    {
+      "slug": "how-applications-are-built-in-this-era",
+      "width": 768
+    },
+    {
+      "slug": "how-applications-are-built-in-this-era",
+      "width": 1024
+    },
+    {
+      "slug": "how-applications-are-built-in-this-era",
+      "width": 1440
+    }
+  ],
+  "toc": {
+    "top": 99.59375,
+    "padding": 100,
+    "margin": 0
+  },
+  "errors": []
+}

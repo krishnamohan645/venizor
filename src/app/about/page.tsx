@@ -1,6 +1,5 @@
 import { ExperienceProvider } from "@/components/experience";
 import { BreadcrumbJsonLd } from "@/components/json-ld";
-import { CursorFollower } from "@/components/motion-details";
 import { PageFooter, PageHeader } from "@/components/page-nav";
 import { pageMetadata } from "@/lib/metadata";
 import { ArrowUpRight } from "lucide-react";
@@ -113,7 +112,7 @@ export default function AboutPage() {
         <a className="skip-link" href="#about-main">
           Skip to content
         </a>
-        <CursorFollower />
+
         <BreadcrumbJsonLd path="/about" />
         <PageHeader activePage="about" />
 

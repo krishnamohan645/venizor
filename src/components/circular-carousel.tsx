@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
-import { StudioVisual, type SceneKind } from "./studio-visual";
+import { ScenarioVisual, type ScenarioKind } from "./scenario-visual";
 
 export function CircularCarousel() {
   const [active, setActive] = useState(0),
@@ -117,7 +117,7 @@ export function CircularCarousel() {
                 ease: [0.23, 1, 0.32, 1],
               }}
             >
-              <StudioVisual kind={item.id as SceneKind} paused={paused} />
+              <ScenarioVisual kind={item.id as ScenarioKind} paused={paused} />
             </motion.div>
           </AnimatePresence>
         </div>

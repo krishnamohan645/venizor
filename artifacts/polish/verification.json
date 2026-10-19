@@ -1,0 +1,37 @@
+{
+  "checks": [
+    "Webhook tool generates genuine HMAC/SHA-256, copies output and reports malformed JSON",
+    "Editable rates, token counts and cache percentage produce the expected monthly estimate",
+    "Header toggles update the exported configuration and clipboard contents",
+    "Tools and visible search/menu controls fit seven viewport widths; all mobile tool states pass accessibility checks",
+    "Inner footers are light, the home gradient remains, the SVG logo is shared, custom cursor is removed and four project visuals are distinct",
+    "Blog illustrations stay inside their artwork frames and clear of captions"
+  ],
+  "accessibility": [
+    {
+      "label": "Webhook lab",
+      "violations": []
+    },
+    {
+      "label": "Token budget",
+      "violations": []
+    },
+    {
+      "label": "Header builder",
+      "violations": []
+    },
+    {
+      "label": "Mobile Webhook Signature",
+      "violations": []
+    },
+    {
+      "label": "Mobile LLM Token",
+      "violations": []
+    },
+    {
+      "label": "Mobile Security Headers",
+      "violations": []
+    }
+  ],
+  "errors": []
+}

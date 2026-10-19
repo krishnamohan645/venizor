@@ -259,7 +259,7 @@ export function ProjectPreview({
   paused?: boolean;
 }) {
   const kinds: Record<string, SceneKind> = {
-    website: "commerce",
+    website: "architecture",
     dashboard: "operations",
     mobile: "payments",
     automation: "retrieval",

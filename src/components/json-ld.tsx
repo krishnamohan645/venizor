@@ -23,7 +23,7 @@ export function GlobalJsonLd() {
             "@id": site.url + "/#organization",
             name: site.name,
             url: site.url,
-            logo: site.url + "/logo-banner.jpeg",
+            logo: site.url + "/logo.svg",
             email: site.email,
             description:
               "Independent software and AI studio building websites, web applications, mobile apps and SaaS products.",

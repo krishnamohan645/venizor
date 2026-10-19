@@ -109,7 +109,9 @@ try {
   );
   assert.ok(article);
   await follow(article.href);
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(article.title);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    article.title,
+  );
   checks.push(
     "Service and article matches open the actual detail pages through client navigation",
   );
@@ -138,7 +140,9 @@ try {
     ).toHaveAttribute("aria-pressed", "true");
   }
   await page.keyboard.press("Escape");
-  await expect(page.getByRole("button", { name: "Search site", exact: true })).toBeFocused();
+  await expect(
+    page.getByRole("button", { name: "Search site", exact: true }),
+  ).toBeFocused();
   checks.push(
     "Metadata search, all topic buttons, clear, empty state and Escape focus restoration work",
   );
@@ -225,7 +229,14 @@ try {
     JSON.stringify({ checks, entries: entries.length, errors }, null, 2),
   );
 } catch (error) {
-  console.log(await page.evaluate(() => ({ active: document.activeElement?.outerHTML, dialogs: [...document.querySelectorAll('dialog')].map((node) => node.outerHTML.slice(0, 200)) })));
+  console.log(
+    await page.evaluate(() => ({
+      active: document.activeElement?.outerHTML.slice(0, 300),
+      dialogs: [...document.querySelectorAll("dialog")].map((node) =>
+        node.outerHTML.slice(0, 200),
+      ),
+    })),
+  );
   throw error;
 } finally {
   await browser.close();

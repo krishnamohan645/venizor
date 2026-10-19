@@ -1,6 +1,9 @@
 .search-dialog {
   width: min(760px, calc(100vw - 32px));
 }
+.studio-header-actions .search-button {
+  display: inline-grid;
+}
 .search-dialog .search-field {
   position: relative;
 }

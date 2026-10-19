@@ -11,68 +11,6 @@ import {
 import { useInView, useReducedMotion } from "motion/react";
 import gsap from "gsap";
 
-/** A supplementary pointer cue. The native cursor remains available everywhere. */
-export function CursorFollower() {
-  const ring = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const media = gsap.matchMedia();
-    media.add(
-      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
-      () => {
-        const el = ring.current!;
-        const x = gsap.quickTo(el, "x", { duration: 0.24, ease: "power3.out" });
-        const y = gsap.quickTo(el, "y", { duration: 0.24, ease: "power3.out" });
-        let visible = false;
-        const hide = () => {
-          visible = false;
-          el.style.opacity = "0";
-        };
-        const move = (event: PointerEvent) => {
-          if (event.pointerType !== "mouse") {
-            hide();
-            return;
-          }
-          if (!visible) {
-            gsap.set(el, { x: event.clientX, y: event.clientY });
-            visible = true;
-          }
-          x(event.clientX);
-          y(event.clientY);
-          el.style.opacity = "1";
-          const target = event.target as Element;
-          el.dataset.interactive = String(
-            Boolean(target.closest("a,button,input,textarea,select")),
-          );
-          el.dataset.drag = String(
-            Boolean(target.closest(".industry-sticker")),
-          );
-        };
-        window.addEventListener("pointermove", move, { passive: true });
-        document.documentElement.addEventListener("pointerleave", hide);
-        window.addEventListener("blur", hide);
-        const focus = (event: KeyboardEvent) => {
-          if (event.key === "Tab") hide();
-        };
-        window.addEventListener("keydown", focus);
-        return () => {
-          window.removeEventListener("pointermove", move);
-          document.documentElement.removeEventListener("pointerleave", hide);
-          window.removeEventListener("blur", hide);
-          window.removeEventListener("keydown", focus);
-          hide();
-        };
-      },
-    );
-    return () => media.revert();
-  }, []);
-  return (
-    <div className="cursor-follower" ref={ring} aria-hidden="true">
-      <i />
-      <span>DRAG</span>
-    </div>
-  );
-}
-
 export function ProductMotion({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
   const inView = useInView(root, { margin: "50px" });

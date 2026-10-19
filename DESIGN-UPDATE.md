@@ -3,7 +3,7 @@
 Direction: light editorial studio. Preserve the logo, Geist typography and blue brand accent. Help buyers understand the offer and reach a real contact path.
 
 - Landing sections occupy at least one viewport, growing naturally with content. No forced scroll snapping or clipped mobile content.
-- White, paper and pale blue surfaces across every route, including tools, simulators, diagrams, engineering panels, product panels and industries. The original animated navy footer is restored at the user's request. Use one Geist family and the shared tokens in `src/app/design-system.css`.
+- White, paper and pale blue surfaces across every route, including tools, simulators, diagrams, engineering panels, product panels, industries and inner-page footers. The homepage retains the animated navy gradient footer. Use one Geist family and the shared tokens in `src/app/design-system.css`.
 - Blog: an oversized editorial opening, one featured story, an illustrated article grid, search and filters. Use entrance and hover motion with reduced-motion alternatives; no invented activity.
 - Contact: a clear project brief, real field progress, direct email, next steps and an animated envelope illustration with a pause control.
 - Playbook: a guided six-step workspace, three starting presets, a live architecture blueprint and contextual review questions. Copy the selected stack as a plain-text brief, with a manual fallback when clipboard access fails.
